@@ -1,8 +1,36 @@
 <?php
+class Core {
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+        public function run(){
+                
+                $url= isset($_GET['url'])?'/'.$_GET['url']:'/';                          
+		$params = array();
+		if(!empty($url) && $url != '/') {
+			$url = explode('/', $url);                       
+			array_shift($url); 
 
+			$currentController = $url[0].'Controller';
+			array_shift($url);
+
+			if(isset($url[0]) && !empty($url[0])) {                           
+				$currentAction = $url[0];
+                                array_shift($url);
+			} else {
+				$currentAction = 'index';
+			}
+			if(!empty($url[0])) {                            
+				$params = $url;                                
+                                if(empty(end($params))){                                    
+                                    array_pop($params);
+                                }                                
+			}
+		} else {
+			$currentController = 'homeController';
+			$currentAction = 'index';
+		}                
+		$c = new $currentController();
+		call_user_func_array(array($c, $currentAction), $params);	
+        }
+}
+         
+        

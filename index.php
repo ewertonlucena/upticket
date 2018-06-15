@@ -1,8 +1,17 @@
 <?php
+session_start();
+require 'config.php';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+spl_autoload_register(function ($class){    
+    if(file_exists('controllers/'.$class.'.php')) {
+        require 'controllers/'.$class.'.php';
+    } elseif(file_exists('models/'.$class.'.php')) {
+        require 'models/'.$class.'.php';
+    } elseif(file_exists('core/'.$class.'.php')) {
+        require 'core/'.$class.'.php';
+    }
+});
 
+$core = new Core();
+$core->run();
+?>
