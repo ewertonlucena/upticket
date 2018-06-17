@@ -1,6 +1,14 @@
 <?php
 class Staff extends model{
     
+    public function isLogged(){
+        if(isset($_SESSION['ccUser']) && !empty($_SESSION['ccUser'])){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getName(){
         return 'Ewerton';
     }

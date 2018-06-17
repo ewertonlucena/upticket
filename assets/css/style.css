@@ -1,3 +1,16 @@
 body {
     background-color: #CCC;
 }
+
+.vertical-centered {
+    position: relative;       
+    transform: translateY(100%);  
+}
+.loginarea {
+    background-color: #FFF;
+    border:1px solid #000;
+    -webkit-box-shadow:1px 2px 5px 1px #181818 ;
+    -moz-box-shadow:1px 2px 5px 1px #181818 ;
+    box-shadow:1px 2px 5px 1px #181818 ;
+    padding: 20px;
+}
