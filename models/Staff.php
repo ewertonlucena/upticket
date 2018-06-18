@@ -8,6 +8,22 @@ class Staff extends model{
             return false;
         }
     }
+    
+    public function doLogin($login, $pass){
+        
+        $sql = $this->db->prepare("SELECT * FROM staff WHERE login = :login AND pass = :pass");
+        $sql->bindValue(':login', $login);
+        $sql->bindValue(':pass', md5($pass));
+        $sql->execute();
+        
+        if($sql->rowCount() > 0) {
+            $row = $sql->fetch();
+            $_SESSION['ccUser'] =   $row['id'];
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function getName(){
         return 'Ewerton';
