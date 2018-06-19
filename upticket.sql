@@ -88,6 +88,7 @@ CREATE TABLE IF NOT EXISTS `corporations_users` (
   `login` varchar(100) NOT NULL,
   `pass` varchar(32) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `surname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(32) NOT NULL,
   `create_date` datetime NOT NULL,
@@ -182,11 +183,12 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(1) NOT NULL,
   `login` varchar(50) NOT NULL,
+  `pass` varchar(32) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `surname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `mobile` varchar(50) NOT NULL,
-  `pass` varchar(32) NOT NULL,
   `admin` tinyint(1) NOT NULL,
   `group` int(11) DEFAULT NULL,
   `department` int(11) DEFAULT NULL,
@@ -198,13 +200,13 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `update_date` datetime DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Copiando dados para a tabela helpdesk.staff: ~1 rows (aproximadamente)
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` (`id`, `active`, `login`, `name`, `email`, `phone`, `mobile`, `pass`, `admin`, `group`, `department`, `dir_list_show`, `vacation`, `teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 1, 'admin', 'Ewerton de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 'e10adc3949ba59abbe56e057f20f883e', 1, NULL, NULL, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
+INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `group`, `department`, `dir_list_show`, `vacation`, `teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
+	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, NULL, NULL, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.task

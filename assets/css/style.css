@@ -1,7 +1,3 @@
-body {
-    background-color: #CCC;
-}
-
 .vertical-centered {
     position: relative;       
     transform: translateY(50%);  
@@ -14,4 +10,12 @@ body {
     box-shadow:1px 2px 5px 1px #181818 ;
     padding: 20px;
     margin: 20px;
+}
+
+.header, .sub-header {
+    min-height: 60px;
+}
+
+.breadcrumb-search {
+    min-height: 60px;
 }
