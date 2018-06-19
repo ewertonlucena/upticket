@@ -12,5 +12,6 @@ body {
     -webkit-box-shadow:1px 2px 5px 1px #181818 ;
     -moz-box-shadow:1px 2px 5px 1px #181818 ;
     box-shadow:1px 2px 5px 1px #181818 ;
-    padding: 20px;    
+    padding: 20px;
+    margin: 20px;
 }
