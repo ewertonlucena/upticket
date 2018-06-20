@@ -11,12 +11,12 @@ class homeController extends controller {
     
 
         public function index(){
-        $staff = new Staff();        
-        $data = array(
-            'quant' => $staff->getStaffQuant(),
-            'teste' => 'teste123'
-        );
-        $this->loadTemplate('home', $data);        
+            $data = array();
+            $staff = new Staff();
+            $staff->setLoggedStaff();
+            $data['staff_name'] = $staff->getName();
+            
+            $this->loadTemplate('home', $data);        
     }
 }
 

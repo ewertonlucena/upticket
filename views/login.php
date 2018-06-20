@@ -12,7 +12,7 @@
     <body>
         <div class="container-fluid">             
             <div class="row justify-content-center bg-dark">                    		
-                <div class="col-xs-4 col-sm-9 col-md-7 col-lg-6 col-xl-4 bg-danger">                    
+                <div class="col-xs-4 col-sm-9 col-md-7 col-lg-6 col-xl-4 bg-white">                    
                     <?php if (isset($error) && !empty($error)): ?>
                     <div class="modal fade hide" id="modal1">
                         <div class="modal-dialog">
@@ -32,7 +32,7 @@
                         </div>                            
                     </div>
                     <?php endif; ?>                    
-                    <div class="loginarea mt-2">
+                    <div class="loginarea bg-light p-3 m-3 rounded border border-dark ">
                         <form method="POST" role="form">
                             <div class="form-group">
                                 <label>

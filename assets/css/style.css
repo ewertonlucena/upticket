@@ -2,14 +2,10 @@
     position: relative;       
     transform: translateY(50%);  
 }
-.loginarea {
-    background-color: #FFF;
-    border:1px solid #000;
+.loginarea { 
     -webkit-box-shadow:1px 2px 5px 1px #181818 ;
     -moz-box-shadow:1px 2px 5px 1px #181818 ;
-    box-shadow:1px 2px 5px 1px #181818 ;
-    padding: 20px;
-    margin: 20px;
+    box-shadow:1px 2px 5px 1px #181818 ;    
 }
 
 .header, .sub-header {
@@ -17,5 +13,15 @@
 }
 
 .breadcrumb-search {
-    min-height: 60px;    
+    min-height: 60px;
+    background-color: #fd7e14;
+}
+.main-content {
+    height: 1200px; 
+}
+
+@media (min-width: 1920px) {
+  .container-fluid {
+    max-width: 1920px;
+  }
 }
