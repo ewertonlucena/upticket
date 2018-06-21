@@ -11,6 +11,19 @@
 .header, .sub-header {
     min-height: 60px;
 }
+.logo {
+    width: 50px;
+}
+
+.btn-staff {
+  color: #212529;
+  background-color: #e2e6ea;  
+}
+
+.btn-staff:hover {
+  color: #f8f9fa;
+  background-color: #fd7e14;  
+}
 
 .breadcrumb-search {
     min-height: 60px;
@@ -18,6 +31,12 @@
 }
 .main-content {
     height: 1200px; 
+}
+
+@media (max-width: 767px) {
+    .hidden-xs {
+        display: none!important;
+    }    
 }
 
 @media (min-width: 1920px) {
