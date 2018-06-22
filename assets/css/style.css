@@ -1,7 +1,4 @@
-.vertical-centered {
-    position: relative;       
-    transform: translateY(50%);  
-}
+
 .loginarea { 
     -webkit-box-shadow:1px 2px 5px 1px #181818 ;
     -moz-box-shadow:1px 2px 5px 1px #181818 ;
@@ -14,6 +11,12 @@
 .logo {
     width: 50px;
 }
+.badge-alert {
+    position: relative;
+    top:-10px;
+    left:20px;
+}
+
 
 .btn-staff {
   color: #212529;
@@ -23,6 +26,11 @@
 .btn-staff:hover {
   color: #f8f9fa;
   background-color: #fd7e14;  
+}
+
+.btn-mini {
+    height: 35px;
+    width: 35px;
 }
 
 .breadcrumb-search {
