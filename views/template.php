@@ -10,15 +10,15 @@
     <body>
         <div class="container-fluid">
             <div id="Header" class="row header">
-                <div id="Logo" class="col-xl-2 col-lg-2 col-md-3 col-sm-4 order-md-0 order-sm-0 col-12 bg-light sub-header d-flex align-items-center justify-content-sm-start justify-content-center border-bottom border-dark p-0 pl-2">
+                <div id="Logo" class="col-xl-2 col-lg-2 col-md-2 col-sm-4 order-md-0 order-sm-0 col-12 bg-light text-dark sub-header d-flex align-items-center justify-content-sm-start justify-content-center border-bottom border-dark p-0 pl-2">
                     <div class="media align-items-center">
                         <img class="img-fluid mr-0 logo pb-2" src="<?php echo BASE_URL; ?>assets/imgs/logo.jpg">
                         <div class="media-body">
-                            <span class="text-dark logo-text h5"><strong>Tickets</strong></span>
+                            <span class="h5 font-weight-bold">Desk</span>
                         </div>
                     </div>
                 </div>
-                <div id="Navbar" class="col-xl col-lg col-md-5 col-sm-12 order-md-1 order-sm-2 col-3 bg-light sub-header d-flex align-items-center border-bottom border-dark p-0 pl-3">
+                <div id="Navbar" class="col-xl col-lg col-md col-sm-12 order-md-1 order-sm-2 col-3 bg-light sub-header d-flex align-items-center border-bottom border-dark p-0 pl-3">
                     <nav class="navbar navbar-expand-sm navbar-light bg-light p-0 rounded" >                        
                         <button class="btn btn-staff border-dark navbar-toggler" style="height: 31px;padding-top: 1px;" type="button" data-toggle="collapse" data-target="#navbarCollapsed" aria-controls="navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="btn-sm navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
                                     <a class="nav-link" href="#">Tickets</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Tarefas</a>
+                                    <a class="nav-link " href="#">Tarefas</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">UP Wiki</a>
@@ -41,7 +41,7 @@
                         </div>
                     </nav>
                 </div>
-                <div id="StaffArea" class="col-xl-4 col-lg-4 col-md-4 col-sm-8 order-md-2 order-sm-1 col bg-light sub-header d-flex align-items-center justify-content-end border-bottom border-dark p-0 pr-3">
+                <div id="StaffArea" class="col-xl-4 col-lg-4 col-md-5 col-sm-8 order-md-2 order-sm-1 col bg-light sub-header d-flex align-items-center justify-content-end border-bottom border-dark p-0 pr-3">
                     <ul class="list-inline m-0">
                         <li class="list-inline-item mr-1">
                             <span class="badge badge-pill badge-danger badge-alert fa-xs">0</span>
@@ -55,7 +55,7 @@
                             </div> 
                         </li>
                         <li class="list-inline-item">
-                            <span class="d-none d-lg-inline d-md-none d-sm-inline text-truncate fa-sm">Olá, <?php echo $viewData['staff_name']; ?></span>
+                            <span class="d-none d-lg-inline d-sm-inline fa-sm" style="position: relative;top: 2px;">Olá, <?php echo $viewData['staff_name']; ?></span>
                         </li>
                         <li class="list-inline-item">
                             <a class="btn btn-staff btn-sm border-dark text-nowrap" href="#">Painel Admin</a>
@@ -83,9 +83,13 @@
             </div>            
             <div class="row border-bottom border-dark">
                 <div class="col-md-8 breadcrumb-search d-md-flex align-items-center d-none d-md-block">
-                    <div>
-                        BREADCRUMB
-                    </div>                    
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Library</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        </ol>
+                    </nav>
                 </div>
                 <div class="col-md-4 breadcrumb-search d-flex align-items-center justify-content-end no-gutters m-0">                    
                     <form method="POST" class="form-inline" role="form">                            
