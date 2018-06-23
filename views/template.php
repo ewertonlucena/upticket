@@ -26,7 +26,7 @@
                         <div class="collapse navbar-collapse">
                             <ul class="navbar-nav mr-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#">Dashboard</a>
+                                    <a class="nav-link active" href="<?php echo BASE_URL; ?>">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Tickets</a>
