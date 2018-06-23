@@ -11,16 +11,16 @@
         <div class="container-fluid">
             <div id="Header" class="row header">
                 <div id="Logo" class="col-xl-2 col-lg-2 col-md-3 col-sm-4 order-md-0 order-sm-0 col-12 bg-light sub-header d-flex align-items-center justify-content-sm-start justify-content-center border-bottom border-dark p-0 pl-2">
-                    <div class="media align-items-end">
-                        <img class="img-fluid mr-0 logo" src="<?php echo BASE_URL; ?>assets/imgs/logo.jpg">
+                    <div class="media align-items-center">
+                        <img class="img-fluid mr-0 logo pb-2" src="<?php echo BASE_URL; ?>assets/imgs/logo.jpg">
                         <div class="media-body">
-                            <span class="text-dark logo-text h4"><strong>Tickets</strong></span>
+                            <span class="text-dark logo-text h5"><strong>Tickets</strong></span>
                         </div>
                     </div>
                 </div>
                 <div id="Navbar" class="col-xl col-lg col-md-5 col-sm-12 order-md-1 order-sm-2 col-3 bg-light sub-header d-flex align-items-center border-bottom border-dark p-0 pl-3">
-                    <nav class="navbar navbar-expand-sm navbar-light bg-light p-0">                        
-                        <button class="btn btn-staff border-dark navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                    <nav class="navbar navbar-expand-sm navbar-light bg-light p-0 rounded" >                        
+                        <button class="btn btn-staff border-dark navbar-toggler" style="height: 31px;padding-top: 1px;" type="button" data-toggle="collapse" data-target="#navbarCollapsed" aria-controls="navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="btn-sm navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse">
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col collapse navbar-light bg-light border-bottom border-dark d-sm-none" id="navbarsExample03">
+                <div class="col collapse navbar-dark bg-dark border-bottom border-dark d-sm-none" id="navbarCollapsed">
                     <ul class="navbar-nav mr-0">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Dashboard</a>
@@ -81,7 +81,7 @@
                     </ul>                            
                 </div>
             </div>            
-            <div class="row">
+            <div class="row border-bottom border-dark">
                 <div class="col-md-8 breadcrumb-search d-md-flex align-items-center d-none d-md-block">
                     <div>
                         BREADCRUMB
