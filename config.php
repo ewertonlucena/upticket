@@ -9,13 +9,13 @@ if (ENVIRONMENT == 'development') {
     $config['dbname'] = 'helpdesk';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
-    $config['dbpass'] = 'root';
+    $config['dbpass'] = '';
 } else {
     define('BASE_URL', 'http://meusite.com.br/');
     $config['dbname'] = 'helpdesk';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
-    $config['dbpass'] = 'root';
+    $config['dbpass'] = '';
 }
 global $db;
 try {

@@ -19,7 +19,36 @@
 
 }
 
+.welcome-staff {
+    position: relative;
+    top: 8px;    
+}
 
+.dropdown-menu2 {
+  position: absolute;
+  z-index:1050;
+  min-width: 10rem;  
+  width: 360px;
+  max-width: 90vw;
+  right: 10%;
+  padding: 0;
+  margin: 0;    
+  border-radius: 0.25rem;  
+}
+
+.dropdown-menu-transparent {
+    background-color: transparent;
+    border: 0
+}
+.dropdown-item-menu-center {
+    position:relative;
+    right:45%;
+}
+
+.dropdown-item, .dropdown-header, .dropdown-item-text {   
+    padding: 6px 12px 6px 12px;  
+    color:  black;
+}
 
 .nav-link.active {    
     font-weight: 600;
@@ -100,12 +129,6 @@
 .breadcrumb-item a:hover, .breadcrumb-item a:focus {
     color: black;
     text-decoration: none;   
-}
-
-.dropdown-menu { 
-  padding: 0;
-  margin: 0;    
-  border-radius: 0.4rem;
 }
 
 .main-content {

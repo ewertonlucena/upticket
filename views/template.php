@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="Navbar" class="col-xl col-lg col-md col-sm-12 order-md-1 order-sm-2 col-3 bg-light sub-header d-flex align-items-center border-bottom border-dark p-0 pl-3">
+                <div id="Navbar" class="col-xl col-lg col-md col-sm-12 order-md-1 order-sm-2 col-3 bg-light sub-header d-flex align-items-center border-bottom border-dark p-0">
                     <nav class="navbar navbar-expand-sm navbar-light bg-light p-0 rounded" >                        
                         <button class="btn btn-staff border-dark navbar-toggler" style="height: 31px;padding-top: 1px;" type="button" data-toggle="collapse" data-target="#navbarCollapsed" aria-controls="navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="btn-sm navbar-toggler-icon"></span>
@@ -41,35 +41,40 @@
                         </div>
                     </nav>
                 </div>
-                <div id="StaffArea" class="col-xl-4 col-lg-4 col-md-5 col-sm-8 order-md-2 order-sm-1 col bg-light sub-header d-flex align-items-center justify-content-end border-bottom border-dark p-0 pr-3">
+                <div id="StaffArea" class="col-xl-4 col-lg-5 col-md-5 col-sm-8 order-md-2 order-sm-1 col bg-info sub-header d-flex align-items-center justify-content-end border-bottom border-dark p-0 pr-3">
                     <ul class="list-inline m-0">
                         <li class="list-inline-item mr-1">
                             <span class="badge badge-pill badge-danger badge-alert fa-xs">0</span>
-                            <div class="btn btn-staff btn-mini rounded-circle p-0 pt-1" id="notifyMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                        
-                                <span class="fas fa-exclamation-triangle"></span>
+                            <div class="btn btn-staff btn-mini rounded-circle p-0 pt-1" data-toggle="collapse" data-target="#notifyMenu" aria-haspopup="true" aria-expanded="false">                        
+                                <span class="fas fa-exclamation-triangle" ></span>
                             </div>
-                            <div class="dropdown-menu" aria-labelledby="notifyMenu">
-                                <ul class="list-unstyled">
-                                    <li class="list-group-item bg-danger text-white p-0">
-                                        ...
-                                    </li>
-                                    <li class="list-group-item bg-light text-dark p-0">
-                                        ...
-                                    </li>
-                                </ul>
+                            <div class="collapse dropdown-menu2 dropdown-menu-transparent bg-light" id="notifyMenu" aria-labelledby="notifyMenu">
+                                <div class="dropdown-header bg-danger rounded-top text-white fa-sm">
+                                    0 Notificações
+                                </div>
+                                <div class="dropdown-item-text bg-light rounded-bottom text-dark fa-sm">
+                                    <span class="far fa-check-square fa-sm pr-1"></span>Não existem notificações pendentes
+                                </div>
                             </div>
                         </li>
-                        <li class="list-inline-item mr-2" id="myMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div class="btn btn-staff btn-mini rounded-circle p-0 pt-1" >
-                                <span class="fas fa-user" ></span>
-                            </div>                         
-                            <span class="d-none d-lg-inline d-sm-inline fa-sm" style="position: relative;top: 2px;">Olá, <?php echo $viewData['staff_name']; ?></span>                            
+                        <li class="list-inline-item mr-2">
+                            <div class="dropdown d-inline-block">
+                                <div class="btn-group" data-toggle="dropdown">
+                                    <button class="btn btn-staff btn-mini rounded-circle p-0">
+                                        <span class="fas fa-user" style="padding-bottom: 4px;"></span>
+                                    </button>
+                                    <span class="d-none d-lg-inline d-md-none d-sm-inline fa-sm welcome-staff" >
+                                        Olá, <?php echo $viewData['staff_name']; ?>
+                                    </span>
+                                </div>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item fa-sm" href="#"><span class="fa fa-edit fa-sm pr-1 text-dark"></span>Detalhes da conta</a>
+                                    <a class="dropdown-item fa-sm" href="#"><span class="fa fa-cog fa-sm pr-1 text-dark"></span>Configurações</a>                                    
+                                    <a class="dropdown-item fa-sm" href="#"><span class="fa fa-sign-out fa-sm pr-1 text-dark"></span>Sair</a>
+                                </div>
+                            </div>                            
                         </li>
-                        <div class="dropdown-menu" aria-labelledby="myMenu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+                        
                         <li class="list-inline-item">
                             <a class="btn btn-staff btn-sm border-dark text-nowrap" href="#">Painel Admin</a>
                         </li>
