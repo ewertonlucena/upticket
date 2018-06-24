@@ -35,7 +35,7 @@
                                     <a class="nav-link " href="#">Tarefas</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">UP Wiki</a>
+                                    <a class="nav-link text-nowrap" href="#">UP Wiki</a>
                                 </li>
                             </ul>                            
                         </div>
@@ -45,18 +45,31 @@
                     <ul class="list-inline m-0">
                         <li class="list-inline-item mr-1">
                             <span class="badge badge-pill badge-danger badge-alert fa-xs">0</span>
-                            <div class="btn btn-staff btn-mini rounded-circle p-0 pt-1" >                        
+                            <div class="btn btn-staff btn-mini rounded-circle p-0 pt-1" id="notifyMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                        
                                 <span class="fas fa-exclamation-triangle"></span>
-                            </div> 
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="notifyMenu">
+                                <ul class="list-unstyled">
+                                    <li class="list-group-item bg-danger text-white p-0">
+                                        ...
+                                    </li>
+                                    <li class="list-group-item bg-light text-dark p-0">
+                                        ...
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="list-inline-item mr-0">
+                        <li class="list-inline-item mr-2" id="myMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="btn btn-staff btn-mini rounded-circle p-0 pt-1" >
                                 <span class="fas fa-user" ></span>
-                            </div> 
+                            </div>                         
+                            <span class="d-none d-lg-inline d-sm-inline fa-sm" style="position: relative;top: 2px;">Olá, <?php echo $viewData['staff_name']; ?></span>                            
                         </li>
-                        <li class="list-inline-item">
-                            <span class="d-none d-lg-inline d-sm-inline fa-sm" style="position: relative;top: 2px;">Olá, <?php echo $viewData['staff_name']; ?></span>
-                        </li>
+                        <div class="dropdown-menu" aria-labelledby="myMenu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                         <li class="list-inline-item">
                             <a class="btn btn-staff btn-sm border-dark text-nowrap" href="#">Painel Admin</a>
                         </li>
@@ -65,7 +78,7 @@
             </div>
             <div class="row">
                 <div class="col collapse navbar-dark bg-dark border-bottom border-dark d-sm-none" id="navbarCollapsed">
-                    <ul class="navbar-nav mr-0">
+                    <ul class="navbar-nav mx-0">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Dashboard</a>
                         </li>
@@ -76,24 +89,30 @@
                             <a class="nav-link" href="#">Tarefas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">UP Wiki</a>
+                            <a class="nav-link" href="#">UP-Wiki</a>
                         </li>
                     </ul>                            
                 </div>
-            </div>            
-            <div class="row border-bottom border-dark">
-                <div class="col-md-8 breadcrumb-search d-md-flex align-items-center d-none d-md-block">
+            </div>      
+            <div class="row border-bottom border-dark ">
+                <div class="col breadcrumb-search d-md-flex align-items-center">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Library</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        <ol class="breadcrumb m-0 m-md-0 mt-2 p-0 pl-1">
+                            <li class="breadcrumb-item d-sm-inline-block " style="padding-left: 0px;">
+                                <a class="btn btn-link px-1" href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item d-sm-inline-block" style="padding-left: 0px;">
+                                <a class="btn btn-link px-1" href="#">Library</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page" style="padding-left: 0px;">
+                                <a class="btn btn-link px-1" href="#">Data</a>
+                            </li>
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-4 breadcrumb-search d-flex align-items-center justify-content-end no-gutters m-0">                    
+                <div class="col-7 breadcrumb-search d-flex align-items-center justify-content-end m-0">                    
                     <form method="POST" class="form-inline" role="form">                            
-                        <input type="text" class="form-control-sm mr-1" name="fastSearch" placeholder="Pesquisar"/>                            
+                        <input type="text" class="form-control-sm search-input mr-1" name="fastSearch" placeholder="Pesquisar"/>                            
                         <button type="submit" class="btn btn-sm btn-info"><span class="fas fa-search"></span></button>                            
                     </form>                                      
                 </div>
