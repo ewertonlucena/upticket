@@ -46,6 +46,34 @@
     border: 1px solid black;
     border-radius: 0.25rem; 
 }
+#SearchArea {
+    position: absolute;
+    right: 3rem;
+    z-index: 1030;
+}
+.open-form {    
+    height: 33px;
+    width: 33px;
+}
+
+.btn-search-close {
+    color: white;
+    background-color: #fd7e14;
+    border: 1px solid #fd7e14;
+}
+.btn-search-close:hover {
+    color: black;
+    background-color: #fd7e14;
+    border: 1px solid #fd7e14;
+}
+
+.collapsing.width {
+    position: absolute;
+    height: auto;  
+    width: 0;
+    overflow: hidden;
+    transition: width 0.35s ease;
+}
 
 .dropdown-item-menu-center {
     position:relative;

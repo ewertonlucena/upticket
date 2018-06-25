@@ -2,6 +2,11 @@ $(window).on('load', function () {
     $('#modal1').modal('show');
 });
 
+$(".open-form").click(function(){
+    $(this).toggleClass('btn-search btn-search-close')
+    $(this).find('span').toggleClass('fa-search fa-times');
+  });
+
 $(document).ready(function () {      
     $(document).on('click', function (e) {    
         if (!$(e.target).parent('#notifyMenu').length) $('.dropdown-menu2').removeClass("show");
@@ -17,7 +22,7 @@ $(document).ready(function () {
     
     $(document).on('mouseout', function (e) {    
         if ($(e.target).closest('.welcome-staff').length) $('#BtnStaff').removeClass("btn-staff-hover");
-    });    
+    });  
     
 });
 

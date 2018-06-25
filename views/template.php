@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div id="Navbar" class="col-xl col-lg col-md col-sm-12 order-md-1 order-sm-2 col-3 bg-light sub-header d-flex align-items-center border-bottom border-dark p-0 pl-3">
-                    <nav class="navbar navbar-expand-sm navbar-light bg-light p-0 rounded" >                        
+                    <nav class="navbar navbar-expand-sm navbar-light bg-light p-0 rounded" >
                         <button class="btn btn-staff border-dark navbar-toggler" style="height: 31px;padding-top: 1px;" type="button" data-toggle="collapse" data-target="#navbarCollapsed" aria-controls="navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="btn-sm navbar-toggler-icon"></span>
                         </button>
@@ -37,7 +37,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-nowrap" href="#">UP Wiki</a>
                                 </li>
-                            </ul>                            
+                            </ul>
                         </div>
                     </nav>
                 </div>
@@ -45,7 +45,7 @@
                     <ul class="list-inline m-0">
                         <li class="list-inline-item mr-1">
                             <span class="badge badge-pill badge-danger badge-alert fa-xs">0</span>
-                            <div class="btn btn-staff btn-mini rounded-circle p-0 pt-1" data-toggle="collapse" data-target="#notifyMenu" aria-haspopup="true" aria-expanded="false">                        
+                            <div class="btn btn-staff btn-mini rounded-circle p-0 pt-1" data-toggle="collapse" data-target="#notifyMenu" aria-haspopup="true" aria-expanded="false">
                                 <span class="fas fa-exclamation-triangle" ></span>
                             </div>
                             <div class="collapse dropdown-menu2 bg-light" id="notifyMenu" aria-labelledby="notifyMenu">
@@ -69,16 +69,17 @@
                                 </div>
                                 <div class="collapse staff-menu" id="staffMenu" aria-labelledby="staffMenu">
                                     <a class="dropdown-item fa-sm" href="#"><span class="fa fa-edit fa-sm pr-1"></span>Detalhes da conta</a>
-                                    <a class="dropdown-item fa-sm" href="#"><span class="fa fa-cog fa-sm pr-1"></span>Configurações</a>                                    
+                                    <a class="dropdown-item fa-sm" href="#"><span class="fa fa-exclamation-triangle fa-sm pr-1"></span>Notificações</a>
+                                    <a class="dropdown-item fa-sm" href="#"><span class="fa fa-cog fa-sm pr-1"></span>Configurações</a>
                                     <a class="dropdown-item fa-sm" href="#"><span class="fa fa-sign-out fa-sm pr-1"></span>Sair</a>
                                 </div>
-                            </div>                            
+                            </div>
                         </li>
-                        
+
                         <li class="list-inline-item">
                             <a class="btn btn-staff btn-sm border-dark text-nowrap" href="#">Painel Admin</a>
                         </li>
-                    </ul>                        
+                    </ul>
                 </div>
             </div>
             <div class="row">
@@ -96,37 +97,48 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">UP-Wiki</a>
                         </li>
-                    </ul>                            
+                    </ul>
                 </div>
-            </div>      
-            <div class="row border-bottom border-dark ">
-                <div class="col breadcrumb-search d-md-flex align-items-center">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb m-0 m-md-0 mt-2 p-0 pl-1">
-                            <li class="breadcrumb-item d-sm-inline-block  " style="padding-left: 0px;">
-                                <a class="btn btn-link px-1 active" href="#">Dashboard</a>
-                            </li>
-                            <li class="breadcrumb-item d-sm-inline-block" style="padding-left: 0px;">
-                                <a class="btn btn-link px-1" href="#">Library</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page" style="padding-left: 0px;">
-                                <a class="btn btn-link px-1 " href="#">Data</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-7 breadcrumb-search d-flex align-items-center justify-content-end m-0">                    
-                    <form method="POST" class="form-inline" role="form">                            
-                        <input type="text" class="form-control-sm search-input mr-1" name="fastSearch" placeholder="Pesquisar"/>                            
-                        <button type="submit" class="btn btn-sm btn-info"><span class="fas fa-search"></span></button>                            
-                    </form>                                      
+            </div>
+            <div class="row border-bottom border-dark breadcrumb-search ">
+                
+                    <div class="col d-flex align-items-center justify-content-between">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-0 p-0 pl-1">
+                                <li class="breadcrumb-item d-sm-inline-block  " style="padding-left: 0px;">
+                                    <a class="btn btn-link px-1 active" href="#">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item d-sm-inline-block" style="padding-left: 0px;">
+                                    <a class="btn btn-link px-1" href="#">Library</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page" style="padding-left: 0px;">
+                                    <a class="btn btn-link px-1 " href="#">Dashboard</a>
+                                </li>
+                            </ol>
+                        </nav>           
+                            <form method="POST" class="search-form form-inline justify-content-end" role="form" style="width: 200px;">
+                                <div class="form-group m-0 collapse width" id="SearchArea" aria-labelledby="SearchArea">
+                                    <div class="d-flex d-inline-block">
+                                        <input type="text" class="form-control-sm mr-1 " name="fastSearch" placeholder="Pesquisar"/>
+                                        <button type="submit" class="btn btn-sm btn-info">
+                                            <span class="fas fa-search"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="btn btn-sm btn-info p-0 m-0 d-flex align-items-center justify-content-center open-form" data-toggle="collapse" data-target="#SearchArea"  aria-haspopup="true" aria-expanded="false">
+                                    <span class="fas fa-search"></span>
+                                </div>
+                            </form>
+                            
+                                      
+                        
                 </div>
             </div>
             <div class="row bg-light main-content">
 
                 <?php
                 $this->loadViewInTemplate($viewName, $viewData);
-                ?>    
+                ?>
             </div>
             <div class="fixed-bottom bg-dark text-white">...</br>...</div>
 
@@ -135,6 +147,6 @@
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
-        
+
     </body>
 </html>
