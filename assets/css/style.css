@@ -51,6 +51,10 @@
     right: 3rem;
     z-index: 1030;
 }
+.form-control {
+    width: auto;
+}
+
 .open-form {    
     height: 33px;
     width: 33px;
@@ -58,8 +62,8 @@
 
 .btn-search {
     color: white;
-    background-color: #17a2b8;
-    border: 1px solid #17a2b8;    
+    background-color: #1493fd;
+    border: 1px solid #1493fd;    
     transition: all 0.7s ease-in;   
 }
 .btn-search-close {
@@ -137,7 +141,7 @@
 .breadcrumb-item::after {
   display: inline-block;
   padding-right: 0rem;  
-  color: #ea1b25;
+  color: #fd141f;
   font-family:Font Awesome\ 5 Pro;
   font-weight: 900; 
   content: "\f0da";
@@ -190,25 +194,79 @@
     color: snow;
 }
 
+.fastmenu.show {
+    width: 120%;
+}
+.fastmenu .active {
+    color: black;
+    font-weight: 600;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.fastmenu .active .drop-item:before {
+    display: inline-block;
+  padding-right: 4px;  
+  color: #fd141f;
+  font-family:Font Awesome\ 5 Pro;
+  font-weight: 900; 
+  content: "\f0da";
+}
+
+.badge-blue {
+    color: white;
+    background-color: #1493fd
+}
+
 .main-content {
     height: 1200px;
 }
 
 .dash-tile {
-    height: 10rem;    
+    height: 10rem;
+    color: snow;
+    border-radius: .25rem;
+    -webkit-box-shadow:2px 2px 4px 2px silver;
+    -moz-box-shadow:2px 2px 4px 2px silver;
+    box-shadow:2px 2px 4px 2px silver;
+    border: 1px outset darkgray
 }
-.tile-content{
-    width: 10rem;    
+.dash-tile-red {
+    background-color: #fd141f;
+}
+.dash-tile-violet {
+    background-color: #7e14fd;
+}
+.dash-tile-magenta {
+    background-color: #fd1494;
+}
+.dash-tile-blue {
+    background-color: #1493fd
+}
+.tile-content{    
+    width: 80%;
+    z-index: 1;
 }
 .tile-info {
     font-size: 3rem;
-    font-weight: 100;
-    color: white;    
+    font-weight: 100;        
 }
 
 .tile-text {
-    font-size: 1rem;
-    color: white;
+    font-size: 1rem;    
+}
+
+.tile-icon {
+    position: absolute;
+    width: 70%;
+    height: 5rem;    
+    
+}
+.tile-icon i {
+    position: absolute;
+    right: 0;
+    color: rgba(0, 0, 0, 0.15);
+    font-size: 5rem;    
 }
 
 @media (max-width: 576px) {
