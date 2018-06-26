@@ -100,40 +100,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="row border-bottom border-dark breadcrumb-search ">
-                
-                    <div class="col d-flex align-items-center justify-content-between">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb m-0 p-0 pl-1">
-                                <li class="breadcrumb-item d-sm-inline-block  " style="padding-left: 0px;">
-                                    <a class="btn btn-link px-1 active" href="#">Dashboard</a>
-                                </li>
-                                <li class="breadcrumb-item d-sm-inline-block" style="padding-left: 0px;">
-                                    <a class="btn btn-link px-1" href="#">Library</a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page" style="padding-left: 0px;">
-                                    <a class="btn btn-link px-1 " href="#">Dashboard</a>
-                                </li>
-                            </ol>
-                        </nav>           
-                            <form method="POST" class="search-form form-inline justify-content-end" role="form" style="width: 200px;">
-                                <div class="form-group m-0 collapse width" id="SearchArea" aria-labelledby="SearchArea">
-                                    <div class="d-flex d-inline-block">
-                                        <input type="text" class="form-control-sm mr-1 " name="fastSearch" placeholder="Pesquisar"/>
-                                        <button type="submit" class="btn btn-sm btn-info">
-                                            <span class="fas fa-search"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="btn btn-sm btn-info p-0 m-0 d-flex align-items-center justify-content-center open-form" data-toggle="collapse" data-target="#SearchArea"  aria-haspopup="true" aria-expanded="false">
-                                    <span class="fas fa-search"></span>
-                                </div>
-                            </form>
-                            
-                                      
-                        
-                </div>
-            </div>
+            
             <div class="row bg-light main-content">
 
                 <?php
