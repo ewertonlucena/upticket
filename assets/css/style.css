@@ -242,17 +242,27 @@ hr.blurred {
     background-color: #fd141f;
 }
 .dash-tile-red:hover {
-    background-color: #fd141f;
+    background-color: #dc020c;
 }
 .dash-tile-violet {
     background-color: #7e14fd;
 }
+.dash-tile-violet:hover {
+    background-color: #6502dc;
+}
 .dash-tile-magenta {
     background-color: #fd1494;
+}
+.dash-tile-magenta:hover {
+    background-color: #dc027a;
 }
 .dash-tile-blue {
     background-color: #1493fd
 }
+.dash-tile-blue:hover {
+    background-color: #0279dc
+}
+
 .tile-content{    
     width: 80%;
     z-index: 1;
