@@ -99,6 +99,7 @@
 .dropdown-item:hover {
     background-color: #fd7e14;
     color: white;
+    border-radius: 0.25rem;
 }
 
 .nav-link.active {    
@@ -206,11 +207,17 @@
 
 .fastmenu .active .drop-item:before {
     display: inline-block;
-  padding-right: 4px;  
-  color: #fd141f;
-  font-family:Font Awesome\ 5 Pro;
-  font-weight: 900; 
-  content: "\f0da";
+    padding-right: 4px;  
+    color: #fd141f;
+    font-family:Font Awesome\ 5 Pro;
+    font-weight: 900; 
+    content: "\f0da";
+}
+
+hr.blurred {    
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(20, 147, 253, 0), rgba(20, 147, 253, 0.75), rgba(20, 147, 253, 0));
 }
 
 .badge-blue {
@@ -232,6 +239,9 @@
     border: 1px outset darkgray
 }
 .dash-tile-red {
+    background-color: #fd141f;
+}
+.dash-tile-red:hover {
     background-color: #fd141f;
 }
 .dash-tile-violet {

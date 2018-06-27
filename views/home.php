@@ -19,7 +19,12 @@
                     <button class="btn btn-link dropdown-toggle" type="button" id="FastMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Tickets Pendentes
                     </button>
-                    <div class="dropdown-menu fastmenu bg-light" aria-labelledby="FastMenu"> 
+                    <div class="dropdown-menu fastmenu bg-light pt-3" aria-labelledby="FastMenu"> 
+                        
+                        <span class="dropdown-header fa-lg">                    
+                            TICKETS
+                        </span>
+                        <hr class="blurred">
                         <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
                             <span class="drop-item">Seus Tickets</span>
                             <span class="badge badge-blue badge-pill">1</span>
@@ -35,7 +40,28 @@
                         <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
                             <span class="drop-item">Seus Tickets</span>
                             <span class="badge badge-blue badge-pill">1</span>
-                        </a>                        
+                        </a>
+                        <hr class="blurred">
+                        <span class="dropdown-header fa-lg">                    
+                            TAREFAS
+                        </span>
+                        <hr class="blurred">
+                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                            <span class="drop-item">Seus Tickets</span>
+                            <span class="badge badge-blue badge-pill">1</span>
+                        </a>
+                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                            <span class="drop-item">Seus Tickets</span>
+                            <span class="badge badge-blue badge-pill">1</span>
+                        </a>
+                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                            <span class="drop-item">Seus Tickets</span>
+                            <span class="badge badge-blue badge-pill">1</span>
+                        </a>
+                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                            <span class="drop-item">Seus Tickets</span>
+                            <span class="badge badge-blue badge-pill">1</span>
+                        </a>                
                     </div>
                 </div>
             </nav>
@@ -118,13 +144,14 @@
             </div>
         </div>
     </div>
-    <div class="row ticket-area bg-secondary" >
-        <div class="col-md-3 d-md-block d-none">            
+    <div class="row ticket-area" >
+        <div class="col-lg-3 col-md-4 d-md-block d-none">            
             <div class="fastmenu bg-light"> 
+                <hr class="blurred">
                 <span class="dropdown-header fa-lg">                    
                     TICKETS
                 </span>
-                <div class="dropdown-divider"></div>
+                <hr class="blurred">
                 <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
                     <span class="drop-item">Seus Tickets</span>
                     <span class="badge badge-blue badge-pill">1</span>
@@ -140,10 +167,31 @@
                 <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
                     <span class="drop-item">Seus Tickets</span>
                     <span class="badge badge-blue badge-pill">1</span>
-                </a>                        
+                </a>
+                <hr class="blurred">
+                <span class="dropdown-header fa-lg">                    
+                    TAREFAS
+                </span>
+                <hr class="blurred">
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                    <span class="drop-item">Seus Tickets</span>
+                    <span class="badge badge-blue badge-pill">1</span>
+                </a>
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                    <span class="drop-item">Seus Tickets</span>
+                    <span class="badge badge-blue badge-pill">1</span>
+                </a>
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                    <span class="drop-item">Seus Tickets</span>
+                    <span class="badge badge-blue badge-pill">1</span>
+                </a>
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                    <span class="drop-item">Seus Tickets</span>
+                    <span class="badge badge-blue badge-pill">1</span>
+                </a>    
             </div>
         </div>
-        <div class="col-md bg-primary">
+        <div class="col bg-primary">
             ...
         </div>
     </div>
