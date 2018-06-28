@@ -2,12 +2,14 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/imgs/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="<?php echo BASE_URL; ?>assets/imgs/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/fontawesome-all.min.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css"/>
         <title>UP Ticket</title>
     </head>
-    <body>
+    <body class="bg-light">
         <div class="container-fluid">
             <div id="Header" class="row header">
                 <div id="Logo" class="col-xl-2 col-lg-2 col-md-2 col-sm-4 order-md-0 order-sm-0 col-12 bg-light text-dark sub-header d-flex align-items-center justify-content-sm-start justify-content-center border-bottom border-dark p-0 pl-2">
@@ -249,12 +251,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ticket-area" >
+                    <div class="row" >
                         <div class="col-lg-3 col-md-4 d-md-block d-none">
                             <div class="fastmenu bg-light">
                                 <hr class="blurred">
                                 <span class="dropdown-header fa-lg">
-                                    TICKETS
+                                    Seus Tickets
                                 </span>
                                 <hr class="blurred">
                                 <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
@@ -296,12 +298,10 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col bg-primary">
-                            <div class="container-fluid bg-dark px-0">
-                                <?php
-                                    $this->loadViewInTemplate($viewName, $viewData);
-                                ?>
-                            </div>
+                        <div class="col">
+                            <?php
+                            $this->loadViewInTemplate($viewName, $viewData);
+                            ?>
                         </div>
                     </div>
                 </div>

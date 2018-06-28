@@ -9,13 +9,13 @@ if (ENVIRONMENT == 'development') {
     $config['dbname'] = 'helpdesk';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
-    $config['dbpass'] = '';
+    $config['dbpass'] = 'root';
 } else {
-    define('BASE_URL', 'http://meusite.com.br/');
+    define('BASE_URL', 'http://10.0.0.103/upticket/');
     $config['dbname'] = 'helpdesk';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
-    $config['dbpass'] = '';
+    $config['dbpass'] = 'root';
 }
 global $db;
 try {

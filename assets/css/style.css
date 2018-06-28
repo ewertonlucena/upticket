@@ -198,6 +198,8 @@
 .fastmenu.show {
     width: 120%;
 }
+
+
 .fastmenu .active {
     color: black;
     font-weight: 600;
@@ -220,13 +222,8 @@ hr.blurred {
     background-image: linear-gradient(to right, rgba(20, 147, 253, 0), rgba(20, 147, 253, 0.75), rgba(20, 147, 253, 0));
 }
 
-.badge-blue {
-    color: white;
-    background-color: #1493fd
-}
-
 .main-content {
-    height: 1200px;
+    margin-bottom: 5rem;
 }
 
 .dash-tile {
@@ -263,6 +260,37 @@ hr.blurred {
     background-color: #0279dc
 }
 
+.badge-red {
+    color: white;
+    background-color: #fd141f
+}
+.badge-blue {
+    color: white;
+    background-color: #1493fd
+}
+.badge-violet {
+    color: white;
+    background-color: #7e14fd
+}
+
+.badge-magenta {
+    color: white;
+    background-color: #fd1494
+}
+.badge-orange {
+    color: white;
+    background-color: #fd7e14
+}
+
+.badge-yellow {
+    color: black;
+    background-color: #fbef12
+}
+.badge-green {
+    color: black;
+    background-color: #12fb7c
+}
+
 .tile-content{    
     width: 80%;
     z-index: 1;
@@ -287,6 +315,19 @@ hr.blurred {
     right: 0;
     color: rgba(0, 0, 0, 0.15);
     font-size: 5rem;    
+}
+
+.link-card {
+    display: block;
+    color: black !important;    
+}
+
+.link-card:hover, link-card:focus {
+    text-decoration: none;
+}
+
+.recent-ticket ul li:hover {
+    background-color: #e2e6ea;
 }
 
 @media (max-width: 576px) {
