@@ -1,1 +1,1 @@
-<?php define("ENVIRONMENT", "production");
+<?php define("ENVIRONMENT", "development");

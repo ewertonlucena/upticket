@@ -31,7 +31,7 @@
                                     <a class="nav-link active" href="<?php echo BASE_URL; ?>">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Tickets</a>
+                                    <a class="nav-link" href="<?php echo BASE_URL; ?>tickets">Tickets</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link " href="#">Tarefas</a>
@@ -88,10 +88,10 @@
                 <div class="col collapse navbar-dark bg-dark border-bottom border-dark d-sm-none" id="navbarCollapsed">
                     <ul class="navbar-nav mx-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Dashboard</a>
+                            <a class="nav-link active" href="<?php echo BASE_URL; ?>">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Tickets</a>
+                            <a class="nav-link" href="<?php echo BASE_URL; ?>tickets">Tickets</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Tarefas</a>
@@ -104,14 +104,13 @@
             </div>
 
             <div class="row bg-light main-content">
-
                 <div class="container-fluid">
                     <div class="row breadcrumb-search border-bottom border-dark ">
                         <div class="col d-flex align-items-center border-right border-dark">
                             <nav class="d-none d-md-block" aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0 pl-1">
                                     <li class="breadcrumb-item d-sm-inline-block active" style="padding-left: 0px;">
-                                        <a class="btn btn-link px-1" href="#">Dashboard</a>
+                                        <a class="btn btn-link px-1" href="#"><?php echo $viewName ?></a>
                                     </li>
                                     <li class="breadcrumb-item " style="padding-left: 0px;">
                                         <a class="btn btn-link px-1" href="#">Library</a>
@@ -189,7 +188,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="row tiled-area mt-3">
+                    <div class="row tiled-area mt-3 <?php echo ($viewName != 'home') ? 'd-none' : ''  ?>">
                         <div class="col-lg-3 col-sm-6 mb-3">
                             <div class="dash-tile dash-tile-blue d-flex align-items-center justify-content-center">
                                 <div class="tile-icon">

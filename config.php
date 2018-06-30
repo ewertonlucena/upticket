@@ -9,7 +9,7 @@ if (ENVIRONMENT == 'development') {
     $config['dbname'] = 'helpdesk';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
-    $config['dbpass'] = 'root';
+    $config['dbpass'] = '';
 } else {
     define('BASE_URL', 'http://10.0.0.103/upticket/');
     $config['dbname'] = 'helpdesk';
