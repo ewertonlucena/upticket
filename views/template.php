@@ -28,10 +28,10 @@
                         <div class="collapse navbar-collapse">
                             <ul class="navbar-nav mr-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="<?php echo BASE_URL; ?>">Dashboard</a>
+                                    <a class="nav-link <?php echo ($viewName == 'home') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo BASE_URL; ?>tickets">Tickets</a>
+                                    <a class="nav-link <?php echo ($viewName == 'tickets') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>tickets">Tickets</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link " href="#">Tarefas</a>
@@ -88,10 +88,10 @@
                 <div class="col collapse navbar-dark bg-dark border-bottom border-dark d-sm-none" id="navbarCollapsed">
                     <ul class="navbar-nav mx-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="<?php echo BASE_URL; ?>">Dashboard</a>
+                            <a class="nav-link <?php echo ($viewName == 'home') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo BASE_URL; ?>tickets">Tickets</a>
+                            <a class="nav-link <?php echo ($viewName == 'tickets') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>tickets">Tickets</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Tarefas</a>
@@ -188,7 +188,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="row tiled-area mt-3 <?php echo ($viewName != 'home') ? 'd-none' : ''  ?>">
+                    <div class="row tiled-area mt-3 <?php echo ($viewName != 'home') ? 'd-none' : '' ?>">
                         <div class="col-lg-3 col-sm-6 mb-3">
                             <div class="dash-tile dash-tile-blue d-flex align-items-center justify-content-center">
                                 <div class="tile-icon">
@@ -250,6 +250,73 @@
                             </div>
                         </div>
                     </div>
+                    <section class="<?php echo ($viewName != 'tickets') ? 'd-none' : '' ?>" name="tickets-header">
+                        <div class="row p-3 d-flex align-items-center" style="height: 12rem">
+                            <div class="col-4">
+                                <div class="container-fluid p-0">
+                                    <div class="row p-0">
+                                        <div class="col-lg-6 col-md-12 col-sm-6 bg-light d-flex align-items-center justify-content-lg-end justify-content-md-center justify-content-sm-end justify-content-center p-0">
+                                            <div class="rounded-circle badge-yellow d-flex align-items-center justify-content-center" style="height: 3.75rem; width: 3.75rem;">
+                                                <span class="fal fa-ticket-alt fa-2x" style="transform: rotate(135deg)"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-sm-6 d-flex align-items-center justify-content-lg-start justify-content-md-center justify-content-sm-start justify-content-center pt-1">
+                                            <div class="">
+                                                <div class="fa-lg text-lg-left text-md-center text-sm-left text-center">
+                                                    <strong>0</strong>
+                                                </div>
+                                                <div class="fa-sm text-nowrap">
+                                                    Pendentes
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="container-fluid p-0">
+                                    <div class="row p-0">
+                                        <div class="col-lg-6 col-md-12 col-sm-6 bg-light d-flex align-items-center justify-content-lg-end justify-content-md-center justify-content-sm-end justify-content-center p-0">
+                                            <div class="rounded-circle badge-blue d-flex align-items-center justify-content-center" style="height: 3.75rem; width: 3.75rem;">
+                                                <span class="fal fa-clock fa-2x"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-sm-6 d-flex align-items-center justify-content-lg-start justify-content-md-center justify-content-sm-start justify-content-center pt-1">
+                                            <div class="">
+                                                <div class="fa-lg text-lg-left text-md-center text-sm-left text-center">
+                                                    <strong>0</strong>
+                                                </div>
+                                                <div class="fa-sm text-nowrap">
+                                                    Vence Hoje
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 tickets-overdue">
+                                <div class="container-fluid p-0">
+                                    <div class="row p-0">
+                                        <div class="col-lg-6 col-md-12 col-sm-6 bg-light d-flex align-items-center justify-content-lg-end justify-content-md-center justify-content-sm-end justify-content-center p-0">
+                                            <div class="rounded-circle badge-red d-flex align-items-center justify-content-center" style="height: 3.75rem; width: 3.75rem;">
+                                                <span class="fal fa-calendar-exclamation fa-2x"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-sm-6 d-flex align-items-center justify-content-lg-start justify-content-md-center justify-content-sm-start justify-content-center pt-1">
+                                            <div class="">
+                                                <div class="fa-lg text-lg-left text-md-center text-sm-left text-center">
+                                                    <strong>0</strong>
+                                                </div>
+                                                <div class="fa-sm text-nowrap">
+                                                    Vencidos
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                     <div class="row" >
                         <div class="col-lg-3 col-md-4 d-md-block d-none">
                             <div class="fastmenu bg-light">
