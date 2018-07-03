@@ -29,6 +29,10 @@ class Staff extends model {
         }
     }
     
+    public function logout() {
+        unset($_SESSION['ccUser']);
+    }
+    
     public function setLoggedStaff() {
         if (isset($_SESSION['ccUser']) && !empty($_SESSION['ccUser'])) { 
             $id = $_SESSION['ccUser'];

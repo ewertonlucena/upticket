@@ -18,5 +18,11 @@ class loginController extends controller {
         }
         $this->loadView('login', $data);
     }
-
+    
+    public function logout() {
+        $staff = new Staff();
+        $staff->logout();        
+        header("Location: ".BASE_URL);
+        exit;
+    }
 }

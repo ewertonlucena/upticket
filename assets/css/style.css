@@ -196,7 +196,7 @@
 }
 
 .fastmenu.show {
-    width: 120%;
+    width: 200%;
 }
 
 
@@ -315,6 +315,37 @@ hr.blurred {
     right: 0;
     color: rgba(0, 0, 0, 0.15);
     font-size: 5rem;    
+}
+
+.bg-urgent {
+    background-color: #fee7e8;
+}
+
+.bg-high {
+    background-color: #fefde7;
+}
+
+.bg-normal {
+    background-color: #e7f4fe;
+}
+
+.bg-low {
+    background-color: #e7fef2;
+}
+
+.menu-link{
+    display: block;
+    color: rgba(0, 0, 0, 0.7);
+    padding: 12px 20px 12px 20px
+}
+
+.menu-link:hover, .menu-link:focus{
+    color: rgba(0, 0, 0, 1);
+    text-decoration: none;
+}
+
+.menu-link.disabled{
+    pointer-events: none;
 }
 
 .link-card {

@@ -8,6 +8,9 @@ class controller {
     public function loadTemplate($viewName, $viewData = array()) {        
         require 'views/template.php';
     }
+    public function loadAdminTemplate($viewName, $viewData = array()) {        
+        require 'views/admin_template.php';
+    }
     public function loadViewInTemplate($viewName, $viewData = array()) {
         extract($viewData);        
         require 'views/'.$viewName.'.php';

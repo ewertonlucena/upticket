@@ -34,7 +34,7 @@
                                     <a class="nav-link <?php echo ($viewName == 'tickets') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>tickets">Tickets</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " href="#">Tarefas</a>
+                                    <a class="nav-link <?php echo ($viewName == 'tasks') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>tasks" href="#">Tarefas</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-nowrap" href="#">UP Wiki</a>
@@ -73,13 +73,13 @@
                                     <a class="dropdown-item fa-sm" href="#"><span class="fa fa-edit fa-sm pr-1"></span>Detalhes da conta</a>
                                     <a class="dropdown-item fa-sm" href="#"><span class="fa fa-exclamation-triangle fa-sm pr-1"></span>Notificações</a>
                                     <a class="dropdown-item fa-sm" href="#"><span class="fa fa-cog fa-sm pr-1"></span>Configurações</a>
-                                    <a class="dropdown-item fa-sm" href="#"><span class="fa fa-sign-out fa-sm pr-1"></span>Sair</a>
+                                    <a class="dropdown-item fa-sm" href="<?php echo BASE_URL; ?>login/logout"><span class="fa fa-sign-out fa-sm pr-1"></span>Sair</a>
                                 </div>
                             </div>
                         </li>
 
                         <li class="list-inline-item">
-                            <a class="btn btn-staff btn-sm border-dark text-nowrap" href="#">Painel Admin</a>
+                            <a class="btn btn-staff btn-sm border-dark text-nowrap" href="<?php echo BASE_URL; ?>admin">Painel Admin</a>
                         </li>
                     </ul>
                 </div>
@@ -94,7 +94,7 @@
                             <a class="nav-link <?php echo ($viewName == 'tickets') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>tickets">Tickets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Tarefas</a>
+                            <a class="nav-link <?php echo ($viewName == 'tasks') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>tasks" href="#">Tarefas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">UP-Wiki</a>
@@ -106,7 +106,7 @@
             <div class="row bg-light main-content">
                 <div class="container-fluid">
                     <div class="row breadcrumb-search border-bottom border-dark ">
-                        <div class="col d-flex align-items-center border-right border-dark">
+                        <div class="col d-flex align-items-center">
                             <nav class="d-none d-md-block" aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0 pl-1">
                                     <li class="breadcrumb-item d-sm-inline-block active" style="padding-left: 0px;">
@@ -258,6 +258,73 @@
                                         <div class="col-lg-6 col-md-12 col-sm-6 bg-light d-flex align-items-center justify-content-lg-end justify-content-md-center justify-content-sm-end justify-content-center p-0">
                                             <div class="rounded-circle badge-yellow d-flex align-items-center justify-content-center" style="height: 3.75rem; width: 3.75rem;">
                                                 <span class="fal fa-ticket-alt fa-2x" style="transform: rotate(135deg)"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-sm-6 d-flex align-items-center justify-content-lg-start justify-content-md-center justify-content-sm-start justify-content-center pt-1">
+                                            <div class="">
+                                                <div class="fa-lg text-lg-left text-md-center text-sm-left text-center">
+                                                    <strong>0</strong>
+                                                </div>
+                                                <div class="fa-sm text-nowrap">
+                                                    Pendentes
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="container-fluid p-0">
+                                    <div class="row p-0">
+                                        <div class="col-lg-6 col-md-12 col-sm-6 bg-light d-flex align-items-center justify-content-lg-end justify-content-md-center justify-content-sm-end justify-content-center p-0">
+                                            <div class="rounded-circle badge-blue d-flex align-items-center justify-content-center" style="height: 3.75rem; width: 3.75rem;">
+                                                <span class="fal fa-clock fa-2x"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-sm-6 d-flex align-items-center justify-content-lg-start justify-content-md-center justify-content-sm-start justify-content-center pt-1">
+                                            <div class="">
+                                                <div class="fa-lg text-lg-left text-md-center text-sm-left text-center">
+                                                    <strong>0</strong>
+                                                </div>
+                                                <div class="fa-sm text-nowrap">
+                                                    Vence Hoje
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 tickets-overdue">
+                                <div class="container-fluid p-0">
+                                    <div class="row p-0">
+                                        <div class="col-lg-6 col-md-12 col-sm-6 bg-light d-flex align-items-center justify-content-lg-end justify-content-md-center justify-content-sm-end justify-content-center p-0">
+                                            <div class="rounded-circle badge-red d-flex align-items-center justify-content-center" style="height: 3.75rem; width: 3.75rem;">
+                                                <span class="fal fa-calendar-exclamation fa-2x"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-sm-6 d-flex align-items-center justify-content-lg-start justify-content-md-center justify-content-sm-start justify-content-center pt-1">
+                                            <div class="">
+                                                <div class="fa-lg text-lg-left text-md-center text-sm-left text-center">
+                                                    <strong>0</strong>
+                                                </div>
+                                                <div class="fa-sm text-nowrap">
+                                                    Vencidos
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="<?php echo ($viewName != 'tasks') ? 'd-none' : '' ?>" name="tasks-header">
+                        <div class="row p-3 d-flex align-items-center" style="height: 12rem">
+                            <div class="col-4">
+                                <div class="container-fluid p-0">
+                                    <div class="row p-0">
+                                        <div class="col-lg-6 col-md-12 col-sm-6 bg-light d-flex align-items-center justify-content-lg-end justify-content-md-center justify-content-sm-end justify-content-center p-0">
+                                            <div class="rounded-circle badge-yellow d-flex align-items-center justify-content-center" style="height: 3.75rem; width: 3.75rem;">
+                                                <span class="fal fa-tasks fa-2x"></span>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-12 col-sm-6 d-flex align-items-center justify-content-lg-start justify-content-md-center justify-content-sm-start justify-content-center pt-1">
