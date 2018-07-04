@@ -67,7 +67,7 @@
                                             <span class="fas fa-user" style="padding-bottom: 4px;"></span>
                                         </button>
                                         <span class="d-none d-lg-inline d-md-none d-sm-inline fa-sm welcome-staff" >
-                                            Olá, <?php echo $viewData['staff_name']; ?>
+                                            Olá, <?php echo $viewData['staff_name']; ?> Lucena
                                         </span>
                                     </div>
                                     <div class="collapse staff-menu" id="staffMenu" aria-labelledby="staffMenu">
@@ -147,8 +147,8 @@
                                                 <ul class="list-group list-group-flush">
                                                     <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Agentes</a></li>
                                                     <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Times</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Grupos</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Departamentos</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Grupos de Permissões</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Setor</a></li>
                                                 </ul>
                                             </div>
                                         </section>
@@ -193,10 +193,10 @@
                                         Gestão de Agentes
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Agentes</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Times</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Grupos</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Departamentos</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#"><span class="fa fa-users fa-xs"> </span> Times</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#"><span class="fa fa-key fa-xs"> </span> Grupo de Permissões</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#"><span class="fa fa-sitemap fa-xs"> </span> Setor</a></li>
                                     </ul>
                                 </div>
                             </section>
