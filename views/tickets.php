@@ -2,8 +2,8 @@
     <section class="d-none d-sm-block" name="tasks-table">
         <div class="row pt-3">
             <div class="col">
-                <table class="table table-sm table-hover">
-                    <thead>
+                <table class="table table-sm table-bordered align-items-centertable-hover">
+                    <thead class="thead-light">
                         <tr>
                             <th scope="col">Assunto</th>
                             <th class="d-none d-xl-table-cell" scope="col">Empresa</th>

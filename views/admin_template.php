@@ -139,16 +139,16 @@
                                                 </ul>
                                             </div>
                                         </section>
-                                        <section class="<?php echo ($viewName != 'agents') ? 'd-none' : '' ?>" name="agents-menu">
+                                        <section class="<?php echo ($viewData['page_parents'] != 'agents') ? 'd-none' : '' ?>" name="agents-menu">
                                             <div class="card">
                                                 <div class="card-header">
                                                     Gestão de Agentes
                                                 </div>
                                                 <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Agentes</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Times</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Grupos de Permissões</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Setor</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>teams"><span class="fa fa-users fa-xs"> </span> Times</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>groups"><span class="fa fa-key fa-xs"> </span> Grupos de Permissões</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>department"><span class="fa fa-sitemap fa-xs"> </span> Setor</a></li>
                                                 </ul>
                                             </div>
                                         </section>
@@ -175,7 +175,7 @@
 
                     <div class="row" >
                         <div class="col-lg-3 col-md-4 <?php echo ($viewName != 'admin') ? 'd-md-block' : '' ?> d-none">
-                            <section class="d-none <?php echo ($viewName == 'manage') ? 'd-sm-block' : '' ?>" name="manage-menu">
+                            <section class="d-none <?php echo ($viewData['page_parents'] == 'manage') ? 'd-sm-block' : '' ?>" name="manage-menu">
                                 <div class="card mt-3">
                                     <div class="card-header">
                                         Gestão
@@ -187,16 +187,16 @@
                                     </ul>
                                 </div>
                             </section>
-                            <section class="d-none <?php echo ($viewName == 'agents') ? 'd-sm-block' : '' ?>" name="agents-menu">
+                            <section class="d-none <?php echo ($viewData['page_parents'] == 'agents') ? 'd-sm-block' : '' ?>" name="agents-menu">
                                 <div class="card mt-3">
                                     <div class="card-header">
                                         Gestão de Agentes
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#"><span class="fa fa-users fa-xs"> </span> Times</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#"><span class="fa fa-key fa-xs"> </span> Grupo de Permissões</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#"><span class="fa fa-sitemap fa-xs"> </span> Setor</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents/teams"><span class="fa fa-users fa-xs"> </span> Times</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents/groups"><span class="fa fa-key fa-xs"> </span> Grupos de Permissões</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents/department"><span class="fa fa-sitemap fa-xs"> </span> Setor</a></li>
                                     </ul>
                                 </div>
                             </section>

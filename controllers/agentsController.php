@@ -15,8 +15,19 @@ class agentsController extends controller {
             $staff = new Staff();
             $staff->setLoggedStaff();
             $data['staff_name'] = $staff->getName();
+            $data['page_parents'] = 'agents';
             
             $this->loadAdminTemplate('agents', $data);        
+    }
+    
+    public function teams(){
+            $data = array();
+            $staff = new Staff();
+            $staff->setLoggedStaff();
+            $data['staff_name'] = $staff->getName();
+            $data['page_parents'] = 'agents';
+            
+            $this->loadAdminTemplate('teams', $data);        
     }
 }
 
