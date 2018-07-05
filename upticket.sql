@@ -156,11 +156,13 @@ CREATE TABLE IF NOT EXISTS `permissions_groups` (
   `create_date` datetime DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela helpdesk.permissions_groups: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.permissions_groups: ~1 rows (aproximadamente)
 DELETE FROM `permissions_groups`;
 /*!40000 ALTER TABLE `permissions_groups` DISABLE KEYS */;
+INSERT INTO `permissions_groups` (`id`, `active`, `name`, `params`, `departments`, `admin_notes`, `create_date`, `update_date`) VALUES
+	(1, 1, 'Full Access', '1,2', NULL, NULL, '2018-07-05 10:29:10', '2018-07-05 10:29:10');
 /*!40000 ALTER TABLE `permissions_groups` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.permissions_params
@@ -170,11 +172,14 @@ CREATE TABLE IF NOT EXISTS `permissions_params` (
   `name` varchar(50) NOT NULL,
   `description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Copiando dados para a tabela helpdesk.permissions_params: ~0 rows (aproximadamente)
 DELETE FROM `permissions_params`;
 /*!40000 ALTER TABLE `permissions_params` DISABLE KEYS */;
+INSERT INTO `permissions_params` (`id`, `name`, `description`) VALUES
+	(1, 'admin', NULL),
+	(2, 'view_admin', NULL);
 /*!40000 ALTER TABLE `permissions_params` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.staff
@@ -206,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
 INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `group`, `department`, `dir_list_show`, `vacation`, `teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, NULL, NULL, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
+	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, NULL, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.task
