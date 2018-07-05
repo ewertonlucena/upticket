@@ -10,14 +10,6 @@ class manageController extends controller {
     }
     
 
-        public function index(){
-            $data = array();
-            $staff = new Staff();
-            $staff->setLoggedStaff();
-            $data['staff_name'] = $staff->getName();
-            $data['page_level_1'] = 'manage';
-            
-            $this->loadAdminTemplate('manage', $data);        
-    }
+        
 }
 

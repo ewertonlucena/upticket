@@ -1,8 +1,8 @@
 <?php
-
 class Staff extends model {
 
     private $staffInfo;
+    private $permissions;
 
     public function isLogged() {
         if (isset($_SESSION['ccUser']) && !empty($_SESSION['ccUser'])) {
@@ -28,11 +28,7 @@ class Staff extends model {
             return false;
         }
     }
-    
-    public function logout() {
-        unset($_SESSION['ccUser']);
-    }
-    
+     
     public function setLoggedStaff() {
         if (isset($_SESSION['ccUser']) && !empty($_SESSION['ccUser'])) { 
             $id = $_SESSION['ccUser'];
@@ -43,8 +39,18 @@ class Staff extends model {
 
             if ($sql->rowCount() > 0) {
                 $this->staffInfo = $sql->fetch();
+                $this->permissions = new Permissions();
+                $this->permissions->setGroup($this->staffInfo['group']);
             }
         }
+    }
+    
+    public function hasPermission($param){
+        return $this->permissions->hasPermission($param);
+    }
+
+        public function logout() {
+        unset($_SESSION['ccUser']);
     }
 
     public function getName() {

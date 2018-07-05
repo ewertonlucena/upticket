@@ -29,16 +29,16 @@
                             <div class="collapse navbar-collapse">
                                 <ul class="navbar-nav mr-0">
                                     <li class="nav-item">
-                                        <a class="nav-link <?php echo ($viewName == 'admin') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin">Dashboard</a>
+                                        <a class="nav-link <?php echo ($viewName == 'admin') ? 'active' : '' ?>" href="<?php echo ADMIN_URL; ?>admin">Dashboard</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link <?php echo ($viewName == 'manage') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>manage">Gestão</a>
+                                        <a class="nav-link <?php echo ($viewName == 'manage') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/manage">Gestão</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link <?php echo ($viewName == 'agents') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>agents" href="#">Agentes</a>
+                                        <a class="nav-link <?php echo ($viewName == 'agents') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/agents" href="#">Agentes</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link <?php echo ($viewName == 'settings') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>settings">Config</a>
+                                        <a class="nav-link <?php echo ($viewName == 'settings') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/settings">Config</a>
                                     </li>
                                 </ul>
                             </div>
@@ -92,13 +92,13 @@
                                 <a class="nav-link <?php echo ($viewName == 'admin') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php echo ($viewName == 'manage') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>manage">Gestão</a>
+                                <a class="nav-link <?php echo ($viewName == 'manage') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/manage">Gestão</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php echo ($viewName == 'agents') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>agents" href="#">Agentes</a>
+                                <a class="nav-link <?php echo ($viewName == 'agents') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/agents" href="#">Agentes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php echo ($viewName == 'settings') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>settings">Config</a>
+                                <a class="nav-link <?php echo ($viewName == 'settings') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/settings">Config</a>
                             </li>
                         </ul>
                     </div>
@@ -110,17 +110,17 @@
                         <div class="col d-flex align-items-center">
                             <nav class="d-none d-md-block" aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0 pl-1">
-                                    <li class="breadcrumb-item d-sm-inline-block" style="padding-left: 0px;">
-                                        <a class="btn btn-link px-1" href="#">Painel Admin</a>
+                                    <li class="breadcrumb-item d-sm-inline-block <?php echo (!isset($viewData['page_level_1'])) ? 'active' :'' ;?>" style="padding-left: 0px;">
+                                        <a class="btn btn-link px-1" href="<?php echo BASE_URL; ?>admin">Painel Admin</a>
                                     </li>
                                     <li class="breadcrumb-item 
-                                        <?php echo ($viewData['page_level_1'] == 'manage') ? 'd-sm-inline-block' : '' ?>
-                                        <?php echo ($viewData['page_level_1'] == 'agents') ? 'd-sm-inline-block' : '' ?>
+                                        <?php echo (isset($viewData['page_level_1'])) ? 'd-sm-inline-block' : '' ?>                                        
                                         <?php echo (!isset($viewData['page_level_2'])) ? 'active' : '' ?>" 
                                         style="padding-left: 0px;">
                                         <a class="btn btn-link px-1" href="#">
-                                            <?php echo ($viewData['page_level_1'] == 'manage') ? 'Gestão do Sistema' : '' ?>
-                                            <?php echo ($viewData['page_level_1'] == 'agents') ? 'Gestão de Agentes' : '' ?>
+                                            <?php echo (isset($viewData['page_level_1']) and $viewData['page_level_1'] == 'admin') ? 'Dashboard' : '' ?>
+                                            <?php echo (isset($viewData['page_level_1']) and $viewData['page_level_1'] == 'manage') ? 'Gestão do Sistema' : '' ?>
+                                            <?php echo (isset($viewData['page_level_1']) and $viewData['page_level_1'] == 'agents') ? 'Gestão de Agentes' : '' ?>
                                         </a>
                                     </li>
                                     <li class="breadcrumb-item " aria-current="page" style="padding-left: 0px;">
@@ -153,10 +153,10 @@
                                                     Gestão de Agentes
                                                 </div>
                                                 <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents/teams"><span class="fa fa-users fa-xs"> </span> Times</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents/groups"><span class="fa fa-key fa-xs"> </span> Grupos de Permissões</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents/department"><span class="fa fa-sitemap fa-xs"> </span> Setor</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/agents"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/teams"><span class="fa fa-users fa-xs"> </span> Times</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/groups"><span class="fa fa-key fa-xs"> </span> Grupos de Permissões</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/departments"><span class="fa fa-sitemap fa-xs"> </span> Setor</a></li>
                                                 </ul>
                                             </div>
                                         </section>
@@ -201,10 +201,10 @@
                                         Gestão de Agentes
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents/teams"><span class="fa fa-users fa-xs"> </span> Times</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents/groups"><span class="fa fa-key fa-xs"> </span> Grupos de Permissões</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>agents/department"><span class="fa fa-sitemap fa-xs"> </span> Setor</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/agents"<?php echo BASE_URL; ?>s"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/teams"><span class="fa fa-users fa-xs"> </span> Times</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/groups"><span class="fa fa-key fa-xs"> </span> Grupos de Permissões</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/departments"><span class="fa fa-sitemap fa-xs"> </span> Setor</a></li>
                                     </ul>
                                 </div>
                             </section>

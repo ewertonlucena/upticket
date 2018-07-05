@@ -10,13 +10,6 @@ class settingsController extends controller {
     }
     
 
-        public function index(){
-            $data = array();
-            $staff = new Staff();
-            $staff->setLoggedStaff();
-            $data['staff_name'] = $staff->getName();
-            
-            $this->loadAdminTemplate('settings', $data);        
-    }
+        
 }
 
