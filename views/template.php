@@ -79,7 +79,7 @@
                         </li>
 
                         <li class="list-inline-item">
-                            <a class="btn btn-staff btn-sm border-dark text-nowrap" href="<?php echo BASE_URL; ?>admin">Painel Admin</a>
+                            <a class="btn btn-staff btn-sm border-dark text-nowrap" href="<?php echo BASE_URL; ?>admin/panel">Painel Admin</a>
                         </li>
                     </ul>
                 </div>

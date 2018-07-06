@@ -29,7 +29,7 @@
                             <div class="collapse navbar-collapse">
                                 <ul class="navbar-nav mr-0">
                                     <li class="nav-item">
-                                        <a class="nav-link <?php echo ($viewName == 'admin') ? 'active' : '' ?>" href="<?php echo ADMIN_URL; ?>admin">Dashboard</a>
+                                        <a class="nav-link <?php echo ($viewName == 'admin') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin">Dashboard</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link <?php echo ($viewName == 'manage') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/manage">Gestão</a>

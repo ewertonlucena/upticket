@@ -1,5 +1,5 @@
 <?php
-class settingsController extends controller {
+class panelController extends controller {
     
     public function __construct(){
         $staff = new Staff();        
@@ -12,16 +12,21 @@ class settingsController extends controller {
             header("Location: ".BASE_URL);
             exit;
         }
-    }
-    
-    public function index(){
+        
+    }   
+
+        public function index(){
             $data = array();
             $staff = new Staff();
             $staff->setLoggedStaff();
-            $data['staff_name'] = $staff->getName();
             
-            $this->loadAdminTemplate('settings', $data);        
+            $data['staff_name'] = $staff->getName();
+            $data['page_level_1'] = 'admin';
+            
+            
+            $this->loadAdminTemplate('admin', $data);        
     }
-        
 }
+
+
 
