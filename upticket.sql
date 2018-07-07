@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `corporations`;
 CREATE TABLE IF NOT EXISTS `corporations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
-  `type` tinyint(4) NOT NULL COMMENT 'client or provider',
+  `corp_type` tinyint(4) NOT NULL COMMENT 'client or provider',
   `pf_pj` tinyint(4) NOT NULL,
   `name` varchar(100) NOT NULL,
   `fantasy` varchar(100) DEFAULT NULL,
@@ -38,11 +38,11 @@ CREATE TABLE IF NOT EXISTS `corporations` (
   `addr_state` varchar(50) DEFAULT NULL,
   `addr_ref` varchar(50) DEFAULT NULL,
   `addr_coord` varchar(50) DEFAULT NULL,
-  `internal_obs` text,
+  `internal_obs` mediumtext,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.corporations: ~0 rows (aproximadamente)
 DELETE FROM `corporations`;
@@ -54,10 +54,10 @@ DROP TABLE IF EXISTS `corporations_contacts`;
 CREATE TABLE IF NOT EXISTS `corporations_contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_corporation` int(11) NOT NULL,
-  `type` varchar(50) NOT NULL,
+  `contact` varchar(50) NOT NULL,
   `value` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.corporations_contacts: ~0 rows (aproximadamente)
 DELETE FROM `corporations_contacts`;
@@ -70,9 +70,9 @@ CREATE TABLE IF NOT EXISTS `corporations_contracts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_corporation` int(11) NOT NULL,
   `active` tinyint(4) NOT NULL,
-  `type` varchar(50) NOT NULL COMMENT 'compra ou venda',
+  `c_type` varchar(50) NOT NULL COMMENT 'compra ou venda',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.corporations_contracts: ~0 rows (aproximadamente)
 DELETE FROM `corporations_contracts`;
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `corporations_users` (
   `update_date` datetime DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.corporations_users: ~0 rows (aproximadamente)
 DELETE FROM `corporations_users`;
@@ -110,11 +110,11 @@ CREATE TABLE IF NOT EXISTS `departments` (
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `groups_allowed` varchar(200) NOT NULL,
-  `signature` text NOT NULL,
+  `signature` mediumtext NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.departments: ~0 rows (aproximadamente)
 DELETE FROM `departments`;
@@ -127,17 +127,17 @@ CREATE TABLE IF NOT EXISTS `help_topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `description` text NOT NULL,
-  `type` varchar(50) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `category` varchar(50) NOT NULL,
   `id_parent` int(11) DEFAULT NULL,
   `priority` int(11) NOT NULL,
   `id_department` int(11) NOT NULL,
   `auto_id_staff` int(11) DEFAULT NULL,
-  `admin_notes` text,
+  `admin_notes` mediumtext,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.help_topics: ~0 rows (aproximadamente)
 DELETE FROM `help_topics`;
@@ -152,13 +152,13 @@ CREATE TABLE IF NOT EXISTS `permissions_groups` (
   `name` varchar(50) NOT NULL,
   `params` varchar(200) NOT NULL,
   `departments` varchar(200) DEFAULT NULL,
-  `admin_notes` text,
+  `admin_notes` mediumtext,
   `create_date` datetime DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.permissions_groups: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.permissions_groups: ~0 rows (aproximadamente)
 DELETE FROM `permissions_groups`;
 /*!40000 ALTER TABLE `permissions_groups` DISABLE KEYS */;
 INSERT INTO `permissions_groups` (`id`, `active`, `name`, `params`, `departments`, `admin_notes`, `create_date`, `update_date`) VALUES
@@ -169,17 +169,25 @@ INSERT INTO `permissions_groups` (`id`, `active`, `name`, `params`, `departments
 DROP TABLE IF EXISTS `permissions_params`;
 CREATE TABLE IF NOT EXISTS `permissions_params` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `p_group` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `description` varchar(100) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.permissions_params: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.permissions_params: ~9 rows (aproximadamente)
 DELETE FROM `permissions_params`;
 /*!40000 ALTER TABLE `permissions_params` DISABLE KEYS */;
-INSERT INTO `permissions_params` (`id`, `name`, `description`) VALUES
-	(1, 'admin', NULL),
-	(2, 'view_admin', NULL);
+INSERT INTO `permissions_params` (`id`, `p_group`, `name`, `description`) VALUES
+	(1, 'admin', 'admin', 'Pode acessar painel administrativo'),
+	(2, 'Tickets', 'Criar', 'Pode criar tickets em nome de outros usuÃ¡rios'),
+	(3, 'Tickets', 'Editar', 'Pode editar tickets'),
+	(4, 'Tickets', 'Alocar', 'Pode alocar tickets para agentes ou teams'),
+	(5, 'Tickets', 'Tranferir', 'Pode transferir tickets entre setores'),
+	(6, 'Tickets', 'Responder', 'Pode responder tickets'),
+	(7, 'Tickets', 'Fechar', 'Pode fechar tickets'),
+	(8, 'Tickets', 'Apagar', 'Pode apagar tickets'),
+	(12, 'Tickets', 'Editar InteraÃ§Ãµes', 'Pode editar interaÃ§Ãµes de outros agentes');
 /*!40000 ALTER TABLE `permissions_params` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.staff
@@ -195,22 +203,22 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `phone` varchar(50) NOT NULL,
   `mobile` varchar(50) NOT NULL,
   `admin` tinyint(1) NOT NULL,
-  `group` int(11) DEFAULT NULL,
+  `p_group` int(11) DEFAULT NULL,
   `department` int(11) DEFAULT NULL,
   `dir_list_show` tinyint(1) NOT NULL,
   `vacation` tinyint(1) NOT NULL,
   `teams` varchar(200) DEFAULT NULL,
-  `admin_notes` text,
+  `admin_notes` mediumtext,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.staff: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.staff: ~0 rows (aproximadamente)
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `group`, `department`, `dir_list_show`, `vacation`, `teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
+INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `p_group`, `department`, `dir_list_show`, `vacation`, `teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
 	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, NULL, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
@@ -231,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `task` (
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- Copiando dados para a tabela helpdesk.task: ~0 rows (aproximadamente)
 DELETE FROM `task`;
@@ -246,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `tasks_attachments` (
   `id_task_interaction` int(11) NOT NULL,
   `url` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- Copiando dados para a tabela helpdesk.tasks_attachments: ~0 rows (aproximadamente)
 DELETE FROM `tasks_attachments`;
@@ -260,11 +268,11 @@ CREATE TABLE IF NOT EXISTS `tasks_interactions` (
   `id_task` int(11) NOT NULL,
   `id_staff` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `reply` text NOT NULL,
+  `reply` mediumtext NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- Copiando dados para a tabela helpdesk.tasks_interactions: ~0 rows (aproximadamente)
 DELETE FROM `tasks_interactions`;
@@ -279,11 +287,11 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `name` varchar(50) NOT NULL,
   `leader_id` int(11) NOT NULL,
   `disable_alerts` tinyint(4) NOT NULL,
-  `admin_notes` text,
+  `admin_notes` mediumtext,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.teams: ~0 rows (aproximadamente)
 DELETE FROM `teams`;
@@ -308,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.tickets: ~0 rows (aproximadamente)
 DELETE FROM `tickets`;
@@ -323,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `tickets_attachments` (
   `id_ticket_interaction` int(11) DEFAULT NULL,
   `url` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.tickets_attachments: ~0 rows (aproximadamente)
 DELETE FROM `tickets_attachments`;
@@ -337,11 +345,11 @@ CREATE TABLE IF NOT EXISTS `tickets_interactions` (
   `id_ticket` int(11) NOT NULL,
   `id_staff` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `reply` text NOT NULL,
+  `reply` mediumtext NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.tickets_interactions: ~0 rows (aproximadamente)
 DELETE FROM `tickets_interactions`;
