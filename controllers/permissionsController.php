@@ -26,10 +26,10 @@ class permissionsController extends controller {
 
         $data['staff_name'] = $staff->getName();
         $data['page_level_1'] = 'agents';
-        $data['permissions_groups'] = $permissions->getGroupList();
+        $data['permissions'] = $permissions->getPermissionsList();
 
 
-        $this->loadAdminTemplate('groups', $data);
+        $this->loadAdminTemplate('permissions', $data);
     }
 
     public function add() {
@@ -43,11 +43,35 @@ class permissionsController extends controller {
 
         $data['staff_name'] = $staff->getName();
         $data['page_level_1'] = 'agents';
-        $data['page_level_2'] = 'add';
-        $data['params_list'] = $permissions->getParamsList();
+        $data['page_level_2'] = 'edit';
+        
+        if(isset($_POST['name']) && !empty($_POST['name'])) {
+            $group = addslashes($_POST['group']);
+            $name = addslashes($_POST['name']);
+            $description = addslashes($_POST['description']);
+            
+            $permissions->addPermission($group, $name, $description);
+            header('Location: '.BASE_URL.'permissions');            
+            exit;
+        }
 
-
-        $this->loadAdminTemplate('group_add', $data);
+        $this->loadAdminTemplate('permissions_add', $data);
+    }
+    
+    public function delete() {
+        
+        #instance Models
+        $staff = new Staff();
+        $permissions = new Permissions();
+        
+        $staff->setLoggedStaff();
+        
+        if(isset($_POST['ids']) && !empty($_POST['ids'])) {            
+            $permissions->deletePermissions($_POST['ids']);
+        }
+        header('Location: '.BASE_URL.'permissions/');
+        exit;
+        
     }
 
     public function edit($id) {
@@ -63,10 +87,10 @@ class permissionsController extends controller {
         $data['page_level_1'] = 'agents';
         $data['page_level_2'] = 'edit';
 
-        $data['group_info'] = $permissions->getGroupInfo();
+        $data['permissions_params'] = $permissions->getGroupInfo();
 
 
-        $this->loadAdminTemplate('group_edit', $data);
+        $this->loadAdminTemplate('permissions_edit', $data);
     }
 
 }

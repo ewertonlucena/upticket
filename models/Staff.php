@@ -40,7 +40,7 @@ class Staff extends model {
             if ($sql->rowCount() > 0) {
                 $this->staffInfo = $sql->fetch();
                 $this->permissions = new Permissions();
-                $this->permissions->setGroup($this->staffInfo['group']);
+                $this->permissions->setGroup($this->staffInfo['p_group']);
             }
         }
     }

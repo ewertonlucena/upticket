@@ -381,6 +381,15 @@ hr.blurred {
     border-bottom: 1px solid #dee2e6
 }
 
+.link-table {    
+    color: inherit;
+}
+
+.link-table:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 @media (max-width: 576px) {
     .search-input {
         width: 120px;

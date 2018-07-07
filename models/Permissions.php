@@ -1,55 +1,86 @@
 <?php
+
 class Permissions extends model {
-    
+
     private $group;
     private $permissions;
-    
+
     public function setGroup($id) {
         $this->group = $id;
         $this->permissions = array();
-        
+
         $sql = $this->db->prepare("SELECT params FROM permissions_groups WHERE id = :id");
         $sql->bindValue(':id', $id);
         $sql->execute();
-        
-        if($sql->rowCount() > 0) {
+
+        if ($sql->rowCount() > 0) {
             $row = $sql->fetch();
-            
-            if(empty($row['params'])) {
+
+            if (empty($row['params'])) {
                 $row['params'] = 0;
             }
+
+            $params = $row['params'];          
             
-            $params = $row['params'];
-            
-            $sql = $this->db->prepare("SELECT name FROM permissions_params WHERE id IN ($params)");            
+            $sql = $this->db->prepare("SELECT name FROM permissions_params WHERE id IN ($params)");
             $sql->execute();
-            
-            if($sql->rowCount() > 0) {
+
+            if ($sql->rowCount() > 0) {
                 $params = $sql->fetchAll();
-                foreach($params as $item) {
+                foreach ($params as $item) {
                     $this->permissions[] = $item['name'];
                 }
-            }   
-        }          
+            }
+        }
     }
-    
+
     public function hasPermission($param) {
-        if(in_array($param, $this->permissions)){
+        if (in_array($param, $this->permissions)) {
             return true;
         } else {
             return false;
         }
     }
-    
+
     public function getGroupList() {
-        $groupList = array();
-        
+        $GroupList = array();
+
         $sql = $this->db->prepare("SELECT * FROM permissions_groups");
         $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $GroupList = $sql->fetchAll();
+        }
+        return $GroupList;
+    }
+
+    public function getPermissionsList() {
+        $array = array();
         
-        if($sql->rowCount() > 0){
-            $groupList = $sql->fetchAll();            
-        }        
-        return $groupList;        
+        $sql = $this->db->prepare("SELECT * FROM permissions_params");
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
+
+    public function addPermission($group, $name, $description) {
+        
+        $sql = $this->db->prepare("INSERT INTO permissions_params SET p_group = :group, name = :name, description = :description");
+        $sql->bindValue(":group", $group);
+        $sql->bindValue(":name", $name);
+        $sql->bindValue(":description", $description);
+        $sql->execute();
+    }
+    
+    public function deletePermissions($ids) {
+        
+        $params = join(',', $ids);
+        
+        $sql = $this->db->prepare("DELETE FROM permissions_params WHERE id IN ($params)");
+        $sql->execute();        
     }
 }
