@@ -40,4 +40,16 @@ class Permissions extends model {
             return false;
         }
     }
+    
+    public function getGroupList() {
+        $groupList = array();
+        
+        $sql = $this->db->prepare("SELECT * FROM permissions_groups");
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $groupList = $sql->fetchAll();            
+        }        
+        return $groupList;        
+    }
 }

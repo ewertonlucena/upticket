@@ -7,16 +7,65 @@ class groupsController extends controller {
             header("Location: ".BASE_URL."login");
             exit;
         }
+        $staff->setLoggedStaff();
+        if(!$staff->hasPermission('admin')){            
+            header("Location: ".BASE_URL);
+            exit;
+        }
     }    
    
     public function index(){
-            $data = array();
-            $staff = new Staff();
-            $staff->setLoggedStaff();
-            $data['staff_name'] = $staff->getName();
-            $data['page_level_1'] = 'agents';
-            
-            $this->loadAdminTemplate('groups', $data);        
+        $data = array();
+
+        #instance Models
+        $staff = new Staff();
+        $permissions = new Permissions();
+
+        $staff->setLoggedStaff();
+
+        $data['staff_name'] = $staff->getName();
+        $data['page_level_1'] = 'agents';
+        $data['permissions_groups'] = $permissions->getGroupList();
+
+
+        $this->loadAdminTemplate('groups', $data);        
+    }
+    
+    public function add(){
+        $data = array();
+
+        #instance Models
+        $staff = new Staff();
+        $permissions = new Permissions();
+
+        $staff->setLoggedStaff();
+
+        $data['staff_name'] = $staff->getName();
+        $data['page_level_1'] = 'agents';
+        $data['page_level_2'] = 'edit';            
+        $data['permissions_params'] = $permissions->getParamsList();
+
+
+        $this->loadAdminTemplate('group_add', $data);        
+    }
+    
+    public function edit($id){
+        $data = array();
+
+        #instance Models
+        $staff = new Staff();
+        $permissions = new Permissions();
+
+        $staff->setLoggedStaff();
+
+        $data['staff_name'] = $staff->getName();
+        $data['page_level_1'] = 'agents';
+        $data['page_level_2'] = 'edit';          
+        
+        $data['permissions_params'] = $permissions->getGroupInfo();
+
+
+        $this->loadAdminTemplate('group_edit', $data);        
     }
  
 }

@@ -350,11 +350,20 @@ hr.blurred {
 
 .link-card {
     display: block;
-    color: black !important;    
+    color: rgba(0, 0, 0, 0.7);    
 }
 
 .link-card:hover, link-card:focus {
+    color: rgba(0, 0, 0, 1);
     text-decoration: none;
+}
+
+.table-hover tbody tr {
+    color: rgba(0, 0, 0, 0.7) !important;    
+}
+
+.table-hover tbody tr:hover {
+    color: rgba(0, 0, 0, 1) !important;
 }
 
 .recent-ticket ul li:hover {
