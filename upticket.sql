@@ -151,18 +151,17 @@ CREATE TABLE IF NOT EXISTS `permissions_groups` (
   `active` tinyint(4) NOT NULL,
   `name` varchar(50) NOT NULL,
   `params` varchar(200) NOT NULL,
-  `departments` varchar(200) DEFAULT NULL,
-  `admin_notes` mediumtext,
+  `admin_notes` tinytext,
   `create_date` datetime DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.permissions_groups: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.permissions_groups: ~1 rows (aproximadamente)
 DELETE FROM `permissions_groups`;
 /*!40000 ALTER TABLE `permissions_groups` DISABLE KEYS */;
-INSERT INTO `permissions_groups` (`id`, `active`, `name`, `params`, `departments`, `admin_notes`, `create_date`, `update_date`) VALUES
-	(1, 1, 'Full Access', '1,2', NULL, NULL, '2018-07-05 10:29:10', '2018-07-05 10:29:10');
+INSERT INTO `permissions_groups` (`id`, `active`, `name`, `params`, `admin_notes`, `create_date`, `update_date`) VALUES
+	(1, 1, 'Full Access', '1,2', NULL, '2018-07-05 10:29:10', '2018-07-05 10:29:10');
 /*!40000 ALTER TABLE `permissions_groups` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.permissions_params
@@ -173,21 +172,34 @@ CREATE TABLE IF NOT EXISTS `permissions_params` (
   `name` varchar(50) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.permissions_params: ~9 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.permissions_params: ~22 rows (aproximadamente)
 DELETE FROM `permissions_params`;
 /*!40000 ALTER TABLE `permissions_params` DISABLE KEYS */;
 INSERT INTO `permissions_params` (`id`, `p_group`, `name`, `description`) VALUES
-	(1, 'admin', 'admin', 'Pode acessar painel administrativo'),
-	(2, 'Tickets', 'Criar', 'Pode criar tickets em nome de outros usuÃ¡rios'),
-	(3, 'Tickets', 'Editar', 'Pode editar tickets'),
-	(4, 'Tickets', 'Alocar', 'Pode alocar tickets para agentes ou teams'),
-	(5, 'Tickets', 'Tranferir', 'Pode transferir tickets entre setores'),
-	(6, 'Tickets', 'Responder', 'Pode responder tickets'),
-	(7, 'Tickets', 'Fechar', 'Pode fechar tickets'),
-	(8, 'Tickets', 'Apagar', 'Pode apagar tickets'),
-	(12, 'Tickets', 'Editar InteraÃ§Ãµes', 'Pode editar interaÃ§Ãµes de outros agentes');
+	(1, 'admin', 'admin', 'PermissÃ£o para acessar painel administrativo'),
+	(2, 'tickets', 'criar', 'PermissÃ£o para criar tickets em nome de outros usuÃ¡rios'),
+	(3, 'tickets', 'editar', 'PermissÃ£o para editar tickets'),
+	(4, 'tickets', 'alocar', 'PermissÃ£o para alocar tickets para agentes ou teams'),
+	(5, 'tickets', 'transferir', 'PermissÃ£o para transferir tickets entre setores'),
+	(6, 'tickets', 'responder', 'PermissÃ£o para responder tickets'),
+	(7, 'tickets', 'fechar', 'PermissÃ£o para fechar tickets'),
+	(8, 'tickets', 'apagar', 'PermissÃ£o para apagar tickets'),
+	(12, 'tickets', 'editar interaÃ§Ãµes', 'PermissÃ£o para editar interaÃ§Ãµes de outros agentes'),
+	(13, 'tarefas', 'criar', 'PermissÃ£o para criar novas tarefas'),
+	(14, 'tarefas', 'editar', 'PermissÃ£o para editar tarefas'),
+	(15, 'tarefas', 'alocar', 'PermissÃ£o para alocar tarefas para agentes ou times'),
+	(16, 'tarefas', 'transferir', 'PermissÃ£o para transferir tarefas entre setores'),
+	(17, 'tarefas', 'responder', 'PermissÃ£o para responder tarefas'),
+	(18, 'tarefas', 'fechar', 'PermissÃ£o para fechar tarefas'),
+	(19, 'tarefas', 'apagar', 'PermissÃ£o para apagar tarefas'),
+	(20, 'clientes', 'criar', 'PermissÃ£o para adicionar novos clientes'),
+	(21, 'clientes', 'editar', 'PermissÃ£o para gerenciar informaÃ§Ãµes dos clientes'),
+	(22, 'clientes', 'apagar', 'PermissÃ£o para apagar clientes'),
+	(23, 'empresas', 'criar', 'PermissÃ£o para adicionar novas empresas'),
+	(24, 'empresas', 'editar', 'PermissÃ£o para gerenciar informaÃ§Ãµes das empresas'),
+	(25, 'empresas', 'apagar', 'PermissÃ£o para apagar empresas');
 /*!40000 ALTER TABLE `permissions_params` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.staff
