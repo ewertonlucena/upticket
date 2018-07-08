@@ -3,7 +3,7 @@ $(window).on('load', function () {
 });
 
 $(".open-form").click(function(){
-    $(this).toggleClass('btn-search btn-search-close')
+    $(this).toggleClass('btn-search btn-search-close');
     $(this).find('span').toggleClass('fa-search fa-times');
   });
 
@@ -23,6 +23,14 @@ $(document).ready(function () {
     $(document).on('mouseout', function (e) {    
         if ($(e.target).closest('.welcome-staff').length) $('#BtnStaff').removeClass("btn-staff-hover");
     });  
+    
+    $('#checkAll').click(function(){        
+        if ($(this).prop('checked')) { 
+            $(':checkbox').prop('checked', true);
+        } else {
+            $(':checkbox').prop('checked', false);
+        }
+    });
     
 });
 

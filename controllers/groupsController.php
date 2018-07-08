@@ -1,6 +1,6 @@
 <?php
 
-class permissionsController extends controller {
+class groupsController extends controller {
 
     public function __construct() {
         $staff = new Staff();
@@ -43,9 +43,10 @@ class permissionsController extends controller {
 
         $data['staff_name'] = $staff->getName();
         $data['page_level_1'] = 'agents';
-        $data['page_level_2'] = 'add';
-        $data['params_list'] = $permissions->getParamsList();
-
+        $data['page_level_2'] = 'add';        
+        $data['permissions_list'] = $permissions->getPermissionsList();
+        
+        
 
         $this->loadAdminTemplate('group_add', $data);
     }

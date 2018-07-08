@@ -12,7 +12,7 @@
                     <table class="table table-sm table-bordered table-hover">
                         <thead class="thead-light">
                             <tr>
-                                <th class="text-center" scope="col"><div class="form-check-inline m-0"><input type="checkbox" class="form-check-input m-0"></div></th>
+                                <th class="text-center" scope="col"><div class="form-check-inline m-0"><input id="checkAll" type="checkbox" class="form-check-input m-0"></div></th>
                                 <th scope="col">Grupo</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Descrição</th>

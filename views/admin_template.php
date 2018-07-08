@@ -8,6 +8,12 @@
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/fontawesome-all.min.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css"/>
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/nicEdit.js"></script>
+        <script type="text/javascript">
+            bkLib.onDomLoaded(function() { 
+                nicEditors.allTextAreas();                
+            });
+        </script>
         <title>UP Desk</title>
     </head>
     <body class="bg-light">
@@ -226,6 +232,7 @@
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
+        
 
     </body>
 </html>

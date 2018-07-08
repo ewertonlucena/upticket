@@ -66,6 +66,20 @@ class Permissions extends model {
         
         return $array;
     }
+    
+    public function getPermissionInfo($id) {
+        $array = array();
+        
+        $sql = $this->db->prepare("SELECT * FROM permissions_params WHERE id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetch();
+        }
+        
+        return $array;
+    }
 
     public function addPermission($group, $name, $description) {
         
@@ -73,6 +87,16 @@ class Permissions extends model {
         $sql->bindValue(":group", $group);
         $sql->bindValue(":name", $name);
         $sql->bindValue(":description", $description);
+        $sql->execute();
+    }
+    
+    public function editPermission($id, $group, $name, $description) {
+        
+        $sql = $this->db->prepare("UPDATE permissions_params SET p_group = :group, name = :name, description = :description WHERE id = :id");
+        $sql->bindValue(":group", $group);
+        $sql->bindValue(":name", $name);
+        $sql->bindValue(":description", $description);
+        $sql->bindValue(":id", $id);
         $sql->execute();
     }
     

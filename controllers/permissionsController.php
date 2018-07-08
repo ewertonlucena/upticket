@@ -51,7 +51,7 @@ class permissionsController extends controller {
             $description = addslashes($_POST['description']);
             
             $permissions->addPermission($group, $name, $description);
-            header('Location: '.BASE_URL.'permissions');            
+            header('Location: '.BASE_URL.'admin/permissions');            
             exit;
         }
 
@@ -69,7 +69,7 @@ class permissionsController extends controller {
         if(isset($_POST['ids']) && !empty($_POST['ids'])) {            
             $permissions->deletePermissions($_POST['ids']);
         }
-        header('Location: '.BASE_URL.'permissions/');
+        header('Location: '.BASE_URL.'admin/permissions');
         exit;
         
     }
@@ -86,9 +86,18 @@ class permissionsController extends controller {
         $data['staff_name'] = $staff->getName();
         $data['page_level_1'] = 'agents';
         $data['page_level_2'] = 'edit';
-
-        $data['permissions_params'] = $permissions->getGroupInfo();
-
+        $data['permission_info'] = $permissions->getPermissionInfo($id);
+        
+        if(isset($_POST['name']) && !empty($_POST['name'])) {
+            $id = addslashes($_POST['id']);
+            $group = addslashes($_POST['group']);
+            $name = addslashes($_POST['name']);
+            $description = addslashes($_POST['description']);
+            
+            $permissions->editPermission($id, $group, $name, $description);
+            header('Location: '.BASE_URL.'admin/permissions');            
+            exit;
+        }
 
         $this->loadAdminTemplate('permissions_edit', $data);
     }
