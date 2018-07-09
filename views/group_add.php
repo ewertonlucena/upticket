@@ -24,29 +24,48 @@
                                 <div class="col-lg-6 mb-3">
                                     <div class="card">
                                         <div class="card-header fa-sm d-flex align-items-center">
-                                           <span class="form-check-inline m-0">
-                                               <input id="clntAll" type="checkbox" class="form-check-input">
-                                           </span>
+                                            <span class="form-check-inline m-0">
+                                                <input id="clntAll" type="checkbox" class="form-check-input">
+                                            </span>
                                             Clientes
-                                        </div>                                        
+                                        </div>
                                         <ul class="list-group list-group-flush fa-sm">
                                             <?php foreach ($permissions_list as $p): ?>
-                                            <?php if($p['p_group'] == 'clientes'): ?>
-                                            <li class="list-group-item d-flex align-items-start">
-                                                <div class="text-capitalize text-nowrap d-flex align-items-center">
-                                                    <span class="form-check-inline m-0">
-                                                        <input type="checkbox" class="form-check-input" name="ids[]" value="<?php echo $p['id']?>" id="clnt-<?php echo $p['id']?>"/>
-                                                    </span>
-                                                    <?php echo $p['name']?>
-                                                </div>
-                                                &nbsp;-&nbsp;
-                                                <span>
-                                                    <?php echo $p['description']?>
-                                                </span>
-                                            </li>                                            
-                                            <?php endif; ?>
+                                                <?php if ($p['p_group'] == 'clientes'): ?>
+                                                    <li class="list-group-item">
+                                                        <div class="container-fluid p-0">
+                                                            <div class="row align-items-start">
+                                                                <div class="col-3 pr-0 text-nowrap d-flex align-items-center">
+                                                                    <span class="form-check-inline m-0 ">
+                                                                        <input
+                                                                            type="checkbox"
+                                                                            class="form-check-input"
+                                                                            name="ids[]"
+                                                                            value="<?php echo $p['id'] ?>"
+                                                                            id="clnt-<?php echo $p['id'] ?>"
+                                                                            />
+                                                                    </span>
+                                                                    <span class="text-capitalize text-truncate">
+                                                                        <?php echo $p['name'] ?>
+                                                                    </span>
+                                                                    
+                                                                </div>
+                                                                <div class="col-1">
+                                                                    <span>
+                                                                        -
+                                                                    </span>
+                                                                </div>
+                                                                <div class="col p-0">
+                                                                    <span>
+                                                                        <?php echo $p['description'] ?>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
-                                        </ul>                                       
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-3">
@@ -59,22 +78,22 @@
                                         </div>
                                         <ul class="list-group list-group-flush fa-sm">
                                             <?php foreach ($permissions_list as $p): ?>
-                                            <?php if($p['p_group'] == 'empresas'): ?>
-                                            <li class="list-group-item d-flex align-items-start">
-                                                <div class="text-capitalize text-nowrap d-flex align-items-center">
-                                                    <span class="form-check-inline m-0">
-                                                        <input type="checkbox" class="form-check-input" name="ids[]" value="<?php echo $p['id']?>" id="org-<?php echo $p['id']?>"/>
-                                                    </span>
-                                                    <?php echo $p['name']?>
-                                                </div>
-                                                &nbsp;-&nbsp;
-                                                <span>
-                                                    <?php echo $p['description']?>
-                                                </span>
-                                            </li>                                            
-                                            <?php endif; ?>
+                                                <?php if ($p['p_group'] == 'empresas'): ?>
+                                                    <li class="list-group-item d-flex align-items-start">
+                                                        <div class="text-capitalize text-nowrap d-flex align-items-center">
+                                                            <span class="form-check-inline m-0">
+                                                                <input type="checkbox" class="form-check-input" name="ids[]" value="<?php echo $p['id'] ?>" id="org-<?php echo $p['id'] ?>"/>
+                                                            </span>
+                                                            <?php echo $p['name'] ?>
+                                                        </div>
+                                                        &nbsp;-&nbsp;
+                                                        <span>
+                                                            <?php echo $p['description'] ?>
+                                                        </span>
+                                                    </li>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
-                                        </ul>     
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-3">
@@ -87,22 +106,22 @@
                                         </div>
                                         <ul class="list-group list-group-flush fa-sm">
                                             <?php foreach ($permissions_list as $p): ?>
-                                            <?php if($p['p_group'] == 'tickets'): ?>
-                                            <li class="list-group-item d-flex align-items-start">
-                                                <div class="text-capitalize text-nowrap d-flex align-items-center">
-                                                    <span class="form-check-inline m-0">
-                                                        <input type="checkbox" class="form-check-input" name="ids[]" value="<?php echo $p['id']?>" id="tckt-<?php echo $p['id']?>"/>
-                                                    </span>
-                                                        <?php echo $p['name']?>
-                                                </div>
-                                                &nbsp;-&nbsp;
-                                                <span>
-                                                    <?php echo $p['description']?>
-                                                </span>
-                                            </li>                                            
-                                            <?php endif; ?>
+                                                <?php if ($p['p_group'] == 'tickets'): ?>
+                                                    <li class="list-group-item d-flex align-items-start">
+                                                        <div class="text-capitalize text-nowrap d-flex align-items-center">
+                                                            <span class="form-check-inline m-0">
+                                                                <input type="checkbox" class="form-check-input" name="ids[]" value="<?php echo $p['id'] ?>" id="tckt-<?php echo $p['id'] ?>"/>
+                                                            </span>
+                                                            <?php echo $p['name'] ?>
+                                                        </div>
+                                                        &nbsp;-&nbsp;
+                                                        <span>
+                                                            <?php echo $p['description'] ?>
+                                                        </span>
+                                                    </li>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
-                                        </ul>     
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-3">
@@ -115,22 +134,22 @@
                                         </div>
                                         <ul class="list-group list-group-flush fa-sm">
                                             <?php foreach ($permissions_list as $p): ?>
-                                            <?php if($p['p_group'] == 'tarefas'): ?>
-                                            <li class="list-group-item d-flex align-items-start">
-                                                <div class="text-capitalize d-flex align-items-center">
-                                                    <span class="form-check-inline m-0">
-                                                        <input type="checkbox" class="form-check-input" name="ids[]" value="<?php echo $p['id']?>" id="task-<?php echo $p['id']?>"/>
-                                                    </span>                                                    
-                                                    <?php echo $p['name']?>                                                    
-                                                </div>
-                                                &nbsp;-&nbsp;
-                                                <span>
-                                                    <?php echo $p['description']?>
-                                                </span>
-                                            </li>                                            
-                                            <?php endif; ?>
+                                                <?php if ($p['p_group'] == 'tarefas'): ?>
+                                                    <li class="list-group-item d-flex align-items-start">
+                                                        <div class="text-capitalize d-flex align-items-center">
+                                                            <span class="form-check-inline m-0">
+                                                                <input type="checkbox" class="form-check-input" name="ids[]" value="<?php echo $p['id'] ?>" id="task-<?php echo $p['id'] ?>"/>
+                                                            </span>
+                                                            <?php echo $p['name'] ?>
+                                                        </div>
+                                                        &nbsp;-&nbsp;
+                                                        <span>
+                                                            <?php echo $p['description'] ?>
+                                                        </span>
+                                                    </li>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
-                                        </ul>     
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
