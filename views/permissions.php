@@ -20,8 +20,7 @@
                         </thead>
                         <tbody class="fa-sm">
                             <?php foreach ($permissions as $p): ?>
-                                <tr>
-                                    
+                                <tr>                                    
                                     <td class="text-center" scope="row"><div class="form-check-inline m-0"><input class="form-check-input m-0" type="checkbox" name="ids[]" value="<?php echo $p['id'] ?>"></div></td>
                                     <td class="text-capitalize"><a class="link-table d-block" href="<?php echo BASE_URL . 'permissions/edit/' . $p['id'] ?>"><?php echo $p['p_group'] ?> </a></td>
                                     <td class="text-capitalize"><a class="link-table d-block" href="<?php echo BASE_URL . 'permissions/edit/' . $p['id'] ?>"><?php echo $p['name'] ?></a></td>

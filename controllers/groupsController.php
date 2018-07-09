@@ -43,10 +43,23 @@ class groupsController extends controller {
 
         $data['staff_name'] = $staff->getName();
         $data['page_level_1'] = 'agents';
-        $data['page_level_2'] = 'add';        
+        $data['page_level_2'] = 'add';
         $data['permissions_list'] = $permissions->getPermissionsList();
-        
-        
+
+        if(isset($_POST['name']) && !isset($_POST['ids'])) {
+            echo "ERRO: Nenhuma permissão selecionada.";
+            exit;
+        }
+
+        if(isset($_POST['ids']) && !empty($_POST['ids'])) {
+            $name = addslashes($_POST['name']);
+            $notes = addslashes($_POST['notes']);
+            $params = implode(',', $_POST['ids']);
+
+            $permissions->addGroup($name, $notes, $params);
+            header('Location: '.BASE_URL.'admin/groups');
+            exit;
+        }
 
         $this->loadAdminTemplate('group_add', $data);
     }

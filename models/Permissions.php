@@ -53,6 +53,15 @@ class Permissions extends model {
         }
         return $GroupList;
     }
+    
+    public function addGroup($name, $notes, $params) {        
+        $sql = $this->db->prepare("INSERT INTO permissions_groups SET active = 1, name = :name, params = :params, admin_notes = :notes, create_date = :create_date");
+        $sql->bindValue(':name', $name);
+        $sql->bindValue(':params', $params);
+        $sql->bindValue(':notes', $notes);
+        $sql->bindParam(':create_date', time());
+        $sql->execute();
+    }
 
     public function getPermissionsList() {
         $array = array();

@@ -32,5 +32,36 @@ $(document).ready(function () {
         }
     });
     
+    $('#clntAll').click(function(){        
+        if ($(this).prop('checked')) { 
+            $('[id^=clnt]').prop('checked', true);
+        } else {
+            $('[id^=clnt]').prop('checked', false);
+        }
+    });
+    
+    $('#orgAll').click(function(){        
+        if ($(this).prop('checked')) { 
+            $('[id^=org]').prop('checked', true);
+        } else {
+            $('[id^=org]').prop('checked', false);
+        }
+    });
+    
+    $('#tcktAll').click(function(){        
+        if ($(this).prop('checked')) { 
+            $('[id^=tckt]').prop('checked', true);
+        } else {
+            $('[id^=tckt]').prop('checked', false);
+        }
+    });
+    
+    $('#taskAll').click(function(){        
+        if ($(this).prop('checked')) { 
+            $('[id^=task]').prop('checked', true);
+        } else {
+            $('[id^=task]').prop('checked', false);
+        }
+    });
 });
 

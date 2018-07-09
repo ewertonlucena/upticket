@@ -2,14 +2,14 @@
     <div class="row mt-3">
         <div class="col d-flex justify-content-between">
 
-            <a class="btn btn-staff border-dark fa-xs px-2 ml-1" href="<?php echo BASE_URL; ?>groups/add"><i class="fas fa-plus-circle fa-sm pr-1"></i>Novo Time</a>
+            <a class="btn btn-staff border-dark fa-xs px-2 ml-1" href="<?php echo BASE_URL; ?>admin/groups/add"><i class="fas fa-plus-circle fa-sm pr-1"></i>Novo Grupo</a>
             <button class="btn btn-staff border-dark fa-xs px-2 ml-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="fas fa-cog fa-sm pr-1"></span><span class="fa-lg dropdown-toggle "></span>
             </button>
             <div class="dropdown-menu fa-sm">
-                <a class="dropdown-item" href="<?php echo BASE_URL; ?>groups/mass_enable"><i class="fas fa-check-circle fa-xs mr-1"></i>Ativar</a>
-                <a class="dropdown-item" href="<?php echo BASE_URL; ?>groups/mass_disable"><i class="fas fa-ban fa-xs mr-1"></i>Desativar</a>                
-                <a class="dropdown-item delete" href="<?php echo BASE_URL; ?>groups/mass_delete"><i class="fas fa-trash-alt fa-xs mr-1"></i>Apagar</a>
+                <a class="dropdown-item" href="<?php echo BASE_URL; ?>admin/groups/mass_enable"><i class="fas fa-check-circle fa-xs mr-1"></i>Ativar</a>
+                <a class="dropdown-item" href="<?php echo BASE_URL; ?>admin/groups/mass_disable"><i class="fas fa-ban fa-xs mr-1"></i>Desativar</a>                
+                <a class="dropdown-item delete" href="<?php echo BASE_URL; ?>admin/groups/mass_delete"><i class="fas fa-trash-alt fa-xs mr-1"></i>Apagar</a>
             </div>
         </div>
     </div>
