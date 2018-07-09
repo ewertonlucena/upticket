@@ -1456,15 +1456,41 @@ var nicUploadButton = nicEditorAdvancedButton.extend({
     var w = parseInt(this.ne.selectedInstance.elm.getStyle('width'));
     if(this.im) {
       this.im.setAttributes({
-        src : src,
-        width : (w && options.width) ? Math.min(w, options.width) : ''
-      });
+        src : src
+      }).setStyle({maxWidth: '100%'});
     }
   }
 });
 
 nicEditors.registerPlugin(nicPlugin,nicUploadOptions);
 
+/* START CONFIG */
+var nicCodeOptions = {
+	buttons : {
+		'xhtml' : {name : 'Edit HTML', type : 'nicCodeButton'}
+	}
+	
+};
+/* END CONFIG */
+
+var nicCodeButton = nicEditorAdvancedButton.extend({
+	width : '350px',
+		
+	addPane : function() {
+		this.addForm({
+			'' : {type : 'title', txt : 'Edit HTML'},
+			'code' : {type : 'content', 'value' : this.ne.selectedInstance.getContent(), style : {width: '340px', height : '200px'}}
+		});
+	},
+	
+	submit : function(e) {
+		var code = this.inputs['code'].value;
+		this.ne.selectedInstance.setContent(code);
+		this.removePane();
+	}
+});
+
+nicEditors.registerPlugin(nicPlugin,nicCodeOptions);
 
 
 

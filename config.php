@@ -2,10 +2,12 @@
 
 require 'environment.php';
 
+global $db;
 global $config;
+
 $config = array();
 if (ENVIRONMENT == 'development') {
-    define('BASE_URL', 'http://10.10.1.137/upticket/');    
+    define('BASE_URL', 'http://10.10.1.134/upticket/');    
     $config['dbname'] = 'helpdesk';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
@@ -18,7 +20,8 @@ if (ENVIRONMENT == 'development') {
     $config['dbpass'] = 'root';
 }
 
-global $db;
+date_default_timezone_set('America/Recife');
+
 try {
     $db = new PDO("mysql:dbname=" . $config['dbname'] . "; host=" . $config['host'], $config['dbuser'], $config['dbpass']);
 } catch (PDOException $e) {

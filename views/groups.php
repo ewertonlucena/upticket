@@ -33,7 +33,7 @@
                             <td><a class="link-card" href="<?php echo BASE_URL.'admin/groups/edit/'.$p['id'] ?>"><?php echo $p['name'] ?></a></td>
                             <td><?php echo ($p['active']) ? 'Ativo' : 'Inativo' ?></td>
                             <td class="d-none d-sm-table-cell"><?php echo date_format(date_create($p['create_date']), 'd/m/y') ?></td>
-                            <td><?php echo date_format(date_create($p['update_date']), 'd/m/y g:i A') ?></td>                            
+                            <td><?php echo (empty($p['update_date'])) ? '' : date_format(date_create($p['update_date']), 'd/m/y g:i A') ?></td>                            
                         </tr>
                         <?php endforeach; ?>                        
                     </tbody>

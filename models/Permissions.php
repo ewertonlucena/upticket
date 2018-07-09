@@ -59,7 +59,7 @@ class Permissions extends model {
         $sql->bindValue(':name', $name);
         $sql->bindValue(':params', $params);
         $sql->bindValue(':notes', $notes);
-        $sql->bindParam(':create_date', time());
+        $sql->bindParam(':create_date', date('Y-m-d H:i:s'));
         $sql->execute();
     }
 

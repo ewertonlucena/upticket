@@ -11,7 +11,7 @@
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/nicEdit.js"></script>
         <script type="text/javascript">
             bkLib.onDomLoaded(function() { 
-                nicEditors.allTextAreas({buttonList : ['save','bold','italic','underline','left','center','right','justify','ol','ul','upload','link','unlink','forecolor','bgcolor']});                
+                nicEditors.allTextAreas({buttonList : ['save','bold','italic','underline','left','center','right','justify','ol','ul','upload','link','unlink','forecolor','bgcolor','xhtml']});                
             });
         </script>
         <title>UP Desk</title>
