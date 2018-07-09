@@ -151,17 +151,18 @@ CREATE TABLE IF NOT EXISTS `permissions_groups` (
   `active` tinyint(4) NOT NULL,
   `name` varchar(50) NOT NULL,
   `params` varchar(200) NOT NULL,
-  `admin_notes` tinytext,
-  `create_date` datetime DEFAULT NULL,
-  `update_date` datetime DEFAULT NULL,
+  `admin_notes` text,
+  `create_date` timestamp NULL DEFAULT NULL,
+  `update_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.permissions_groups: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.permissions_groups: ~2 rows (aproximadamente)
 DELETE FROM `permissions_groups`;
 /*!40000 ALTER TABLE `permissions_groups` DISABLE KEYS */;
 INSERT INTO `permissions_groups` (`id`, `active`, `name`, `params`, `admin_notes`, `create_date`, `update_date`) VALUES
-	(1, 1, 'Full Access', '1,2', NULL, '2018-07-05 10:29:10', '2018-07-05 10:29:10');
+	(1, 1, 'Full Access', '1,2', NULL, '2018-07-09 02:24:07', '2018-07-09 02:24:07'),
+	(3, 1, 'dsadas', '20,21,22', 'dasdas', '2018-07-09 02:24:07', '2018-07-09 02:24:07');
 /*!40000 ALTER TABLE `permissions_groups` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.permissions_params
