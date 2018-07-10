@@ -62,6 +62,13 @@ class Permissions extends model {
         $sql->bindParam(':create_date', date('Y-m-d H:i:s'));
         $sql->execute();
     }
+    
+    public function deleteGroups($ids) {
+        $params = join(',', $ids);
+        
+        $sql = $this->db->prepare("DELETE FROM permissions_groups WHERE id IN ($params)");
+        $sql->execute();
+    }
 
     public function getPermissionsList() {
         $array = array();

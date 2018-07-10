@@ -36,16 +36,16 @@
                             <div class="collapse navbar-collapse">
                                 <ul class="navbar-nav mr-0">
                                     <li class="nav-item">
-                                        <a class="nav-link <?php echo ($viewName == 'admin') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin">Dashboard</a>
+                                        <a class="nav-link <?php echo ($viewData['page_level_1'] == 'admin') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin">Dashboard</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link <?php echo ($viewName == 'manage') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/manage">Gestão</a>
+                                        <a class="nav-link <?php echo ($viewData['page_level_1'] == 'manage') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/manage">Gestão</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link <?php echo ($viewName == 'agents') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/agents" href="#">Agentes</a>
+                                        <a class="nav-link <?php echo ($viewData['page_level_1'] == 'agents') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/agents" href="#">Agentes</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link <?php echo ($viewName == 'settings') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/settings">Config</a>
+                                        <a class="nav-link <?php echo ($viewData['page_level_1'] == 'settings') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/settings">Config</a>
                                     </li>
                                 </ul>
                             </div>
@@ -96,16 +96,16 @@
                     <div class="col collapse navbar-dark bg-dark border-bottom border-dark d-sm-none" id="navbarCollapsed">
                         <ul class="navbar-nav mx-0">
                             <li class="nav-item">
-                                <a class="nav-link <?php echo ($viewName == 'admin') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin">Dashboard</a>
+                                <a class="nav-link <?php echo ($viewData['page_level_1'] == 'admin') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php echo ($viewName == 'manage') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/manage">Gestão</a>
+                                <a class="nav-link <?php echo ($viewData['page_level_1'] == 'manage') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/manage">Gestão</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php echo ($viewName == 'agents') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/agents" href="#">Agentes</a>
+                                <a class="nav-link <?php echo ($viewData['page_level_1'] == 'agents') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/agents" href="#">Agentes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php echo ($viewName == 'settings') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/settings">Config</a>
+                                <a class="nav-link <?php echo ($viewData['page_level_1'] == 'settings') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>admin/settings">Config</a>
                             </li>
                         </ul>
                     </div>
@@ -130,16 +130,19 @@
                                             <?php echo (isset($viewData['page_level_1']) and $viewData['page_level_1'] == 'agents') ? 'Gestão de Agentes' : '' ?>
                                         </a>
                                     </li>
-                                    <li class="breadcrumb-item " aria-current="page" style="padding-left: 0px;">
-                                        <a class="btn btn-link px-1 " href="#">Dashboard</a>
+                                    <li class="breadcrumb-item <?php echo (isset($viewData['page_level_2'])) ? 'd-sm-inline-block active' : '' ?> " aria-current="page" style="padding-left: 0px;">
+                                        <a class="btn btn-link px-1 " href="#">
+                                            <?php echo (isset($viewData['page_level_2'])) ? $viewData['page_level_2'] : '' ?>
+                                        </a>
                                     </li>
                                 </ol>
                             </nav>
                             <nav class="d-md-none">
                                 <div class="dropdown drop-ticket">
                                     <button class="btn btn-link <?php echo ($viewName == 'admin' or $viewName == 'settings') ? '' : 'dropdown-toggle' ?>" type="button" id="FastMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <?php echo ($viewData['page_level_1'] == 'manage') ? 'Gestão do Sistema' : '' ?>
-                                        <?php echo ($viewData['page_level_1'] == 'agents') ? 'Gestão de Agentes' : '' ?>
+                                        <?php echo (!isset($viewData['page_level_2']) and $viewData['page_level_1'] == 'manage') ? 'Gestão do Sistema' : '' ?>
+                                        <?php echo (!isset($viewData['page_level_2']) and $viewData['page_level_1'] == 'agents') ? 'Gestão de Agentes' : '' ?>
+                                        <?php echo (isset($viewData['page_level_2'])) ? $viewData['page_level_2'] : '' ?>
                                     </button>
                                     <div class="dropdown-menu fastmenu bg-transparent border-0" aria-labelledby="FastMenu">
                                         <section class="<?php echo ($viewData['page_level_1'] != 'manage') ? 'd-none' : '' ?>" name="manage-menu">

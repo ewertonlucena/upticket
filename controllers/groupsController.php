@@ -15,7 +15,7 @@ class groupsController extends controller {
         }
     }
 
-    public function index() {
+    public function index($msg = '') {
         $data = array();
 
         #instance Models
@@ -27,7 +27,7 @@ class groupsController extends controller {
         $data['staff_name'] = $staff->getName();
         $data['page_level_1'] = 'agents';
         $data['permissions_groups'] = $permissions->getGroupList();
-
+        $data['msg'] = $msg;
 
         $this->loadAdminTemplate('groups', $data);
     }
@@ -43,7 +43,7 @@ class groupsController extends controller {
 
         $data['staff_name'] = $staff->getName();
         $data['page_level_1'] = 'agents';
-        $data['page_level_2'] = 'add';
+        $data['page_level_2'] = 'group_add';
         $data['permissions_list'] = $permissions->getPermissionsList();
 
         if(isset($_POST['name']) && !isset($_POST['ids'])) {
@@ -62,6 +62,25 @@ class groupsController extends controller {
         }
 
         $this->loadAdminTemplate('group_add', $data);
+    }
+    
+    public function delete() {
+        
+        #instance Models
+        $staff = new Staff();
+        $permissions = new Permissions();
+        
+        $staff->setLoggedStaff();
+        
+        if(!isset($_POST['ids'])) { $this->index($msg='Nenhum grupo foi selecionado'); exit; }
+        
+        if(isset($_POST['ids']) && !empty($_POST['ids'])) {
+            $ids = $_POST['ids'];           
+            $permissions->deleteGroups($ids);
+        }
+        header('Location: '.BASE_URL.'admin/groups');
+        exit;
+        
     }
 
     public function edit($id) {

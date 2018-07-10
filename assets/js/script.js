@@ -63,5 +63,13 @@ $(document).ready(function () {
             $('[id^=task]').prop('checked', false);
         }
     });
+    
+    $('#groupAll').click(function(){        
+        if ($(this).prop('checked')) { 
+            $('[id|=group]').prop('checked', true);
+        } else {
+            $('[id|=group]').prop('checked', false);
+        }
+    });
 });
 
