@@ -4911,7 +4911,7 @@ input[type="button"].btn-block {
 
 .alert-success {
   color: #155724;
-  background-color: #d4edda;
+  background-color: #d4edda !important;
   border-color: #c3e6cb;
 }
 
@@ -4939,7 +4939,7 @@ input[type="button"].btn-block {
 
 .alert-warning {
   color: #856404;
-  background-color: #fff3cd;
+  background-color: #fff3cd !important;
   border-color: #ffeeba;
 }
 
@@ -4953,7 +4953,7 @@ input[type="button"].btn-block {
 
 .alert-danger {
   color: #721c24;
-  background-color: #f8d7da;
+  background-color: #f8d7da !important;
   border-color: #f5c6cb;
 }
 

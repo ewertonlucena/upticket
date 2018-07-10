@@ -54,6 +54,20 @@ class Permissions extends model {
         return $GroupList;
     }
     
+    public function getGroupInfo($id) {
+        $array = array();
+        
+        $sql = $this->db->prepare("SELECT * FROM permissions_groups WHERE id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $array = $sql->fetch();
+        }
+        return $array;        
+    }
+
+
     public function addGroup($name, $notes, $params) {        
         $sql = $this->db->prepare("INSERT INTO permissions_groups SET active = 1, name = :name, params = :params, admin_notes = :notes, create_date = :create_date");
         $sql->bindValue(':name', $name);
@@ -64,7 +78,7 @@ class Permissions extends model {
     }
     
     public function deleteGroups($ids) {
-        $params = join(',', $ids);
+        $params = implode(',', $ids);
         
         $sql = $this->db->prepare("DELETE FROM permissions_groups WHERE id IN ($params)");
         $sql->execute();

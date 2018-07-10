@@ -1,1 +1,1 @@
-<?php define("ENVIRONMENT", "development3");
+<?php define("ENVIRONMENT", "development");
