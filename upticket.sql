@@ -109,16 +109,20 @@ CREATE TABLE IF NOT EXISTS `departments` (
   `active` tinyint(4) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `groups_allowed` varchar(200) NOT NULL,
+  `id_leader` int(11) DEFAULT NULL,
   `signature` mediumtext NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.departments: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.departments: ~3 rows (aproximadamente)
 DELETE FROM `departments`;
 /*!40000 ALTER TABLE `departments` DISABLE KEYS */;
+INSERT INTO `departments` (`id`, `active`, `name`, `email`, `id_leader`, `signature`, `create_date`, `update_date`) VALUES
+	(1, 1, 'Suporte', 'noc@bandalargaup.com.br', 0, '', '2018-07-11 10:04:00', NULL),
+	(2, 1, 'NOC', 'noc@bandalargaup.com.br', 0, '', '2018-07-11 10:04:00', NULL),
+	(3, 0, 'N3', 'noc@bandalargaup.com.br', 0, '', '2018-07-11 10:04:00', NULL);
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.help_topics
@@ -155,14 +159,14 @@ CREATE TABLE IF NOT EXISTS `permissions_groups` (
   `create_date` timestamp NULL DEFAULT NULL,
   `update_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.permissions_groups: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.permissions_groups: ~2 rows (aproximadamente)
 DELETE FROM `permissions_groups`;
 /*!40000 ALTER TABLE `permissions_groups` DISABLE KEYS */;
 INSERT INTO `permissions_groups` (`id`, `active`, `name`, `params`, `admin_notes`, `create_date`, `update_date`) VALUES
 	(1, 1, 'Full Access', '1,2', 'teste', '2018-07-09 02:24:07', '2018-07-09 02:24:07'),
-	(16, 1, 'teste', '20,21,22', '<img src="https://i.imgur.com/j6PbQVF.jpg" style="max-width: 100%;"><br><div><font color="#ff6600">dsa</font></div>', '2018-07-10 17:42:34', NULL);
+	(18, 1, 'Acesso PadrÃ£o', '20,21,23,24,2,6,7,13,17,18', 'Acesso PadrÃ£o', '2018-07-11 09:55:02', '2018-07-11 09:57:03');
 /*!40000 ALTER TABLE `permissions_groups` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.permissions_params
@@ -226,13 +230,14 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `update_date` datetime DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.staff: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.staff: ~1 rows (aproximadamente)
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
 INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `p_group`, `department`, `dir_list_show`, `vacation`, `teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, NULL, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
+	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, 1, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL),
+	(2, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 18, 1, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.task
