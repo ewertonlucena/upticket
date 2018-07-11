@@ -60,5 +60,19 @@ class Staff extends model {
             return 0;
         }
     }
-
+    
+    public function hasGroupMembers($ids) {
+        $array = array();
+        $params = implode(',', $ids);
+        
+        $sql = $this->db->prepare("SELECT p_group FROM staff WHERE p_group IN ($params)");
+        $sql->execute();
+        
+        if($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+            $array = array_unique(array_column($array,'p_group'));            
+        }
+        
+        return $array;
+    }
 }

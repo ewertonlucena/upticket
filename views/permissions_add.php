@@ -23,7 +23,7 @@
                 <div class="form-group row d-flex justify-content-end pr-3">
                     <button type="submit" class="btn btn-sm btn-staff border-dark mr-1" form="permission-add">Salvar</button>
                     <button type="reset" class="btn btn-sm btn-staff border-dark mr-1">Cancelar</button>
-                    <a class="btn btn-sm btn-staff border-dark" href="<?php echo BASE_URL.'permissions/'?>">Voltar</a>
+                    <a class="btn btn-sm btn-staff border-dark" href="<?php echo BASE_URL.'admin/permissions/'?>">Voltar</a>
                 </div>                    
             </form>
         </div>

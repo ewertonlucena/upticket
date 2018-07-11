@@ -6,7 +6,7 @@
                 <span class="fas fa-cog fa-sm pr-1"></span><span class="fa-lg dropdown-toggle "></span>
             </button>
             <?php if (isset($info) && !empty($info)): ?>
-                <div class="modal fade" id="modal1">
+                    <div class="modal fade" id="modal1" onClick="window.history.replaceState('', 'UP Desk', '/upticket/admin/groups')">
                     <div class="modal-dialog">
                         <div class="modal-content alert-<?php echo $info['alert'] ?>">
                             <div class="modal-body">
@@ -19,13 +19,18 @@
                                     </div>
                                 </div>
                                 <div class="text-center m-3"><?php echo $info['content']; ?></div>
+                                <?php if ((isset($info['groups']) && !empty($info['groups']))): ?>
+                                <?php for ($i = 0; $i < count($info['groups']); $i++): ?>
+                                <div class="text-capitalize text-center"><?php echo $info['groups'][$i]?></div>
+                                <?php endfor; ?>
+                                <?php endif;?>
                                 <div class="text-right m-3">
                                     <form class="<?php echo (!empty($info['ids'])) ? '' :'d-none'?>" method="POST" id="delete-form">
                                         <input type="hidden" name="ids" value="<?php echo $info['ids'] ?>">
                                         <button
                                             type="submit"
                                             form="delete-form"                                            
-                                            formaction="<?php echo BASE_URL; ?>admin/groups/delete"
+                                            formaction="<?php echo BASE_URL; ?>admin/groups/<?php echo $info['action']; ?>"
                                             class="btn btn-danger btn-sm">
                                             Confirmar
                                         </button>
@@ -37,8 +42,20 @@
                 </div>
             <?php endif; ?>
             <div class="dropdown-menu fa-sm">
-                <a class="dropdown-item" href="<?php echo BASE_URL; ?>admin/groups/mass_enable"><i class="fas fa-check-circle fa-xs mr-1"></i>Ativar</a>
-                <a class="dropdown-item" href="<?php echo BASE_URL; ?>admin/groups/mass_disable"><i class="fas fa-ban fa-xs mr-1"></i>Desativar</a>
+                <button
+                    type="submit"
+                    form="group-form"                    
+                    formaction="<?php echo BASE_URL; ?>admin/groups/enableConfirmation"
+                    class="dropdown-item delete">
+                    <i class="fas fa-check-circle fa-xs mr-1"></i>Ativar
+                </button>
+                <button
+                    type="submit"
+                    form="group-form"                    
+                    formaction="<?php echo BASE_URL; ?>admin/groups/disableConfirmation"
+                    class="dropdown-item delete">
+                    <i class="fas fa-ban fa-xs mr-1"></i>Desativar
+                </button>
                 <button
                     type="submit"
                     form="group-form"                    

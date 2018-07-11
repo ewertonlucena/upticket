@@ -41,6 +41,8 @@ class Permissions extends model {
             return false;
         }
     }
+    
+    
 
     public function getGroupList() {
         $GroupList = array();
@@ -52,6 +54,20 @@ class Permissions extends model {
             $GroupList = $sql->fetchAll();
         }
         return $GroupList;
+    }
+    
+    public function getGroupName($ids) {
+        $array = array();
+        $params = implode(',', $ids);
+        
+        $sql = $this->db->prepare("SELECT name FROM permissions_groups WHERE id IN ($params)");
+        $sql->execute();
+        
+        if($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+            $array = array_column($array, 'name');
+        }
+        return $array;
     }
     
     public function getGroupInfo($id) {
@@ -73,17 +89,48 @@ class Permissions extends model {
         $sql->bindValue(':name', $name);
         $sql->bindValue(':params', $params);
         $sql->bindValue(':notes', $notes);
-        $sql->bindParam(':create_date', date('Y-m-d H:i:s'));
+        $sql->bindValue(':create_date', date('Y-m-d H:i:s'));
+        $sql->execute();
+    }
+    
+    public function editGroup($id, $name, $notes, $params) {
+        $sql = $this->db->prepare("UPDATE permissions_groups SET name = :name, params = :params, admin_notes = :notes, update_date = :update_date WHERE id = :id");
+        $sql->bindValue(':name', $name);
+        $sql->bindValue(':params', $params);
+        $sql->bindValue(':notes', $notes);
+        $sql->bindValue(':update_date', date('Y-m-d H:i:s'));
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+    }
+    
+    public function enableGroups($ids) {
+        $params = implode(',', $ids);
+        
+        $sql = $this->db->prepare("UPDATE permissions_groups SET active = 1 WHERE id IN ($params)");
+        $sql->execute();
+    }
+    
+    public function disableGroups($ids) {
+        $params = implode(',', $ids);
+        
+        $sql = $this->db->prepare("UPDATE permissions_groups SET active = 0 WHERE id IN ($params)");
         $sql->execute();
     }
     
     public function deleteGroups($ids) {
-        $params = implode(',', $ids);
+        $params = implode(',', $ids);        
+        $staff = new Staff();
+        $array = $this->getGroupName($staff->hasGroupMembers($ids));
         
-        $sql = $this->db->prepare("DELETE FROM permissions_groups WHERE id IN ($params)");
-        $sql->execute();
-    }
-
+        
+        if(empty($array)) {
+            $sql = $this->db->prepare("DELETE FROM permissions_groups WHERE id IN ($params)");
+            $sql->execute();          
+        }
+        
+        return $array;
+    }  
+    
     public function getPermissionsList() {
         $array = array();
         

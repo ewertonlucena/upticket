@@ -1,8 +1,22 @@
-<script type="text/javascript">
-    bkLib.onDomLoaded(function() { 
-        new nicEditor({iconsPath : 'http://localhost/upticket/assets/imgs/nicEditorIcons.gif'}).panelInstance('group-notes');
-    });
-</script>
+<?php if (isset($error) && !empty($error)): ?>
+    <div class="modal fade" id="modal1">
+        <div class="modal-dialog">
+            <div class="modal-content alert-danger">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="modal-title">ERRO!</h5>
+                        </div>
+                        <div class="col-2">
+                            <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                        </div>
+                    </div>
+                    <div class="text-center m-3"><?php echo $error; ?></div>                                
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 <div class="container-fluid p-0">
     <div class="row mt-3">
         <div class="col ">
@@ -25,7 +39,7 @@
                 <div class="form-group row">
                     <label for="group-notes" class="col-12 col-form-label-sm">Descrição</label>
                     <div class="col pl-lg-0 pl-xl-3">
-                        <div class="card">
+                        <div class="card fa-xs">
                             <textarea class="form-control form-control-sm" id="group-notes" name="notes"><?php print htmlentities($group_info['admin_notes'])?></textarea>
                         </div>
                     </div>
@@ -104,7 +118,8 @@
                                                                             class="form-check-input"
                                                                             name="ids[]"
                                                                             value="<?php echo $p['id'] ?>"
-                                                                            id="org-<?php echo $p['id'] ?>"
+                                                                            id="org-<?php echo $p['id'] ?>" 
+                                                                            <?php echo (in_array($p['id'], $group_ids)) ? 'checked' : '' ?>
                                                                             />
                                                                     </span>
                                                                     <span class="text-capitalize text-defaut">
@@ -151,7 +166,8 @@
                                                                             class="form-check-input"
                                                                             name="ids[]"
                                                                             value="<?php echo $p['id'] ?>"
-                                                                            id="tckt-<?php echo $p['id'] ?>"
+                                                                            id="tckt-<?php echo $p['id'] ?>" 
+                                                                            <?php echo (in_array($p['id'], $group_ids)) ? 'checked' : '' ?>
                                                                             />
                                                                     </span>
                                                                     <span class="text-capitalize text-defaut">
@@ -198,7 +214,8 @@
                                                                             class="form-check-input"
                                                                             name="ids[]"
                                                                             value="<?php echo $p['id'] ?>"
-                                                                            id="task-<?php echo $p['id'] ?>"
+                                                                            id="task-<?php echo $p['id'] ?>" 
+                                                                            <?php echo (in_array($p['id'], $group_ids)) ? 'checked' : '' ?>
                                                                             />
                                                                     </span>
                                                                     <span class="text-capitalize text-defaut">

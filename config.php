@@ -21,6 +21,7 @@ if (ENVIRONMENT == 'development') {
 }
 
 date_default_timezone_set('America/Recife');
+error_reporting(E_ALL ^ E_NOTICE);
 
 try {
     $db = new PDO("mysql:dbname=" . $config['dbname'] . "; host=" . $config['host'], $config['dbuser'], $config['dbpass']);
