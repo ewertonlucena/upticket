@@ -45,15 +45,15 @@ class Permissions extends model {
     
 
     public function getGroupList() {
-        $GroupList = array();
+        $array = array();
 
         $sql = $this->db->prepare("SELECT * FROM permissions_groups");
         $sql->execute();
 
         if ($sql->rowCount() > 0) {
-            $GroupList = $sql->fetchAll();
+            $array = $sql->fetchAll();
         }
-        return $GroupList;
+        return $array;
     }
     
     public function getGroupName($ids) {

@@ -8,19 +8,30 @@ class departmentsController extends controller {
             exit;
         }
         $staff->setLoggedStaff();
-        if(!$staff->hasPermission('admin')){            
+        if(!$staff->isAdmin()){            
             header("Location: ".BASE_URL);
             exit;
         }
     }    
     
     
-    public function index(){
+    public function index($info = array()){
             $data = array();
+            
             $staff = new Staff();
+            $departments = new Departments();
             $staff->setLoggedStaff();
+            
             $data['staff_name'] = $staff->getName();
             $data['page_level_1'] = 'agents';
+            $data['departments'] = $departments->getDepartmentsList();
+            
+            $data['info'] = $info;
+            $ids = array_column($data['departments'],'id');
+            
+            foreach ($ids as $id) {
+                $data['members'][$id] = $staff->getDepartmentTotalMembers($id);
+            }
             
             $this->loadAdminTemplate('departments', $data);        
     }

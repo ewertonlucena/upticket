@@ -1,5 +1,4 @@
 <?php
-
 class groupsController extends controller {
 
     public function __construct() {
@@ -9,7 +8,7 @@ class groupsController extends controller {
             exit;
         }
         $staff->setLoggedStaff();
-        if (!$staff->hasPermission('admin')) {
+        if (!$staff->isAdmin()) {
             header("Location: " . BASE_URL);
             exit;
         }
@@ -27,6 +26,7 @@ class groupsController extends controller {
         $data['staff_name'] = $staff->getName();
         $data['page_level_1'] = 'agents';
         $data['permissions_groups'] = $permissions->getGroupList();
+        $data['has_members'] = $staff->hasGroupMembers(array_column($data['permissions_groups'], 'id'));        
         $data['info'] = $info;
 
         $this->loadAdminTemplate('groups', $data);

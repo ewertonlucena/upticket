@@ -8,7 +8,7 @@ class settingsController extends controller {
             exit;
         }
         $staff->setLoggedStaff();
-        if(!$staff->hasPermission('admin')){            
+        if(!$staff->isAdmin()){            
             header("Location: ".BASE_URL);
             exit;
         }

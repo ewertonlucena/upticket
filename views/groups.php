@@ -6,7 +6,7 @@
                 <span class="fas fa-cog fa-sm pr-1"></span><span class="fa-lg dropdown-toggle "></span>
             </button>
             <?php if (isset($info) && !empty($info)): ?>
-                    <div class="modal fade" id="modal1" onClick="window.history.replaceState('', 'UP Desk', '/upticket/admin/groups')">
+                    <div class="modal fade" id="modal1" onClick="window.history.replaceState('', 'UP Desk', '/upticket/admin/departments')">
                     <div class="modal-dialog">
                         <div class="modal-content alert-<?php echo $info['alert'] ?>">
                             <div class="modal-body">
@@ -21,7 +21,7 @@
                                 <div class="text-center m-3"><?php echo $info['content']; ?></div>
                                 <?php if ((isset($info['groups']) && !empty($info['groups']))): ?>
                                 <?php for ($i = 0; $i < count($info['groups']); $i++): ?>
-                                <div class="text-capitalize text-center"><?php echo $info['groups'][$i]?></div>
+                                <div class="text-capitalize text-center"><strong><?php echo $info['groups'][$i]?></strong></div>
                                 <?php endfor; ?>
                                 <?php endif;?>
                                 <div class="text-right m-3">
@@ -31,7 +31,7 @@
                                             type="submit"
                                             form="delete-form"                                            
                                             formaction="<?php echo BASE_URL; ?>admin/groups/<?php echo $info['action']; ?>"
-                                            class="btn btn-danger btn-sm">
+                                            class="btn btn-warning btn-sm">
                                             Confirmar
                                         </button>
                                     </form>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <div class="dropdown-menu fa-sm">
+            <div class="dropdown-menu dropdown-menu-right fa-sm">
                 <button
                     type="submit"
                     form="group-form"                    
@@ -94,7 +94,7 @@
                                                 name="ids[]"
                                                 class="form-check-input m-0"
                                                 value="<?php echo $p['id'] ?>"
-                                                <?php echo ($p['id'] == '1') ? 'disabled' : 'id="group-' . $p['id'] . '"' ?>
+                                                <?php echo (in_array($p['id'], $has_members)) ? 'disabled' : 'id="group-' . $p['id'] . '"' ?>
                                                 />
                                         </div>
                                     </td>

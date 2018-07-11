@@ -52,6 +52,15 @@ class Staff extends model {
         public function logout() {
         unset($_SESSION['ccUser']);
     }
+    
+    public function isAdmin() {
+        if (isset($this->staffInfo['admin'])) {
+            return $this->staffInfo['admin'];
+        } else {
+            return 0;
+        }
+    }
+
 
     public function getName() {
         if (isset($this->staffInfo['name'])) {
@@ -75,4 +84,19 @@ class Staff extends model {
         
         return $array;
     }
+    
+    public function getDepartmentTotalMembers($id_department) {
+        
+        
+        $sql = $this->db->prepare("SELECT * FROM staff WHERE department = :id_department");
+        $sql->bindValue(':id_department', $id_department);
+        $sql->execute();
+        
+        $return = $sql->rowCount();
+        
+        return $return;
+                
+                
+    }
+    
 }

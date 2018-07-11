@@ -71,5 +71,13 @@ $(document).ready(function () {
             $('[id|=group]').prop('checked', false);
         }
     });
+    
+    $('#departmentAll').click(function(){        
+        if ($(this).prop('checked')) { 
+            $('[id|=department]').prop('checked', true);
+        } else {
+            $('[id|=department]').prop('checked', false);
+        }
+    });
 });
 
