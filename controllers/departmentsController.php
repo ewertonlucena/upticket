@@ -30,10 +30,28 @@ class departmentsController extends controller {
             $ids = array_column($data['departments'],'id');
             
             foreach ($ids as $id) {
+                $leader_id = $departments->getDepartmentInfo($id);
+                $leader_id = $leader_id['id_leader'];
+                
                 $data['members'][$id] = $staff->getDepartmentTotalMembers($id);
+                $data['leaders'][$id] = $staff->getNameById($leader_id);
             }
             
             $this->loadAdminTemplate('departments', $data);        
+    }
+    
+    public function add(){
+            $data = array();
+            
+            $staff = new Staff();
+            $departments = new Departments();
+            $staff->setLoggedStaff();
+            
+            $data['staff_name'] = $staff->getName();
+            $data['page_level_1'] = 'agents';
+            
+            
+            $this->loadAdminTemplate('departments_add', $data);        
     }
     
 }

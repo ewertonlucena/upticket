@@ -95,8 +95,19 @@ class Staff extends model {
         $return = $sql->rowCount();
         
         return $return;
-                
-                
+        
     }
     
+    public function getNameById($id) {
+        $return = '';
+        
+        $sql = $this->db->prepare("SELECT name FROM staff WHERE id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0) {
+            $return = $sql->fetchColumn();
+        }
+        return $return;
+    }
 }

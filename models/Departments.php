@@ -29,6 +29,10 @@ class Departments extends model {
         return $array;
     }
        
-    
+    public function getLeaderId($id) {
+        
+        
+        
+    }
 }
 

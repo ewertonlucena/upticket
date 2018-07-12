@@ -2,7 +2,7 @@
     <div class="row mt-3">
         <div class="col d-flex justify-content-between">
 
-            <a class="btn btn-staff border-dark fa-xs px-2 ml-1" href="<?php echo BASE_URL; ?>admin/departments/add"><i class="fas fa-plus-circle fa-sm pr-1"></i>Novo Time</a>
+            <a class="btn btn-staff border-dark fa-xs px-2 ml-1" href="<?php echo BASE_URL; ?>admin/departments/add"><i class="fas fa-plus-circle fa-sm pr-1"></i>Novo Setor</a>
             <button class="btn btn-staff border-dark fa-xs px-2 ml-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="fas fa-cog fa-sm pr-1"></span><span class="fa-lg dropdown-toggle "></span>
             </button>
@@ -48,7 +48,7 @@
                             <td><?php echo $d['name']?></td>
                             <td><?php echo ($d['active']) ? 'Ativo' : 'Inativo'?></td>
                             <td><?php echo $members[$d['id']]?></td>
-                            <td><?php echo $d['id_leader']?></td>
+                            <td><?php echo $leaders[$d['id']]?></td>
                             <td class="d-none d-sm-table-cell"><?php echo (empty($d['update_date'])) ? '' : date_format(date_create($d['update_date']), 'd/m/y g:i A')?></td>
                         </tr>
                         <?php endforeach;?>

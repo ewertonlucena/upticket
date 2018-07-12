@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `departments` (
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `id_leader` int(11) DEFAULT NULL,
-  `signature` mediumtext NOT NULL,
+  `signature` text NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `departments` (
 DELETE FROM `departments`;
 /*!40000 ALTER TABLE `departments` DISABLE KEYS */;
 INSERT INTO `departments` (`id`, `active`, `name`, `email`, `id_leader`, `signature`, `create_date`, `update_date`) VALUES
-	(1, 1, 'Suporte', 'noc@bandalargaup.com.br', 0, '', '2018-07-11 10:04:00', NULL),
+	(1, 1, 'Suporte', 'noc@bandalargaup.com.br', 1, '', '2018-07-11 10:04:00', NULL),
 	(2, 1, 'NOC', 'noc@bandalargaup.com.br', 0, '', '2018-07-11 10:04:00', NULL),
 	(3, 0, 'N3', 'noc@bandalargaup.com.br', 0, '', '2018-07-11 10:04:00', NULL);
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
@@ -232,12 +232,12 @@ CREATE TABLE IF NOT EXISTS `staff` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.staff: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.staff: ~2 rows (aproximadamente)
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
 INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `p_group`, `department`, `dir_list_show`, `vacation`, `teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
 	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, 1, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL),
-	(2, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 18, 1, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
+	(2, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 18, 2, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.task
@@ -373,6 +373,21 @@ CREATE TABLE IF NOT EXISTS `tickets_interactions` (
 DELETE FROM `tickets_interactions`;
 /*!40000 ALTER TABLE `tickets_interactions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tickets_interactions` ENABLE KEYS */;
+
+-- Copiando estrutura para view helpdesk.vw_department_staff
+DROP VIEW IF EXISTS `vw_department_staff`;
+-- Criando tabela temporária para evitar erros de dependência de VIEW
+CREATE TABLE `vw_department_staff` (
+	`id` INT(11) NOT NULL,
+	`name` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`department` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci'
+) ENGINE=MyISAM;
+
+-- Copiando estrutura para view helpdesk.vw_department_staff
+DROP VIEW IF EXISTS `vw_department_staff`;
+-- Removendo tabela temporária e criando a estrutura VIEW final
+DROP TABLE IF EXISTS `vw_department_staff`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_department_staff` AS SELECT staff.id, staff.name, departments.name as department FROM departments, staff WHERE staff.department = departments.id ;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
