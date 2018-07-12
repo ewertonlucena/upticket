@@ -6,7 +6,7 @@
                 <span class="fas fa-cog fa-sm pr-1"></span><span class="fa-lg dropdown-toggle "></span>
             </button>
             <?php if (isset($info) && !empty($info)): ?>
-                    <div class="modal fade" id="modal1" onClick="window.history.replaceState('', 'UP Desk', '/upticket/admin/departments')">
+                    <div class="modal fade" id="modal1" onClick="window.history.replaceState('', 'UP Desk', '/upticket/admin/groups')">
                     <div class="modal-dialog">
                         <div class="modal-content alert-<?php echo $info['alert'] ?>">
                             <div class="modal-body">

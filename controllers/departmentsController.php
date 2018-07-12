@@ -49,10 +49,37 @@ class departmentsController extends controller {
             
             $data['staff_name'] = $staff->getName();
             $data['page_level_1'] = 'agents';
+            $data['page_level_2'] = 'departments_add';
             
+            if(isset($_POST['name']) && !empty($_POST['name'])) {
+                $name = addslashes($_POST['name']);
+                $email = addslashes($_POST['email']);
+                $signature = filter_input(INPUT_POST, 'signature', FILTER_SANITIZE_ENCODED);
+                
+                $info['rows'] = $departments->addDepartment($name, $email, $signature);
+                if($info['rows']) {
+                    $info['alert'] = 'success';
+                    $info['header'] = 'SUCESSO';
+                    $info['content'] = 'Novo setor criado com sucesso';
+                    $info['ids'] = '';
+                    $info['action'] = '';
+                } else {
+                    $info['alert'] = 'danger';
+                    $info['header'] = 'ERRO';
+                    $info['content'] = 'Falha ao criar novo setor';
+                    $info['ids'] = '';
+                    $info['action'] = '';
+                }
+                
+                $this->index($info);
+                exit;
+                
+            }
             
             $this->loadAdminTemplate('departments_add', $data);        
     }
+    
+             
     
 }
 

@@ -94,7 +94,7 @@ class Permissions extends model {
     }
     
     public function editGroup($id, $name, $notes, $params) {
-        $sql = $this->db->prepare("UPDATE permissions_groups SET name = :name, params = :params, admin_notes = :notes, update_date = :update_date WHERE id = :id");
+        $sql = $this->db->prepare("UPDATE permissions_groups SET name = :name, params = :params, admin_notes = :notes, update_date = :update_date WHERE id = :id"); 
         $sql->bindValue(':name', $name);
         $sql->bindValue(':params', $params);
         $sql->bindValue(':notes', $notes);

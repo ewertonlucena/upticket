@@ -29,8 +29,26 @@ class Departments extends model {
         return $array;
     }
        
-    public function getLeaderId($id) {
+    public function addDepartment($name, $email, $signature) {
         
+        $sql = $this->db->prepare(""
+                . "INSERT INTO "
+                . "departments "
+                . "SET "
+                . "active = 1, "
+                . "name = :name, "
+                . "email = :email, "
+                . "signature = :signature, "
+                . "create_date = :create_date");
+        $sql->bindValue(':name', $name);
+        $sql->bindValue(':email', $email);
+        $sql->bindValue(':signature', $signature);
+        $sql->bindValue(':create_date', date('Y-m-d H:i:s'));
+        $sql->execute();
+        
+        $rows = $sql->rowCount();
+        
+        return $rows;
         
         
     }

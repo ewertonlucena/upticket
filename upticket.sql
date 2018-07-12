@@ -108,13 +108,13 @@ CREATE TABLE IF NOT EXISTS `departments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `id_leader` int(11) DEFAULT NULL,
-  `signature` text NOT NULL,
+  `signature` text,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.departments: ~3 rows (aproximadamente)
 DELETE FROM `departments`;
@@ -122,7 +122,16 @@ DELETE FROM `departments`;
 INSERT INTO `departments` (`id`, `active`, `name`, `email`, `id_leader`, `signature`, `create_date`, `update_date`) VALUES
 	(1, 1, 'Suporte', 'noc@bandalargaup.com.br', 1, '', '2018-07-11 10:04:00', NULL),
 	(2, 1, 'NOC', 'noc@bandalargaup.com.br', 0, '', '2018-07-11 10:04:00', NULL),
-	(3, 0, 'N3', 'noc@bandalargaup.com.br', 0, '', '2018-07-11 10:04:00', NULL);
+	(3, 0, 'N3', 'noc@bandalargaup.com.br', 0, '', '2018-07-11 10:04:00', NULL),
+	(4, 1, 'teste', 'teste@teste', NULL, 'teste%3Cdiv%3Eteste%3C%2Fdiv%3E%3Cdiv%3Eteste%3C%2Fdiv%3E%3Cdiv%3E%3Cimg%20src%3D%22https%3A%2F%2Fi.imgur.com%2FM8E8iVv.jpg%22%20style%3D%22max-width%3A%20100%25%3B%22%3E%3Cbr%3E%3C%2Fdiv%3E', '2018-07-12 11:47:35', NULL),
+	(5, 1, 'teste', 'teste@teste', NULL, 'teafada%3Cdiv%3Eteasdta%3C%2Fdiv%3E', '2018-07-12 11:49:16', NULL),
+	(6, 1, 'teste', 'teste@teste', NULL, 'teste%3Cdiv%3Eteste%3C%2Fdiv%3E', '2018-07-12 11:50:32', NULL),
+	(7, 1, 'teste', 'teste@teste', NULL, 'assdadas', '2018-07-12 14:24:50', NULL),
+	(8, 1, 'teste', 'teste@teste', NULL, 'teste', '2018-07-12 14:33:38', NULL),
+	(9, 1, 'teste', 'teste@teste', NULL, 'teste', '2018-07-12 15:04:02', NULL),
+	(10, 1, 'teste', 'teste@teste', NULL, 'teste', '2018-07-12 15:04:17', NULL),
+	(11, 1, 'teste', 'testd@teste', NULL, 'teste', '2018-07-12 15:06:56', NULL),
+	(12, 1, 'teste', 'teste@teste', NULL, 'teste', '2018-07-12 15:31:24', NULL);
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.help_topics
@@ -236,8 +245,8 @@ CREATE TABLE IF NOT EXISTS `staff` (
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
 INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `p_group`, `department`, `dir_list_show`, `vacation`, `teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, 1, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL),
-	(2, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', ' de Lucena Gomes', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 18, 2, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
+	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, 1, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL),
+	(2, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 18, 2, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.task
