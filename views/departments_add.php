@@ -1,7 +1,7 @@
 <div class="container-fluid p-0">
     <div class="row mt-3">
         <div class="col">
-            <form method="POST" id="department-add">
+            <form method="POST" id="department-add" class="valid-form">
                 <div class="form-group">
                     <label class="col-form-label-sm" for="department-name">
                         Nome do Setor
@@ -10,9 +10,10 @@
                         <input 
                         class="form-control form-control-sm fa-sm" 
                         type="text" 
-                        id="department-name" 
+                        id="form-name" 
                         name="name" 
                         maxlength="20" 
+                        data-type="validation"
                         data-action="validName" 
                         data-model="Departments" 
                         required
@@ -28,7 +29,7 @@
                     <input 
                         class="col-sm-6 form-control form-control-sm fa-sm" 
                         type="email" 
-                        id="department-email" 
+                        id="form-email" 
                         name="email"
                         maxlength="60"
                         required
