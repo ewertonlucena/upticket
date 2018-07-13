@@ -79,5 +79,42 @@ $(document).ready(function () {
             $('[id|=department]').prop('checked', false);
         }
     });
+    
+    $('[name=name]').focus(function(){
+        $('#valid-icon').removeClass('fa-ban valid-ban fa-check-circle valid-ok').addClass('fa-spinner fa-spin d-none');        
+        $('[type=submit]').prop('disabled', true);
+    });
+    
+    $('[name=name]').blur(function(){
+        
+        $('#valid-icon').removeClass('d-none');        
+        
+        
+        var action = $(this).attr('data-action');
+        var model = $(this).attr('data-model');
+        var name = $(this).val();
+        
+        
+        if(!(name == '') && !(action == undefined) && !(model == undefined)) {
+            setTimeout(function() {
+                $.ajax({
+                    url:BASE_URL+'ajax/'+action,
+                    type:'POST',
+                    data:{name: name, model: model},
+                    dataType:'json',
+                    success:function(json) {
+                       if(json == 1) {                           
+                           $('#valid-icon').removeClass('fa-spinner fa-spin').addClass('fa-ban valid-ban');
+                           $('[type=submit]').prop('disabled', true);
+                       } else {
+                           $('#valid-icon').removeClass('fa-spinner fa-spin').addClass('fa-check-circle valid-ok');
+                           $('[type=submit]').prop('disabled', false);
+                       }
+                    }
+                });
+            }, 1000);
+        }
+        
+    });
 });
 

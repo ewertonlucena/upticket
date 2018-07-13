@@ -390,6 +390,21 @@ hr.blurred {
     color: inherit;
 }
 
+#valid-icon {
+    z-index: 1000;
+    position: absolute;
+    top: 9px;
+    right: 10px;
+}
+
+.valid-ban {
+    color: darkred;
+}
+
+.valid-ok {
+    color: green;
+}
+
 @media (max-width: 576px) {
     .search-input {
         width: 120px;

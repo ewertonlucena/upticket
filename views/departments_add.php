@@ -6,19 +6,25 @@
                     <label class="col-form-label-sm" for="department-name">
                         Nome do Setor
                     </label>
-                    <input 
-                        class="col-sm-6 form-control form-control-sm fa-sm" 
+                    <div class="col-sm-6 p-0">
+                        <input 
+                        class="form-control form-control-sm fa-sm" 
                         type="text" 
                         id="department-name" 
                         name="name" 
-                        maxlength="20"                         
+                        maxlength="20" 
+                        data-action="validName" 
+                        data-model="Departments" 
                         required
                     />
+                    <span id="valid-icon" class="fal fa-sm fa-spinner fa-spin d-none"></span>
+                    </div>
+                    
                 </div>
                 <div class="form-group">
                     <label class="col-form-label-sm" for="department-email">
                         E-mail
-                    </label>
+                    </label>                    
                     <input 
                         class="col-sm-6 form-control form-control-sm fa-sm" 
                         type="email" 
@@ -46,7 +52,7 @@
                     </div>
                 </div>
                 <div class="form-group text-right">
-                    <button class="btn btn-sm btn-staff border-dark" type="submit">Salvar</button>
+                    <button class="btn btn-sm btn-staff border-dark" type="submit" disabled>Salvar</button>
                     <button class="btn btn-sm btn-staff border-dark" onclick="window.location.href = '<?php echo BASE_URL; ?>admin/departments'">Cancelar</button>
                 </div>
 
