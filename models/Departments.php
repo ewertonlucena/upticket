@@ -17,6 +17,8 @@ class Departments extends model {
         return $array;
     }
     
+   
+    
     public function getDepartmentsList() {
         $array = array();
 
@@ -53,15 +55,75 @@ class Departments extends model {
         
     }
     
+    public function editDepartment($id, $name, $email, $signature) {
+        $sql = $this->db->prepare(""
+                . "UPDATE "
+                . "departments "
+                . "SET "
+                . "name = :name, "
+                . "email = :email, "
+                . "signature = :signature, "
+                . "update_date = :update_date "
+                . "WHERE id = :id"); 
+        $sql->bindValue(':name', $name);
+        $sql->bindValue(':email', $email);
+        $sql->bindValue(':signature', $signature);
+        $sql->bindValue(':update_date', date('Y-m-d H:i:s'));
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+        
+        $rows = $sql->rowCount();
+        
+        return $rows;
+    }
+    
+     public function hasMembers($ids) {
+        $sql = $this->db->prepare("SELECT id_department FROM view_department_staff WHERE id_department IN ($ids)");
+        $sql->execute();
+        
+        $return = $sql->rowCount();
+        
+        return $return;
+        
+    }
+    
+    public function deleteDepartments($ids) {
+        
+        $sql = $this->db->prepare("DELETE FROM departments WHERE id IN ($ids)");        
+        $sql->execute();
+        
+        $return = $sql->rowCount();
+        
+        return $return;
+    }
+    
+    public function enableDepartments($ids) {
+        $sql = $this->db->prepare("UPDATE departments SET active = 1 WHERE id IN ($ids)");        
+        $sql->execute();
+        
+        $return = $sql->rowCount();
+        
+        return $return;
+    }
+    
+    public function disableDepartments($ids) {
+        $sql = $this->db->prepare("UPDATE departments SET active = 0 WHERE id IN ($ids)");        
+        $sql->execute();
+        
+        $return = $sql->rowCount();
+        
+        return $return;
+    }
+    
     public function validName($name) {        
         $return = 0;
         
-        $sql = $this->db->prepare("SELECT name FROM departments WHERE name = :name");
+        $sql = $this->db->prepare("SELECT id FROM departments WHERE name = :name");
         $sql->bindValue(':name', $name);
         $sql->execute();
         
         if($sql->rowCount() > 0){
-            $return = 1;
+            $return = $sql->fetchColumn();
         }
         
         return $return;

@@ -1,8 +1,9 @@
 <div class="container-fluid p-0">
     <div class="row mt-3">
         <div class="col">
-            <form method="POST" id="department-edit" class="valid-form">
-                <div class="form-group">                    
+            <form method="POST" id="department-add" class="valid-form">
+                <div class="form-group">
+                    <input type="hidden" name="id" value="<?php echo $department_info['id']?>"/>
                     <label class="col-form-label-sm" for="department-name">
                         Nome do Setor
                     </label>
@@ -15,7 +16,9 @@
                         maxlength="20" 
                         data-type="validation"
                         data-action="validName" 
-                        data-model="Departments"                         
+                        data-model="Departments" 
+                        data-id="<?php echo $department_info['id']?>" 
+                        value="<?php echo $department_info['name']?>" 
                         required
                     />
                     <span id="valid-icon" class="fal fa-sm fa-spinner fa-spin d-none"></span>
@@ -31,7 +34,8 @@
                         type="email" 
                         id="form-email" 
                         name="email"
-                        maxlength="60"                        
+                        maxlength="60"
+                        value="<?php echo $department_info['email']?>"
                         required
                     />
                 </div>
@@ -49,13 +53,14 @@
                 <div class="form-group">
                     <label class="col-form-label-sm" for="department-signature">Assinatura</label>
                     <div class="card">
-                        <textarea id="department-signature" name="signature"></textarea>
+                        <textarea id="department-signature" name="signature"><?php print $department_info['signature']?></textarea>
                     </div>
                 </div>
                 <div class="form-group text-right">
                     <button class="btn btn-sm btn-staff border-dark" type="submit" disabled>Salvar</button>
-                    <button class="btn btn-sm btn-staff border-dark" onclick="window.location.href = '<?php echo BASE_URL; ?>admin/departments'">Cancelar</button>
+                    <a class="btn btn-sm btn-staff border-dark" href="<?php echo BASE_URL; ?>admin/departments">Cancelar</a>
                 </div>
+
             </form>
         </div>
     </div>

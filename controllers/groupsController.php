@@ -188,15 +188,12 @@ class groupsController extends controller {
                     ]
             );
         }
-            
-        
        
     }
     
     public function disableConfirmation() {
         #instance Models
-        $staff = new Staff();
-        $permissions = new Permissions();
+        $staff = new Staff();        
 
         $staff->setLoggedStaff();
 

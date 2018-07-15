@@ -184,4 +184,18 @@ class Permissions extends model {
         $sql = $this->db->prepare("DELETE FROM permissions_params WHERE id IN ($params)");
         $sql->execute();        
     }
+    
+    public function validName($name) {        
+        $return = 0;
+        
+        $sql = $this->db->prepare("SELECT name FROM permissions_groups WHERE name = :name");
+        $sql->bindValue(':name', $name);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $return = 1;
+        }
+        
+        return $return;
+    }
 }

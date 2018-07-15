@@ -86,16 +86,15 @@ $(document).ready(function () {
     });
     
     $('[name=name]').blur(function(){
-        
-        $('#valid-icon').removeClass('d-none');        
-        
-        
+                
         var action = $(this).attr('data-action');
         var model = $(this).attr('data-model');
+        var id = $(this).attr('data-id');
         var name = $(this).val();
         
         
         if(!(name == '') && !(action == undefined) && !(model == undefined)) {
+            $('#valid-icon').removeClass('d-none'); 
             setTimeout(function() {
                 $.ajax({
                     url:BASE_URL+'ajax/'+action,
@@ -103,7 +102,7 @@ $(document).ready(function () {
                     data:{name: name, model: model},
                     dataType:'json',
                     success:function(json) {
-                       if(json == 1) {                           
+                       if((json != 0) &&(json != id)) {                           
                            $('#valid-icon').removeClass('fa-spinner fa-spin').addClass('fa-ban valid-ban');
                            $('[type=submit]').prop('disabled', true);
                        } else {
