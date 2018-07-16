@@ -13,10 +13,12 @@
 
 
 -- Copiando estrutura do banco de dados para helpdesk
+DROP DATABASE IF EXISTS `helpdesk`;
 CREATE DATABASE IF NOT EXISTS `helpdesk` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `helpdesk`;
 
 -- Copiando estrutura para tabela helpdesk.corporations
+DROP TABLE IF EXISTS `corporations`;
 CREATE TABLE IF NOT EXISTS `corporations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
@@ -48,6 +50,7 @@ DELETE FROM `corporations`;
 /*!40000 ALTER TABLE `corporations` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.corporations_contacts
+DROP TABLE IF EXISTS `corporations_contacts`;
 CREATE TABLE IF NOT EXISTS `corporations_contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_corporation` int(11) NOT NULL,
@@ -62,6 +65,7 @@ DELETE FROM `corporations_contacts`;
 /*!40000 ALTER TABLE `corporations_contacts` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.corporations_contracts
+DROP TABLE IF EXISTS `corporations_contracts`;
 CREATE TABLE IF NOT EXISTS `corporations_contracts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_corporation` int(11) NOT NULL,
@@ -76,6 +80,7 @@ DELETE FROM `corporations_contracts`;
 /*!40000 ALTER TABLE `corporations_contracts` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.corporations_users
+DROP TABLE IF EXISTS `corporations_users`;
 CREATE TABLE IF NOT EXISTS `corporations_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_corporation` int(11) DEFAULT NULL,
@@ -98,6 +103,7 @@ DELETE FROM `corporations_users`;
 /*!40000 ALTER TABLE `corporations_users` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.departments
+DROP TABLE IF EXISTS `departments`;
 CREATE TABLE IF NOT EXISTS `departments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
@@ -110,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `departments` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.departments: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.departments: ~5 rows (aproximadamente)
 DELETE FROM `departments`;
 /*!40000 ALTER TABLE `departments` DISABLE KEYS */;
 INSERT INTO `departments` (`id`, `active`, `name`, `email`, `id_leader`, `signature`, `create_date`, `update_date`) VALUES
@@ -122,6 +128,7 @@ INSERT INTO `departments` (`id`, `active`, `name`, `email`, `id_leader`, `signat
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.help_topics
+DROP TABLE IF EXISTS `help_topics`;
 CREATE TABLE IF NOT EXISTS `help_topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
@@ -144,6 +151,7 @@ DELETE FROM `help_topics`;
 /*!40000 ALTER TABLE `help_topics` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.permissions_groups
+DROP TABLE IF EXISTS `permissions_groups`;
 CREATE TABLE IF NOT EXISTS `permissions_groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
@@ -153,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `permissions_groups` (
   `create_date` timestamp NULL DEFAULT NULL,
   `update_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.permissions_groups: ~2 rows (aproximadamente)
 DELETE FROM `permissions_groups`;
@@ -164,6 +172,7 @@ INSERT INTO `permissions_groups` (`id`, `active`, `name`, `params`, `admin_notes
 /*!40000 ALTER TABLE `permissions_groups` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.permissions_params
+DROP TABLE IF EXISTS `permissions_params`;
 CREATE TABLE IF NOT EXISTS `permissions_params` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `p_group` varchar(50) NOT NULL,
@@ -201,6 +210,7 @@ INSERT INTO `permissions_params` (`id`, `p_group`, `name`, `description`) VALUES
 /*!40000 ALTER TABLE `permissions_params` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.staff
+DROP TABLE IF EXISTS `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(1) NOT NULL,
@@ -216,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `department` int(11) DEFAULT NULL,
   `dir_list_show` tinyint(1) NOT NULL,
   `vacation` tinyint(1) NOT NULL,
-  `teams` varchar(200) DEFAULT NULL,
+  `id_teams` varchar(200) DEFAULT NULL,
   `admin_notes` mediumtext,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
@@ -227,12 +237,13 @@ CREATE TABLE IF NOT EXISTS `staff` (
 -- Copiando dados para a tabela helpdesk.staff: ~2 rows (aproximadamente)
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `p_group`, `department`, `dir_list_show`, `vacation`, `teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, 1, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL),
+INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `p_group`, `department`, `dir_list_show`, `vacation`, `id_teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
+	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, 1, 0, 0, '1', NULL, '2018-06-14 14:36:24', NULL, NULL),
 	(2, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 18, 3, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.task
+DROP TABLE IF EXISTS `task`;
 CREATE TABLE IF NOT EXISTS `task` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` varchar(50) NOT NULL,
@@ -256,6 +267,7 @@ DELETE FROM `task`;
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.tasks_attachments
+DROP TABLE IF EXISTS `tasks_attachments`;
 CREATE TABLE IF NOT EXISTS `tasks_attachments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_task` int(11) NOT NULL,
@@ -270,6 +282,7 @@ DELETE FROM `tasks_attachments`;
 /*!40000 ALTER TABLE `tasks_attachments` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.tasks_interactions
+DROP TABLE IF EXISTS `tasks_interactions`;
 CREATE TABLE IF NOT EXISTS `tasks_interactions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_task` int(11) NOT NULL,
@@ -287,24 +300,30 @@ DELETE FROM `tasks_interactions`;
 /*!40000 ALTER TABLE `tasks_interactions` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.teams
+DROP TABLE IF EXISTS `teams`;
 CREATE TABLE IF NOT EXISTS `teams` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `leader_id` int(11) NOT NULL,
+  `id_leader` int(11) NOT NULL,
   `disable_alerts` tinyint(4) NOT NULL,
   `admin_notes` mediumtext,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.teams: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.teams: ~5 rows (aproximadamente)
 DELETE FROM `teams`;
 /*!40000 ALTER TABLE `teams` DISABLE KEYS */;
+INSERT INTO `teams` (`id`, `active`, `name`, `id_leader`, `disable_alerts`, `admin_notes`, `create_date`, `update_date`) VALUES
+	(1, '1', 'NOC 01', 1, 0, 'teste', '2018-07-15 20:29:32', '2018-07-15 23:30:34'),
+	(3, '1', 'teste', 0, 0, 'teste', '2018-07-15 21:38:06', '2018-07-15 23:30:34'),
+	(5, '1', 'test', 0, 0, 'teste&lt;div&gt;&lt;img src=&quot;https://i.imgur.com/UwOsAsw.png&quot; style=&quot;max-width: 100%;&quot;&gt;&lt;br&gt;&lt;/div&gt;', '2018-07-15 22:08:36', '2018-07-15 23:34:12');
 /*!40000 ALTER TABLE `teams` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.tickets
+DROP TABLE IF EXISTS `tickets`;
 CREATE TABLE IF NOT EXISTS `tickets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` varchar(50) NOT NULL,
@@ -329,6 +348,7 @@ DELETE FROM `tickets`;
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.tickets_attachments
+DROP TABLE IF EXISTS `tickets_attachments`;
 CREATE TABLE IF NOT EXISTS `tickets_attachments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ticket` int(11) NOT NULL,
@@ -343,6 +363,7 @@ DELETE FROM `tickets_attachments`;
 /*!40000 ALTER TABLE `tickets_attachments` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.tickets_interactions
+DROP TABLE IF EXISTS `tickets_interactions`;
 CREATE TABLE IF NOT EXISTS `tickets_interactions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ticket` int(11) NOT NULL,
@@ -359,7 +380,17 @@ DELETE FROM `tickets_interactions`;
 /*!40000 ALTER TABLE `tickets_interactions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tickets_interactions` ENABLE KEYS */;
 
+-- Copiando estrutura para view helpdesk.view_departments_leaders
+DROP VIEW IF EXISTS `view_departments_leaders`;
+-- Criando tabela temporária para evitar erros de dependência de VIEW
+CREATE TABLE `view_departments_leaders` (
+	`id_department` INT(11) NOT NULL,
+	`department` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`leader` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci'
+) ENGINE=MyISAM;
+
 -- Copiando estrutura para view helpdesk.view_department_staff
+DROP VIEW IF EXISTS `view_department_staff`;
 -- Criando tabela temporária para evitar erros de dependência de VIEW
 CREATE TABLE `view_department_staff` (
 	`id` INT(11) NOT NULL,
@@ -368,10 +399,48 @@ CREATE TABLE `view_department_staff` (
 	`department` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci'
 ) ENGINE=MyISAM;
 
+-- Copiando estrutura para view helpdesk.view_teams_leaders
+DROP VIEW IF EXISTS `view_teams_leaders`;
+-- Criando tabela temporária para evitar erros de dependência de VIEW
+CREATE TABLE `view_teams_leaders` (
+	`id_team` INT(11) NOT NULL,
+	`team` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`leader` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci'
+) ENGINE=MyISAM;
+
+-- Copiando estrutura para view helpdesk.view_teams_members
+DROP VIEW IF EXISTS `view_teams_members`;
+-- Criando tabela temporária para evitar erros de dependência de VIEW
+CREATE TABLE `view_teams_members` (
+	`id_staff` INT(11) NOT NULL,
+	`name` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`id_team` INT(11) NOT NULL,
+	`team` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci'
+) ENGINE=MyISAM;
+
+-- Copiando estrutura para view helpdesk.view_departments_leaders
+DROP VIEW IF EXISTS `view_departments_leaders`;
+-- Removendo tabela temporária e criando a estrutura VIEW final
+DROP TABLE IF EXISTS `view_departments_leaders`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_departments_leaders` AS SELECT departments.id as id_department, departments.name as department, staff.name as leader FROM staff, departments WHERE staff.id = departments.id_leader ;
+
 -- Copiando estrutura para view helpdesk.view_department_staff
+DROP VIEW IF EXISTS `view_department_staff`;
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `view_department_staff`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_department_staff` AS SELECT staff.id, staff.name, departments.id as id_department, departments.name as department FROM departments, staff WHERE staff.department = departments.id ;
+
+-- Copiando estrutura para view helpdesk.view_teams_leaders
+DROP VIEW IF EXISTS `view_teams_leaders`;
+-- Removendo tabela temporária e criando a estrutura VIEW final
+DROP TABLE IF EXISTS `view_teams_leaders`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_teams_leaders` AS SELECT teams.id as id_team, teams.name as team, staff.name as leader FROM staff, teams WHERE staff.id = teams.id_leader ;
+
+-- Copiando estrutura para view helpdesk.view_teams_members
+DROP VIEW IF EXISTS `view_teams_members`;
+-- Removendo tabela temporária e criando a estrutura VIEW final
+DROP TABLE IF EXISTS `view_teams_members`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_teams_members` AS SELECT staff.id as id_staff, staff.name, teams.id as id_team, teams.name as team FROM staff, teams WHERE staff.id_teams = teams.id ;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

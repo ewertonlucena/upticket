@@ -188,12 +188,12 @@ class Permissions extends model {
     public function validName($name) {        
         $return = 0;
         
-        $sql = $this->db->prepare("SELECT name FROM permissions_groups WHERE name = :name");
+        $sql = $this->db->prepare("SELECT id FROM permissions_groups WHERE name = :name");
         $sql->bindValue(':name', $name);
         $sql->execute();
         
         if($sql->rowCount() > 0){
-            $return = 1;
+            $return = $sql->fetchColumn();
         }
         
         return $return;

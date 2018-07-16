@@ -80,6 +80,14 @@ $(document).ready(function () {
         }
     });
     
+     $('#teamAll').click(function(){        
+        if ($(this).prop('checked')) { 
+            $('[id|=team]').prop('checked', true);
+        } else {
+            $('[id|=team]').prop('checked', false);
+        }
+    });
+    
     $('[name=name]').focus(function(){
         $('#valid-icon').removeClass('fa-ban valid-ban fa-check-circle valid-ok').addClass('fa-spinner fa-spin d-none');        
         $('[type=submit]').prop('disabled', true);

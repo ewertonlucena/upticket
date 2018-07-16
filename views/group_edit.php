@@ -21,32 +21,34 @@
     <div class="row mt-3">
         <div class="col ">
             <form method="POST" id="group-add">
-                <div class="form-group row">
+                <div class="form-group">
                     <input type="hidden" name="id" value="<?php echo $group_info['id']?>"/>
-                    <label for="group-name" class="col-12 col-form-label-sm">Nome do Grupo</label>
-                    <div class="col-7 pl-lg-0 pl-xl-3">
+                    <label for="group-name" class="col-form-label-sm">Nome do Grupo</label>
+                    <div class="col-sm-6 p-0">
                         <input 
                             type="text" 
                             class="form-control form-control-sm" 
                             id="group-name" 
                             name="name" 
                             maxlength="20" 
+                            data-action="validName" 
+                            data-model="Permissions" 
+                            data-id="<?php echo $group_info['id']?>" 
                             required 
                             value="<?php echo $group_info['name']?>"
                         />
+                        <span id="valid-icon" class="fal fa-sm fa-spinner fa-spin d-none"></span>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="group-notes" class="col-12 col-form-label-sm">Descrição</label>
-                    <div class="col pl-lg-0 pl-xl-3">
-                        <div class="card fa-xs">
-                            <textarea class="form-control form-control-sm" id="group-notes" name="notes"><?php print htmlentities($group_info['admin_notes'])?></textarea>
-                        </div>
+                <div class="form-group">
+                    <label for="group-notes" class="col-form-label-sm">Descrição</label>
+                    <div class="card fa-xs">
+                        <textarea class="form-control form-control-sm" id="group-notes" name="notes"><?php print htmlentities($group_info['admin_notes'])?></textarea>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="group-permissions" class="col-12 col-form-label-sm">Permissões</label>
-                    <div class="col pl-lg-0 pl-xl-3">
+                <div class="form-group">
+                    <label for="group-permissions" class="col-form-label-sm">Permissões</label>
+                    <div class="col p-0">
                         <div class="container-fluid p-0">
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
