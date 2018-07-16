@@ -122,6 +122,233 @@ class teamsController extends controller {
         $this->loadAdminTemplate('teams_edit', $data);        
     }
     
+    public function enableConfirmation() {
+        #instance Models
+        $staff = new Staff();        
+
+        $staff->setLoggedStaff();
+        
+        $ids = filter_input(INPUT_POST, 'ids',FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
+
+        if (empty($ids)) {
+            $this->index(
+                    $info = [
+                        'alert' => 'danger',
+                        'header' => 'Falha ao ativar times',
+                        'content' => 'Nenhum time foi selecionado',
+                        'ids' => '',
+                        'action' => ''
+                    ]
+            );
+            exit;
+        } else {
+           $this->index(
+                $info = [
+                    'alert' => 'warning',
+                    'header' => 'Alerta',
+                    'content' => 'Deseja ativar ' . count($ids) . ' setor(es) selecionado(s)',
+                    'ids' => join(',',$ids),
+                    'action' => 'enable'
+                ]
+            );
+              
+        }
+        
+    }
+    
+    public function enable() {
+        
+        $staff = new Staff();
+        $teams = new Teams();
+        
+        $staff->setLoggedStaff();
+        
+        $ids = filter_input(INPUT_POST, 'ids', FILTER_SANITIZE_MAGIC_QUOTES);
+        
+        $members = $teams->hasTeamMembers($ids);
+        if (empty($members)) {
+            $enabled = $teams->enableTeams($ids);
+        } else {
+            $enabled = 0;
+        }
+        
+        if(!empty($enabled)){
+            $this->index(
+                    $info = [
+                        'alert' => 'success',
+                        'header' => 'Sucesso',
+                        'content' => $enabled.' times ativados com sucesso!',
+                        'ids' => '',
+                        'action' => ''
+                        
+                    ]
+            );
+        } else {
+            $this->index(
+                    $info = [
+                        'alert' => 'danger',
+                        'header' => 'Falha',
+                        'content' => 'Não foi possível ativar os times selecionados!',
+                        'ids' => '',
+                        'action' => ''
+                        
+                    ]
+            );
+        }
+        
+    }
+    
+    public function disableConfirmation() {
+        #instance Models
+        $staff = new Staff();        
+
+        $staff->setLoggedStaff();
+        
+        $ids = filter_input(INPUT_POST, 'ids',FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
+
+        if (empty($ids)) {
+            $this->index(
+                    $info = [
+                        'alert' => 'danger',
+                        'header' => 'Falha ao desativar times',
+                        'content' => 'Nenhum time foi selecionado',
+                        'ids' => '',
+                        'action' => ''
+                    ]
+            );
+            exit;
+        } else {
+           $this->index(
+                $info = [
+                    'alert' => 'warning',
+                    'header' => 'Alerta',
+                    'content' => 'Deseja desativar ' . count($ids) . ' setor(es) selecionado(s)',
+                    'ids' => join(',',$ids),
+                    'action' => 'disable'
+                ]
+            );
+              
+        }
+        
+    }
+    
+    public function disable() {
+        
+        $staff = new Staff();
+        $teams = new Teams();
+        
+        $staff->setLoggedStaff();
+        
+        $ids = filter_input(INPUT_POST, 'ids', FILTER_SANITIZE_MAGIC_QUOTES);
+        
+        $members = $teams->hasTeamMembers($ids);
+        if (empty($members)) {
+            $enabled = $teams->disableTeams($ids);
+        } else {
+            $enabled = 0;
+        }
+        
+        if(!empty($enabled)){
+            $this->index(
+                    $info = [
+                        'alert' => 'success',
+                        'header' => 'Sucesso',
+                        'content' => $enabled.' times desativados com sucesso!',
+                        'ids' => '',
+                        'action' => ''
+                        
+                    ]
+            );
+        } else {
+            $this->index(
+                    $info = [
+                        'alert' => 'danger',
+                        'header' => 'Falha',
+                        'content' => 'Não foi possível desativar os times selecionados!',
+                        'ids' => '',
+                        'action' => ''
+                        
+                    ]
+            );
+        }
+        
+    }    
+    
+    public function deleteConfirmation() {
+        #instance Models
+        $staff = new Staff();        
+
+        $staff->setLoggedStaff();
+        
+        $ids = filter_input(INPUT_POST, 'ids',FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);        
+        
+        if (empty($ids)) {
+            $this->index(
+                    $info = [
+                        'alert' => 'danger',
+                        'header' => 'Falha ao apagar times',
+                        'content' => 'Nenhum time foi selecionado',
+                        'ids' => '',
+                        'action' => ''
+                    ]
+            );
+            
+        } else {
+           $this->index(
+                $info = [
+                    'alert' => 'warning',
+                    'header' => 'Alerta',
+                    'content' => 'Deseja apagar ' . count($ids) . ' time(s) selecionado(s)',
+                    'ids' => join(',',$ids),
+                    'action' => 'delete'
+                ]
+            );
+              
+        }
+        
+    }
+    
+    public function delete() {
+        
+        $staff = new Staff();
+        $teams = new Teams();
+        
+        $staff->setLoggedStaff();
+        
+        $ids = filter_input(INPUT_POST, 'ids', FILTER_SANITIZE_MAGIC_QUOTES);
+        
+        $members = $teams->hasTeamMembers($ids);
+        if (empty($members)) {
+            $deleted = $teams->deleteTeams($ids);
+        } else {
+            $deleted = 0;
+        }
+        
+        if(!empty($deleted)){
+            $this->index(
+                    $info = [
+                        'alert' => 'success',
+                        'header' => 'Sucesso',
+                        'content' => $deleted.' times apagados com sucesso!',
+                        'ids' => '',
+                        'action' => ''
+                        
+                    ]
+            );
+        } else {
+            $this->index(
+                    $info = [
+                        'alert' => 'danger',
+                        'header' => 'Falha',
+                        'content' => 'Não foi possível apagar os times selecionados!',
+                        'ids' => '',
+                        'action' => ''
+                        
+                    ]
+            );
+        }
+        
+    }
     
 }
 

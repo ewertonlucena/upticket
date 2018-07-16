@@ -48,14 +48,14 @@
                 </button>
                 <button
                     class="dropdown-item"
-                    form="teams-form"
+                    form="team-form"
                     formaction="<?php echo BASE_URL; ?>admin/teams/disableConfirmation">
                     <i class="fas fa-ban fa-xs mr-1"></i>
                     Desativar
                 </button>
                 <button
                     type="submit"
-                    form="teams-form"
+                    form="team-form"
                     class="dropdown-item"
                     formaction="<?php echo BASE_URL; ?>admin/teams/deleteConfirmation">
                     <i class="fas fa-trash-alt fa-xs mr-1"></i>

@@ -92,6 +92,44 @@ class Teams extends model {
         return $return;        
     }
     
+    public function hasTeamMembers($ids) {
+        $sql = $this->db->prepare("SELECT id_team FROM view_teams_members WHERE id_team IN ($ids)");
+        $sql->execute();
+        
+        $return = $sql->rowCount();
+        
+        return $return;
+        
+    }
+    
+    public function enableTeams($ids) {
+        $sql = $this->db->prepare("UPDATE teams SET active = 1 WHERE id IN ($ids)");        
+        $sql->execute();
+        
+        $return = $sql->rowCount();
+        
+        return $return;
+    }
+    
+    public function disableTeams($ids) {
+        $sql = $this->db->prepare("UPDATE teams SET active = 0 WHERE id IN ($ids)");        
+        $sql->execute();
+        
+        $return = $sql->rowCount();
+        
+        return $return;
+    }
+    
+    public function deleteTeams($ids) {
+        
+        $sql = $this->db->prepare("DELETE FROM teams WHERE id IN ($ids)");        
+        $sql->execute();
+        
+        $return = $sql->rowCount();
+        
+        return $return;
+    }
+    
     public function validName($name) {        
         $return = 0;
         

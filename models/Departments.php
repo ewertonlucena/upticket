@@ -77,7 +77,7 @@ class Departments extends model {
         return $rows;
     }
     
-     public function hasMembers($ids) {
+    public function hasMembers($ids) {
         $sql = $this->db->prepare("SELECT id_department FROM view_department_staff WHERE id_department IN ($ids)");
         $sql->execute();
         

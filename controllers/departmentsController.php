@@ -282,7 +282,7 @@ class departmentsController extends controller {
             $this->index(
                     $info = [
                         'alert' => 'danger',
-                        'header' => 'Falha ao apagar grupos',
+                        'header' => 'Falha ao desativar setores',
                         'content' => 'Nenhum setor foi selecionado',
                         'ids' => '',
                         'action' => ''
