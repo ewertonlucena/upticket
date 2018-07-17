@@ -32,6 +32,14 @@ $(document).ready(function () {
         }
     });
     
+    $('#agentAll').click(function(){        
+        if ($(this).prop('checked')) { 
+            $('[id|=agent]').prop('checked', true);
+        } else {
+            $('[id|=agent]').prop('checked', false);
+        }
+    });
+    
     $('#clntAll').click(function(){        
         if ($(this).prop('checked')) { 
             $('[id^=clnt]').prop('checked', true);

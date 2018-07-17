@@ -1,7 +1,7 @@
 <div class="container-fluid p-0">
     <div class="row mt-3">
         <div class="col">
-            <form method="POST" id="team-edit" class="valid-form">
+            <form method="POST" id="team-add" class="valid-form">
                 <div class="form-group">                    
                     <label class="col-form-label-sm" for="team-name">
                         Nome do Time    
