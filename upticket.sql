@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
 INSERT INTO `staff` (`id`, `active`, `admin`, `login`, `pass`, `name`, `full_name`, `email`, `phone`, `mobile`, `signature`, `p_group`, `department`, `dir_list_show`, `vacation`, `id_teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', NULL, 1, 1, 0, 0, '1', NULL, '2018-06-14 14:36:24', NULL, NULL),
+	(1, 1, 1, 'ewertonlucena', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', NULL, 1, 1, 0, 0, '1', NULL, '2018-06-14 14:36:24', NULL, '2018-07-17 09:16:17'),
 	(2, 1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', NULL, 18, 3, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
