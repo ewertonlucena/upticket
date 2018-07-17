@@ -214,20 +214,21 @@ DROP TABLE IF EXISTS `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `active` tinyint(1) NOT NULL,
+  `admin` tinyint(1) NOT NULL,
   `login` varchar(50) NOT NULL,
   `pass` varchar(32) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `surname` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `full_name` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `mobile` varchar(50) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
+  `signature` text,
   `p_group` int(11) DEFAULT NULL,
   `department` int(11) DEFAULT NULL,
   `dir_list_show` tinyint(1) NOT NULL,
   `vacation` tinyint(1) NOT NULL,
   `id_teams` varchar(200) DEFAULT NULL,
-  `admin_notes` mediumtext,
+  `admin_notes` text,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
@@ -237,9 +238,9 @@ CREATE TABLE IF NOT EXISTS `staff` (
 -- Copiando dados para a tabela helpdesk.staff: ~2 rows (aproximadamente)
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` (`id`, `active`, `login`, `pass`, `name`, `surname`, `email`, `phone`, `mobile`, `admin`, `p_group`, `department`, `dir_list_show`, `vacation`, `id_teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 1, 1, 0, 0, '1', NULL, '2018-06-14 14:36:24', NULL, NULL),
-	(2, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', 1, 18, 3, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
+INSERT INTO `staff` (`id`, `active`, `admin`, `login`, `pass`, `name`, `full_name`, `email`, `phone`, `mobile`, `signature`, `p_group`, `department`, `dir_list_show`, `vacation`, `id_teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
+	(1, 1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', NULL, 1, 1, 0, 0, '1', NULL, '2018-06-14 14:36:24', NULL, NULL),
+	(2, 1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', NULL, 18, 3, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.task
@@ -311,15 +312,15 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.teams: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.teams: ~3 rows (aproximadamente)
 DELETE FROM `teams`;
 /*!40000 ALTER TABLE `teams` DISABLE KEYS */;
 INSERT INTO `teams` (`id`, `active`, `name`, `id_leader`, `disable_alerts`, `admin_notes`, `create_date`, `update_date`) VALUES
 	(1, '1', 'NOC 01', 1, 0, 'teste', '2018-07-15 20:29:32', '2018-07-15 23:30:34'),
-	(3, '1', 'teste', 0, 0, 'teste', '2018-07-15 21:38:06', '2018-07-15 23:30:34'),
-	(5, '1', 'test', 0, 0, 'teste&lt;div&gt;&lt;img src=&quot;https://i.imgur.com/UwOsAsw.png&quot; style=&quot;max-width: 100%;&quot;&gt;&lt;br&gt;&lt;/div&gt;', '2018-07-15 22:08:36', '2018-07-15 23:34:12');
+	(7, '1', 'teste', 0, 0, 'teste', '2018-07-16 09:37:18', NULL),
+	(8, '1', 'teste12', 0, 0, 'teste', '2018-07-16 09:37:24', NULL);
 /*!40000 ALTER TABLE `teams` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.tickets
@@ -386,7 +387,7 @@ DROP VIEW IF EXISTS `view_departments_leaders`;
 CREATE TABLE `view_departments_leaders` (
 	`id_department` INT(11) NOT NULL,
 	`department` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
-	`leader` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci'
+	`leader` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci'
 ) ENGINE=MyISAM;
 
 -- Copiando estrutura para view helpdesk.view_department_staff
@@ -394,7 +395,7 @@ DROP VIEW IF EXISTS `view_department_staff`;
 -- Criando tabela temporária para evitar erros de dependência de VIEW
 CREATE TABLE `view_department_staff` (
 	`id` INT(11) NOT NULL,
-	`name` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`name` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
 	`id_department` INT(11) NOT NULL,
 	`department` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci'
 ) ENGINE=MyISAM;
@@ -405,7 +406,7 @@ DROP VIEW IF EXISTS `view_teams_leaders`;
 CREATE TABLE `view_teams_leaders` (
 	`id_team` INT(11) NOT NULL,
 	`team` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
-	`leader` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci'
+	`leader` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci'
 ) ENGINE=MyISAM;
 
 -- Copiando estrutura para view helpdesk.view_teams_members
@@ -413,7 +414,7 @@ DROP VIEW IF EXISTS `view_teams_members`;
 -- Criando tabela temporária para evitar erros de dependência de VIEW
 CREATE TABLE `view_teams_members` (
 	`id_staff` INT(11) NOT NULL,
-	`name` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`name` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
 	`id_team` INT(11) NOT NULL,
 	`team` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci'
 ) ENGINE=MyISAM;
