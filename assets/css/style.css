@@ -390,7 +390,7 @@ hr.blurred {
     color: inherit;
 }
 
-#valid-icon {
+#valid-icon, #valid-name, #valid-login {
     z-index: 1000;
     position: absolute;
     top: 9px;

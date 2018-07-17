@@ -20,7 +20,7 @@
                         value="<?php echo $team_info['name']?>"
                         required
                     />
-                    <span id="valid-icon" class="fal fa-sm fa-spinner fa-spin d-none"></span>
+                    <span id="valid-name" class="fal fa-sm fa-spinner fa-spin d-none"></span>
                     </div>
                     
                 </div>                

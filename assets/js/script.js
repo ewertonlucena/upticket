@@ -97,7 +97,7 @@ $(document).ready(function () {
     });
     
     $('[name=name]').focus(function(){
-        $('#valid-icon').removeClass('fa-ban valid-ban fa-check-circle valid-ok').addClass('fa-spinner fa-spin d-none');        
+        $('#valid-name').removeClass('fa-ban valid-ban fa-check-circle valid-ok').addClass('fa-spinner fa-spin d-none');        
         $('[type=submit]').prop('disabled', true);
     });
     
@@ -110,7 +110,7 @@ $(document).ready(function () {
         
         
         if(!(name == '') && !(action == undefined) && !(model == undefined)) {
-            $('#valid-icon').removeClass('d-none'); 
+            $('#valid-name').removeClass('d-none'); 
             setTimeout(function() {
                 $.ajax({
                     url:BASE_URL+'ajax/'+action,
@@ -118,18 +118,70 @@ $(document).ready(function () {
                     data:{name: name, model: model},
                     dataType:'json',
                     success:function(json) {
-                       if((json != 0) &&(json != id)) {                           
-                           $('#valid-icon').removeClass('fa-spinner fa-spin').addClass('fa-ban valid-ban');
-                           $('[type=submit]').prop('disabled', true);
-                       } else {
-                           $('#valid-icon').removeClass('fa-spinner fa-spin').addClass('fa-check-circle valid-ok');
-                           $('[type=submit]').prop('disabled', false);
+                       if((json != 0) &&(json != id)) {
+                           
+                           $('#valid-name').removeClass('fa-spinner fa-spin').addClass('fa-ban valid-ban');
+                           $('[type=submit]').prop('disabled', true);                           
+                           
+                       } else { 
+                           $('#valid-name').removeClass('fa-spinner fa-spin').addClass('fa-check-circle valid-ok');
+                           if ($('[name=login]').length > 0) {                               
+                              if($('#valid-login.valid-ok').length > 0) {
+                                   $('[type=submit]').prop('disabled', false);
+                               }    
+                           } else {                                     
+                               $('[type=submit]').prop('disabled', false);
+                           }
+                           
                        }
                     }
                 });
             }, 1000);
-        }
+        }        
+    });
+    
+    $('[name=login]').focus(function(){
+        $('#valid-login').removeClass('fa-ban valid-ban fa-check-circle valid-ok').addClass('fa-spinner fa-spin d-none');        
+        $('[type=submit]').prop('disabled', true);
+    });
+    
+    $('[name=login]').blur(function(){
+                
+        var action = $(this).attr('data-action');
+        var model = $(this).attr('data-model');
+        var id = $(this).attr('data-id');
+        var login = $(this).val();
         
+        
+        if(!(login == '') && !(action == undefined) && !(model == undefined)) {
+            $('#valid-login').removeClass('d-none'); 
+            setTimeout(function() {
+                $.ajax({
+                    url:BASE_URL+'ajax/'+action,
+                    type:'POST',
+                    data:{login: login, model: model},
+                    dataType:'json',
+                    success:function(json) {
+                       if((json != 0) &&(json != id)) {                           
+                           
+                           $('#valid-login').removeClass('fa-spinner fa-spin').addClass('fa-ban valid-ban');
+                           $('[type=submit]').prop('disabled', true);
+                           
+                       } else {
+                           $('#valid-login').removeClass('fa-spinner fa-spin').addClass('fa-check-circle valid-ok');
+                           if($('[name=name]').length > 0) {
+                               if($('#valid-name.valid-ok').length > 0) {
+                                   $('[type=submit]').prop('disabled', false);
+                               }                               
+                           } else {
+                               $('[type=submit]').prop('disabled', false);
+                           }
+                            
+                       }
+                    }
+                });
+            }, 1000);
+        }        
     });
 });
 

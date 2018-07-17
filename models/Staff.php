@@ -22,7 +22,11 @@ class Staff extends model {
         if ($sql->rowCount() > 0) {
             $this->staffInfo = $sql->fetch();
             $_SESSION['ccUser'] = $this->staffInfo['id'];
-
+            $id = $_SESSION['ccUser'];
+            $sql = $this->db->prepare("UPDATE staff SET last_login = :last_login WHERE id = :id");
+            $sql->bindValue(':id', $id);
+            $sql->bindValue(':last_login', date('Y-m-d H:i:s'));
+            $sql->execute();
             return true;
         } else {
             return false;
@@ -49,7 +53,13 @@ class Staff extends model {
         return $this->permissions->hasPermission($param);
     }
 
-        public function logout() {
+    public function logout() {
+        $id = $_SESSION['ccUser'];
+        $sql = $this->db->prepare("UPDATE staff SET last_login = :last_login WHERE id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->bindValue(':last_login', date('Y-m-d H:i:s'));
+        $sql->execute();
+        
         unset($_SESSION['ccUser']);
     }
     

@@ -37,7 +37,7 @@
                             required 
                             value="<?php echo $group_info['name']?>"
                         />
-                        <span id="valid-icon" class="fal fa-sm fa-spinner fa-spin d-none"></span>
+                        <span id="valid-name" class="fal fa-sm fa-spinner fa-spin d-none"></span>
                     </div>
                 </div>
                 <div class="form-group">

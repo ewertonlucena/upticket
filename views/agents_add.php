@@ -3,8 +3,24 @@
         <div class="col">
             <form method="POST" id="agent-add" class="valid-form">
                 <div class="form-group">                    
-                    <label class="col-form-label-sm" for="team-name">
-                        Nome    
+                    <label class="col-form-label-sm" for="agent-fullname">
+                        Nome Completo 
+                    </label>
+                    <div class="col-sm-6 p-0">
+                        <input 
+                        class="form-control form-control-sm fa-sm" 
+                        type="text" 
+                        id="agent-fullname" 
+                        name="full_name" 
+                        maxlength="100"                         
+                        required
+                    />                    
+                    </div>                    
+                </div> 
+                
+                <div class="form-group">                    
+                    <label class="col-form-label-sm" for="agent-name">
+                        Nome de Exibição  
                     </label>
                     <div class="col-sm-6 p-0">
                         <input 
@@ -18,10 +34,47 @@
                         data-model="Agents"                         
                         required
                     />
-                    <span id="valid-icon" class="fal fa-sm fa-spinner fa-spin d-none"></span>
+                    <span id="valid-name" class="fal fa-sm fa-spinner fa-spin d-none"></span>
                     </div>
+                </div>
+                
+                <div class="form-group">                    
+                    <label class="col-form-label-sm" for="agent-login">
+                        Login  
+                    </label>
+                    <div class="col-sm-6 p-0">
+                        <input 
+                        class="form-control form-control-sm fa-sm" 
+                        type="text" 
+                        id="agent-login" 
+                        name="login" 
+                        maxlength="20" 
+                        data-type="validation"
+                        data-action="validLogin" 
+                        data-model="Agents"                         
+                        required
+                    />
+                    <span id="valid-login" class="fal fa-sm fa-spinner fa-spin d-none"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">                    
+                    <label class="col-form-label-sm" for="agent-pass">
+                        Senha
+                    </label>
+                    <div class="col-sm-6 p-0">
+                        <input 
+                        class="form-control form-control-sm fa-sm" 
+                        type="password" 
+                        id="agent-pass" 
+                        name="pass" 
+                        maxlength="20"                                                  
+                        required
+                    />
+                    <span id="valid-login" class="fal fa-sm fa-spinner fa-spin d-none"></span>
+                    </div>
+                </div>
                     
-                </div>                
                 <div class="form-group">                    
                     <label class="col-form-label-sm" for="agent-email">
                         Email

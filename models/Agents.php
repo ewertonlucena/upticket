@@ -28,4 +28,31 @@ class Agents extends model {
         return $array;
     }
     
+    public function validName($name) {        
+        $return = 0;
+        
+        $sql = $this->db->prepare("SELECT id FROM staff WHERE name = :name");
+        $sql->bindValue(':name', $name);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $return = $sql->fetchColumn();
+        }
+        
+        return $return;
+    }
+    
+    public function validLogin($login) {        
+        $return = 0;
+        
+        $sql = $this->db->prepare("SELECT id FROM staff WHERE login = :login");
+        $sql->bindValue(':login', $login);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $return = $sql->fetchColumn();
+        }
+        
+        return $return;
+    }
 }
