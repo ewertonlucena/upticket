@@ -8,8 +8,8 @@ class panelController extends controller {
             exit;
         }
         $staff->setLoggedStaff();
-        if(!$staff->hasPermission('admin')){            
-            header("Location: ".BASE_URL);
+        if (!$staff->isAdmin()) {
+            header("Location: " . BASE_URL);
             exit;
         }
         

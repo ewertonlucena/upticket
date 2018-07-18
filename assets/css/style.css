@@ -102,8 +102,19 @@
     border-radius: 0.25rem;
 }
 
+.nav-link {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-link:hover {
+    color: rgba(0, 0, 0, 1);
+    border-color: #dee2e6 #dee2e6 #f8f9fa;
+    background-color: #dee2e6;
+}
 .nav-link.active {    
     font-weight: 600;
+    background-color: #f8f9fa !important;
+    border-color: #dee2e6 #dee2e6 #f8f9fa;
 }
 
 .badge-alert {
@@ -393,8 +404,8 @@ hr.blurred {
 #valid-icon, #valid-name, #valid-login {
     z-index: 1000;
     position: absolute;
-    top: 9px;
-    right: 10px;
+    top: 48px;
+    right: 24px;
 }
 
 .valid-ban {
@@ -403,6 +414,10 @@ hr.blurred {
 
 .valid-ok {
     color: green;
+}
+
+.tabbody {
+    display: none;
 }
 
 @media (max-width: 576px) {
