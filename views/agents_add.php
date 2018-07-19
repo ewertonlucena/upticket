@@ -4,14 +4,11 @@
             <div class="card-header pt-2">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item nav-link tabitem active">
-                        Informações
-                    </li>
-                    <li class="nav-item nav-link tabitem">
-                        Setorização
+                        Perfil
                     </li>
                     <li class="nav-item nav-link tabitem">
                         Permissões
-                    </li>
+                    </li>                    
                 </ul>
             </div>
             <div class="card-body p-0 border-0  pt-3">
@@ -157,11 +154,46 @@
                     </div>
                 </div>
                 <div class="tabbody">
-                    SETORIZACAO
-                </div>
-                <div class="tabbody">
-                    PERMISSOES
-                </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Setor - selecione o setor ao qual o agente pertencerá
+                        </div>
+                        <div class="card-body">
+                            <select class="custom-select custom-select-sm col-sm-6" name="department">
+                                <option selected>Selecione o Setor</option>
+                                <option value="">...</option>
+                                <option value="">...</option>
+                                <option value="">...</option>                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            Time - selecione o time ao qual o agente pertencerá
+                        </div>
+                        <div class="card-body">
+                            <select class="custom-select custom-select-sm col-sm-6" name="team">
+                                <option selected>Selecione o Time</option>
+                                <option value="">...</option>
+                                <option value="">...</option>
+                                <option value="">...</option>                                
+                            </select>
+                        </div>                        
+                    </div> 
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            Grupo - selecione o grupo de permissões ao qual o agente pertencerá
+                        </div>
+                        <div class="card-body">
+                            <select class="custom-select custom-select-sm col-sm-6" name="department">
+                                <option selected>Selecione o Grupo</option>
+                                <option value="">...</option>
+                                <option value="">...</option>
+                                <option value="">...</option>                                
+                            </select>
+                        </div>
+                    </div>
+                </div>                
 
             </div>
         </div>
