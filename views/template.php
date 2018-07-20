@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col collapse navbar-dark bg-dark border-bottom border-dark d-sm-none" id="navbarCollapsed">
+                <div class="col collapse navbar-light bg-light border-bottom border-dark d-sm-none" id="navbarCollapsed">
                     <ul class="navbar-nav mx-0">
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($viewName == 'home') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>">Dashboard</a>

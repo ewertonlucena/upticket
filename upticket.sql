@@ -213,34 +213,36 @@ INSERT INTO `permissions_params` (`id`, `p_group`, `name`, `description`) VALUES
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `active` tinyint(1) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
+  `full_name` varchar(200) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `login` varchar(50) NOT NULL,
   `pass` varchar(32) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `full_name` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `mobile` varchar(50) NOT NULL,
-  `signature` text,
-  `p_group` int(11) DEFAULT NULL,
-  `department` int(11) DEFAULT NULL,
-  `dir_list_show` tinyint(1) NOT NULL,
-  `vacation` tinyint(1) NOT NULL,
-  `id_teams` varchar(200) DEFAULT NULL,
   `admin_notes` text,
+  `department` int(11) DEFAULT NULL,
+  `id_teams` varchar(200) DEFAULT NULL,
+  `p_group` int(11) DEFAULT NULL,
+  `active` tinyint(1) DEFAULT '0',
+  `admin` tinyint(1) DEFAULT '0',
+  `vacation` tinyint(1) DEFAULT '0',
+  `dir_list_show` tinyint(1) DEFAULT '0',
+  `only_assigned` tinyint(1) DEFAULT '0',
+  `signature` text,
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.staff: ~2 rows (aproximadamente)
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` (`id`, `active`, `admin`, `login`, `pass`, `name`, `full_name`, `email`, `phone`, `mobile`, `signature`, `p_group`, `department`, `dir_list_show`, `vacation`, `id_teams`, `admin_notes`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 1, 1, 'ewertonlucena', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', NULL, 1, 1, 0, 0, '1', NULL, '2018-06-14 14:36:24', NULL, '2018-07-17 09:16:17'),
-	(2, 1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Ewerton', 'Lucena', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', NULL, 18, 3, 0, 0, NULL, NULL, '2018-06-14 14:36:24', NULL, NULL);
+INSERT INTO `staff` (`id`, `full_name`, `name`, `login`, `pass`, `email`, `phone`, `mobile`, `admin_notes`, `department`, `id_teams`, `p_group`, `active`, `admin`, `vacation`, `dir_list_show`, `only_assigned`, `signature`, `create_date`, `update_date`, `last_login`) VALUES
+	(1, 'Lucena', 'Ewerton', 'ewertonlucena', 'e10adc3949ba59abbe56e057f20f883e', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', NULL, 1, '1', 1, 1, 1, 0, 0, 0, NULL, '2018-06-14 14:36:24', NULL, '2018-07-17 09:16:17'),
+	(2, 'Lucena', 'Ewerton', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'ewertonlucena@gmail.com', '83 9 8729 4051', '83 9 8729 4051', NULL, 3, NULL, 18, 1, 1, 0, 0, 0, NULL, '2018-06-14 14:36:24', NULL, '2018-07-20 00:37:13'),
+	(3, 'teste', 'Ewerton Lucena', 'teste', '698dc19d489c4e4db73e28a713eab07b', 'teste@gmail.com', '', '156156156', '&lt;br&gt;', 1, '', 1, 1, 1, NULL, 1, NULL, NULL, '2018-07-20 00:29:32', NULL, '2018-07-20 00:37:20');
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.task

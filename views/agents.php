@@ -1,5 +1,5 @@
 <?php if (isset($info) && !empty($info)): ?>
-    <div class="modal fade" id="modal1" onClick="window.history.replaceState('', 'UP Desk', '/upticket/admin/teams')">
+    <div class="modal fade" id="modal1" onClick="window.history.replaceState('', 'UP Desk', '/upticket/admin/agents')">
         <div class="modal-dialog">
             <div class="modal-content alert-<?php echo $info['alert'] ?>">
                 <div class="modal-body">
@@ -67,7 +67,7 @@
                                 <th scope="col">Nome</th>
                                 <th scope="col">Setor</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Criação</th>
+                                <th class="d-none d-sm-table-cell" scope="col">Criação</th>
                                 <th class="d-none d-sm-table-cell" scope="col">Ultimo Login</th>
                             </tr>
                         </thead>
@@ -98,7 +98,7 @@
                                         </td>
                                         <td><?php echo $department[$a['id']]?></td>
                                         <td><span class="badge badge-<?php echo ($a['active']) ? 'success' : 'danger' ?>"><?php echo ($a['active']) ? 'Ativo' : 'Inativo' ?></span></td>
-                                        <td>
+                                        <td class="d-none d-sm-table-cell">
                                             <?php echo (empty($a['create_date'])) ? '' : date_format(date_create($a['create_date']), 'd/m/Y') ?>
                                         </td>
                                         <td class="d-none d-sm-table-cell">

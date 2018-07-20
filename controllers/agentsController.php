@@ -66,24 +66,57 @@ class agentsController extends controller {
                         'notes' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
                         'department' => FILTER_VALIDATE_INT,
                         'team' => FILTER_VALIDATE_INT,
-                        'p_group' => FILTER_VALIDATE_INT
+                        'p_group' => FILTER_VALIDATE_INT,
+                        'active' => FILTER_VALIDATE_INT,
+                        'admin' => FILTER_VALIDATE_INT,
+                        'vacation' => FILTER_VALIDATE_INT,
+                        'dir_list_show' => FILTER_VALIDATE_INT,
+                        'only_assigned' => FILTER_VALIDATE_INT
                         
         );
-        $post = filter_input_array(INPUT_POST, $args);        
-        if(!empty($post)) {            
-            $data['error'] = array_keys($post, "");
+        $post = filter_input_array(INPUT_POST, $args);  
             
-            for ($i = 0; $i <= count($data['error']); $i++) {
-                if($data['error'][$i] == 'phone' || $data['error'][$i] == 'team' || $data['error'][$i] == 'notes') {
+        if(!empty($post)) {            
+            $data['error'] = array_keys($post, "");            
+            $until = count($data['error']);
+            for ($i = 0; $i < $until; $i++) {                
+                if(     $data['error'][$i] == 'phone' || 
+                        $data['error'][$i] == 'team' || 
+                        $data['error'][$i] == 'notes' ||
+                        $data['error'][$i] == 'active' ||
+                        $data['error'][$i] == 'admin' ||
+                        $data['error'][$i] == 'vacation' ||
+                        $data['error'][$i] == 'dir_list_show' ||
+                        $data['error'][$i] == 'only_assigned') {
                     unset($data['error'][$i]);
                 }               
             }           
         }
         
-        $data['post'] = $post;
+        $data['post'] = $post;        
         
-        if(empty($data['error'])) {
-             $info['rows'] = $agents->addAgent($post);
+        
+        if(empty($data['error']) && !empty($post)) {
+            $info['rows'] = false;
+            if(empty($agents->validName($post['name']) && empty($agents->validLogin($post['login'])))) {
+                $info['rows'] = $agents->addAgent($post);
+            }
+            if(!empty($info['rows'])) {
+                $info['alert'] = 'success';
+                $info['header'] = 'SUCESSO';
+                $info['content'] = 'Novo agente criado com sucesso';
+                $info['ids'] = '';
+                $info['action'] = '';
+            } else {
+                $info['alert'] = 'danger';
+                $info['header'] = 'ERRO';
+                $info['content'] = 'Falha ao criar novo agente';
+                $info['ids'] = '';
+                $info['action'] = '';
+            }
+            $this->index($info);
+            exit;
+                
         }
         
         $this->loadAdminTemplate('agents_add', $data);

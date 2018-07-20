@@ -22,7 +22,10 @@
                         }?>
                         ">
                         Permissões
-                    </li>                    
+                    </li>     
+                    <li class="nav-item nav-link tabitem">
+                        Status
+                    </li>     
                 </ul>
             </div>
             <div class="card-body p-0 border-0 pt-3">
@@ -227,6 +230,32 @@
                             <div class="invalid-tooltip">
                                 Defina um grupo de permissões para o agente.
                             </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="tabbody">
+                    <div class="card">
+                        <div class="card-header">
+                            Status e Configurações
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <input type="checkbox" name="active" value="1" checked/> Ativo
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" name="admin" value="1"/> Administrador
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" name="vacation" value="1"/> Férias
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" name="dir_list_show" value="1"/> Listado com Agente
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" name="only_assigned" value="1"/> Visualiza apenas quando alocado/atribuído
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div> 
