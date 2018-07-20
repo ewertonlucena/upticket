@@ -78,11 +78,12 @@ class Teams extends model {
         return $return;        
     }
     
-    public function editTeam($id, $name, $notes) {
+    public function editTeam($id, $name, $leader, $notes) {
         
-        $sql = $this->db->prepare("UPDATE teams SET name = :name, admin_notes = :notes, update_date = :update_date WHERE id = :id");
+        $sql = $this->db->prepare("UPDATE teams SET name = :name, id_leader = :id_leader, admin_notes = :notes, update_date = :update_date WHERE id = :id");
         $sql->bindValue(':id', $id);
         $sql->bindValue(':name', $name);
+        $sql->bindValue(':id_leader', $leader);
         $sql->bindValue(':notes', $notes);
         $sql->bindValue(':update_date', date('Y-m-d H:i:s'));
         $sql->execute();

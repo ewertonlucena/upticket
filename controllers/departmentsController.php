@@ -84,19 +84,23 @@ class departmentsController extends controller {
             
             $staff = new Staff();
             $departments = new Departments();
+            $views = new Views();
             $staff->setLoggedStaff();
             
             $data['staff_name'] = $staff->getName();
             $data['department_info'] = $departments->getDepartmentInfo($id);
             $data['page_level_1'] = 'agents';
             $data['page_level_2'] = 'Setor '.$data['department_info']['name'];
+            $data['members'] = $views->getDepartmentMembers($id);
+            $data['leader'] = $views->getDepartmentLeader($id);            
             
-            if(isset($_POST['name']) && !empty($_POST['name'])) {
-                $name = addslashes($_POST['name']);
-                $email = addslashes($_POST['email']);
-                $signature = filter_input(INPUT_POST, 'signature', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                
-                $info['rows'] = $departments->editDepartment($id, $name, $email, $signature);
+            $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_MAGIC_QUOTES);
+            $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+            $leader = filter_input(INPUT_POST, 'leader', FILTER_VALIDATE_INT);
+            $signature = filter_input(INPUT_POST, 'signature', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            if(!empty($name)) {
+                $info['rows'] = $departments->editDepartment($id, $name, $email, $leader, $signature);
                 if($info['rows']) {
                     $info['alert'] = 'success';
                     $info['header'] = 'SUCESSO';

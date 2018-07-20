@@ -6,7 +6,8 @@
                     <li class="nav-item nav-link tabitem active
                         <?php if(in_array('full_name',$error) || 
                                 in_array('name',$error) || 
-                                in_array('login',$error) ||                                
+                                in_array('login',$error) ||
+                                in_array('pass',$error) ||
                                 in_array('email',$error) ||
                                 in_array('mobile',$error)) {
                             echo 'alert-danger';
@@ -33,6 +34,7 @@
                         <div class="col">
                             <div class="row">
                                 <div class="form-group col-sm-6">
+                                    <input type="hidden" name="id" value="<?php echo $agent['id'] ?>"/>
                                     <label class="col-form-label-sm" for="agent-fullname">
                                         Nome Completo
                                     </label>
@@ -43,7 +45,7 @@
                                             id="agent-fullname"
                                             name="full_name"
                                             maxlength="100"
-                                            value="<?php echo $post['full_name'] ?>"
+                                            value="<?php echo (isset($post['full_name'])) ? $post['full_name'] : $agent['full_name']?>"
                                             />
                                         <div class="invalid-tooltip">
                                             Insira o nome completo do agente.
@@ -63,8 +65,9 @@
                                             maxlength="20"
                                             data-type="validation"
                                             data-action="validName"
+                                            data-id="<?php echo $agent['id'] ?>"
                                             data-model="Agents" 
-                                            value="<?php echo $post['name'] ?>"
+                                            value="<?php echo (isset($post['name'])) ? $post['name'] : $agent['name'] ?>"
                                             />
                                         <div class="invalid-tooltip">
                                             Insira um nome de exibição para o agente.
@@ -89,7 +92,8 @@
                                             data-type="validation"
                                             data-action="validLogin"
                                             data-model="Agents"   
-                                            value="<?php echo $post['login'] ?>"
+                                            data-id="<?php echo $agent['id'] ?>"
+                                            value="<?php echo (isset($post['login'])) ? $post['login'] : $agent['login'] ?>"
                                             />
                                         <div class="invalid-tooltip">
                                             Insira um login para o agente.
@@ -109,12 +113,9 @@
                                             id="agent-pass"
                                             name="pass"
                                             maxlength="20"
-                                            value="<?php echo $post['pass'] ?>"
-                                            />
-                                        <div class="invalid-tooltip">
-                                            Insira um senha para o agente.
-                                        </div>
-                                        <span id="valid-login" class="fal fa-sm fa-spinner fa-spin d-none"></span>
+                                            value="<?php echo (isset($post['pass'])) ? $post['pass'] : '' ?>"
+                                            />                                       
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +131,7 @@
                                             id="agent-email"
                                             name="email"
                                             maxlength="50"
-                                            value="<?php echo $post['email'] ?>"
+                                            value="<?php echo (isset($post['email'])) ? $post['email'] : $agent['email'] ?>"
                                             />
                                         <div class="invalid-tooltip">
                                             Insira um email valido para o agente.
@@ -151,7 +152,7 @@
                                                     id="agent-phone"
                                                     name="phone"
                                                     maxlength="50"
-                                                    value="<?php echo $post['phone'] ?>"
+                                                    value="<?php echo (isset($post['phone'])) ? $post['phone'] : $agent['phone'] ?>"
                                                     />
                                             </div>
                                         </div>
@@ -166,7 +167,7 @@
                                                     id="agent-mobile"
                                                     name="mobile"
                                                     maxlength="50"
-                                                    value="<?php echo $post['mobile'] ?>"
+                                                    value="<?php echo (isset($post['mobile'])) ? $post['mobile'] : $agent['mobile'] ?>"
                                                     />
                                                 <div class="invalid-tooltip">
                                                     Insira um número de celular para o agente.
@@ -179,7 +180,7 @@
                             <div class="form-group">
                                 <label class="col-form-label-sm" for="agent-notes">Anotações</label>
                                 <div class="card">
-                                    <textarea id="agent-notes" name="notes"><?php echo $post['notes'] ?></textarea>
+                                    <textarea id="agent-notes" name="notes"><?php echo (isset($post['notes'])) ? $post['notes'] : $agent['admin_notes'] ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -192,9 +193,21 @@
                         </div>
                         <div class="card-body">
                             <select class="custom-select custom-select-sm col-sm-6 <?php echo (in_array('department', $error)) ? 'is-invalid' : '' ?>" name="department">
-                                <option value="" <?php echo (in_array('department', $error)) ? 'selected' : '' ?>>Selecione o Setor</option>
+                                <option value="" 
+                                        <?php echo (isset($post)) ? 
+                                            ((empty($post['department'])) ? 'selected' : '') : 
+                                            ((empty($agent['department'])) ? 'selected' : '')?>>
+                                    Selecione o Setor
+                                </option>
                                 <?php foreach ($departments as $d): ?>
-                                <option value="<?php echo $d['id']?>" <?php echo ($post['department'] == $d['id']) ? 'selected' : '' ?>><?php echo $d['name']?></option>
+                                <option value="<?php echo $d['id']?>" 
+                                        <?php 
+                                            echo (isset($post)) ? 
+                                                (($post['department'] == $d['id']) ? 'selected' : '') : 
+                                                (($agent['department'] == $d['id']) ? 'selected' : '')
+                                        ?>>
+                                    <?php echo $d['name']?>
+                                </option>
                                 <?php endforeach; ?>
                             </select>
                             <div class="invalid-tooltip">
@@ -208,9 +221,21 @@
                         </div>
                         <div class="card-body">
                             <select class="custom-select custom-select-sm col-sm-6" name="team">
-                                <option value="" selected>Selecione o Time</option>
+                                <option value="" 
+                                        <?php echo (isset($post)) ? 
+                                            ((empty($post['team'])) ? 'selected' : '') : 
+                                            ((empty($agent['id_teams'])) ? 'selected' : '')?>>
+                                    Selecione o Time
+                                </option>
                                 <?php foreach ($teams as $t): ?>
-                                <option value="<?php echo $t['id']?>" <?php echo ($post['team'] == $t['id']) ? 'selected' : '' ?>><?php echo $t['name']?></option>
+                                <option value="<?php echo $t['id']?>" 
+                                        <?php 
+                                            echo (isset($post)) ? 
+                                                (($post['team'] == $t['id']) ? 'selected' : '') : 
+                                                (($agent['id_teams'] == $t['id']) ? 'selected' : '')
+                                        ?>>
+                                    <?php echo $t['name']?>
+                                </option>
                                 <?php endforeach; ?>                                
                             </select>
                         </div>                        
@@ -221,9 +246,22 @@
                         </div>
                         <div class="card-body">
                             <select class="custom-select custom-select-sm col-sm-6 <?php echo (in_array('p_group', $error)) ? 'is-invalid' : '' ?>" name="p_group">
-                                <option value="" selected>Selecione o Grupo</option>
+                                <option value="" 
+                                    <?php echo (isset($post)) ? 
+                                        ((empty($post['p_group'])) ? 'selected' : '') : 
+                                        ((empty($agent['p_group'])) ? 'selected' : '')?>>
+                                    Selecione o Grupo
+                                </option>
                                 <?php foreach ($groups as $g): ?>
-                                <option value="<?php echo $g['id']?>" <?php echo ($post['p_group'] == $g['id']) ? 'selected' : '' ?>><?php echo $g['name']?></option>
+                                <option value="<?php echo $g['id']?>" 
+                                        <?php
+                                            echo (isset($post)) ? 
+                                                (($post['p_group'] == $g['id']) ? 'selected' : '') : 
+                                                (($agent['p_group'] == $g['id']) ? 'selected' : '')
+                                        ?>
+                                        >
+                                    <?php echo $g['name']?>
+                                </option>
                                 <?php endforeach; ?>                               
                             </select>
                             <div class="invalid-tooltip">
@@ -240,19 +278,39 @@
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <input type="checkbox" name="active" value="1" checked/> Ativo
+                                    <input type="checkbox" name="active" value="1" 
+                                           <?php echo (isset($post)) ? 
+                                                (($post['active'] == '1') ? 'checked 01' : '' ) :
+                                                (($agent['active'] == '1') ? 'checked 02' : '')?>
+                                           /> Ativo
                                 </li>
                                 <li class="list-group-item">
-                                    <input type="checkbox" name="dir_list_show" value="1" checked/> Listado como Agente
+                                    <input type="checkbox" name="dir_list_show" value="1" 
+                                           <?php echo (isset($post)) ? 
+                                                (($post['dir_list_show'] == '1') ? 'checked' : '') : 
+                                                (($agent['dir_list_show'] == '1') ? 'checked' : '')?>
+                                           /> Listado com Agente
                                 </li>
                                 <li class="list-group-item">
-                                    <input type="checkbox" name="admin" value="1"/> Administrador
+                                    <input type="checkbox" name="admin" value="1" 
+                                           <?php echo (isset($post)) ? 
+                                                (($post['admin'] == '1') ? 'checked' : '') : 
+                                                (($agent['admin'] == '1') ? 'checked' : '')?>
+                                           /> Administrador
                                 </li>
                                 <li class="list-group-item">
-                                    <input type="checkbox" name="vacation" value="1"/> Férias
+                                    <input type="checkbox" name="vacation" value="1"
+                                           <?php echo (isset($post)) ? 
+                                                (($post['vacation'] == '1') ? 'checked' : '') : 
+                                                (($agent['vacation'] == '1') ? 'checked' : '')?>
+                                           /> Férias
                                 </li>                                
                                 <li class="list-group-item">
-                                    <input type="checkbox" name="only_assigned" value="1"/> Visualiza apenas quando alocado/atribuído
+                                    <input type="checkbox" name="only_assigned" value="1"
+                                           <?php echo (isset($post)) ? 
+                                                (($post['only_assigned'] == '1') ? 'checked' : '') : 
+                                                (($agent['only_assigned'] == '1') ? 'checked' : '')?>
+                                           /> Visualiza apenas quando alocado/atribuído
                                 </li>
                             </ul>
                         </div>

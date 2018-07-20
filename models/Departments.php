@@ -55,18 +55,20 @@ class Departments extends model {
         
     }
     
-    public function editDepartment($id, $name, $email, $signature) {
+    public function editDepartment($id, $name, $email, $leader, $signature) {
         $sql = $this->db->prepare(""
                 . "UPDATE "
                 . "departments "
                 . "SET "
                 . "name = :name, "
                 . "email = :email, "
+                . "id_leader = :id_leader, "
                 . "signature = :signature, "
                 . "update_date = :update_date "
                 . "WHERE id = :id"); 
         $sql->bindValue(':name', $name);
         $sql->bindValue(':email', $email);
+        $sql->bindValue(':id_leader', $leader);
         $sql->bindValue(':signature', $signature);
         $sql->bindValue(':update_date', date('Y-m-d H:i:s'));
         $sql->bindValue(':id', $id);

@@ -11,20 +11,55 @@
                             <button class="close" data-dismiss="modal"><span>&times;</span></button>
                         </div>
                     </div>
-                    <div class="text-center m-3"><?php echo $info['content']; ?></div>
-
-                    <div class="text-right m-3">
-                        <form class="<?php echo (!empty($info['ids'])) ? '' : 'd-none' ?>" method="POST" id="delete-form">
+                    <div class="text-center m-3 <?php echo (!empty($info['content'])) ? '' : 'd-none'; ?>"><?php echo $info['content']; ?></div>
+                    
+                    <form class="<?php echo (!empty($info['ids'])) ? '' : 'd-none' ?>" method="POST" id="<?php echo $info['action']; ?>-form">
+                        <div class="text-center m-3">                        
                             <input type="hidden" name="ids" value="<?php echo $info['ids'] ?>">
+                            <?php if ($info['action'] == 'changeTeam'): ?>
+                            <div class="form-group">
+                                <select class="custom-select custom-select-sm col-sm-6" name="team">
+                                    <option value="">Selecione o time</option>
+                                    <?php foreach ($teams as $t):?>
+                                    <option value="<?php echo $t['id'] ?>"><?php echo $t['name'] ?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                            <?php endif; ?>
+                            
+                            <?php if ($info['action'] == 'changeDepartment'): ?>
+                            <div class="form-group">
+                                <select class="custom-select custom-select-sm col-sm-6" name="department">
+                                    <option value="">Selecione o setor</option>
+                                    <?php foreach ($departments as $d):?>
+                                    <option value="<?php echo $d['id'] ?>"><?php echo $d['name'] ?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                            <?php endif; ?>
+                            
+                            <?php if ($info['action'] == 'changeGroup'): ?>
+                            <div class="form-group">
+                                <select class="custom-select custom-select-sm col-sm-6" name="group">
+                                    <option value="">Selecione o setor</option>
+                                    <?php foreach ($groups as $g):?>
+                                    <option value="<?php echo $g['id'] ?>"><?php echo $g['name'] ?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                            <?php endif; ?>
+                            
+                        </div>
+                        <div class="text-right m-3">
                             <button
                                 type="submit"
-                                form="delete-form"
-                                formaction="<?php echo BASE_URL; ?>admin/teams/<?php echo $info['action']; ?>"
-                                class="btn btn-warning btn-sm">
+                                form="<?php echo $info['action']; ?>-form"
+                                formaction="<?php echo BASE_URL; ?>admin/agents/<?php echo $info['action']; ?>"
+                                class="btn btn-<?php echo $info['alert'] ?> border-dark btn-sm">
                                 Confirmar
-                            </button>
-                        </form>
-                    </div>
+                            </button>                        
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -111,7 +146,6 @@
                     </table>
                 </form>
             </div>
-
         </div>
     </section>
 </div>

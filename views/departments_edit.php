@@ -43,11 +43,11 @@
                     <label class="col-form-label-sm" for="department-leader">
                         Líder
                     </label><br/>
-                    <select class="col-sm-6 custom-select custom-select-sm fa-sm">
-                        <option selected="">Selecione</option>
-                        <option value="">...</option>
-                        <option value="">...</option>
-                        <option value="">...</option>
+                    <select class="col-sm-6 custom-select custom-select-sm fa-sm" name="leader">
+                        <option value="" <?php (empty($leader)) ? 'selected' : ''?>><?php echo (empty($members)) ? 'Não há agentes nesse setor':'Selecione o líder do setor'?></option>
+                        <?php foreach ($members as $m):?>
+                        <option value="<?php echo $m['id']?>" <?php echo (isset($leader['id']) && $leader['id'] == $m['id']) ? 'selected' : ''?> ><?php echo $m['name']?></option>
+                        <?php endforeach;?>
                     </select>
                 </div>
                 <div class="form-group">

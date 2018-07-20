@@ -23,17 +23,6 @@
                     
                 </div>                
                 <div class="form-group">
-                    <label class="col-form-label-sm" for="team-leader">
-                        Líder
-                    </label><br/>
-                    <select class="col-sm-6 custom-select custom-select-sm fa-sm">
-                        <option selected="">Selecione</option>
-                        <option value="">...</option>
-                        <option value="">...</option>
-                        <option value="">...</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label class="col-form-label-sm" for="team-notes">Anotações</label>
                     <div class="card">
                         <textarea id="team-notes" name="notes"></textarea>

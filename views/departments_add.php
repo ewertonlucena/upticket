@@ -35,17 +35,7 @@
                         required
                     />
                 </div>
-                <div class="form-group">
-                    <label class="col-form-label-sm" for="department-leader">
-                        Líder
-                    </label><br/>
-                    <select class="col-sm-6 custom-select custom-select-sm fa-sm">
-                        <option selected="">Selecione</option>
-                        <option value="">...</option>
-                        <option value="">...</option>
-                        <option value="">...</option>
-                    </select>
-                </div>
+                
                 <div class="form-group">
                     <label class="col-form-label-sm" for="department-signature">Assinatura</label>
                     <div class="card">

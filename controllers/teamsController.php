@@ -84,20 +84,24 @@ class teamsController extends controller {
 
         $staff = new Staff();
         $teams = new Teams();
+        $views = new Views();
         $staff->setLoggedStaff();
-
+        
         $data['staff_name'] = $staff->getName();
         $data['team_info'] = $teams->getTeamInfo($id);
         $data['page_level_1'] = 'agents';
-        $data['page_level_2'] = 'Time '.$data['team_info']['name'];        
+        $data['page_level_2'] = 'Time '.$data['team_info']['name'];
+        $data['members'] = $views->getTeamMembers($id);
+        $data['leader'] = $views->getTeamLeader($id);         
         
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_MAGIC_QUOTES);
+        $leader = filter_input(INPUT_POST, 'leader', FILTER_SANITIZE_MAGIC_QUOTES);
         $notes = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         if(!empty($name)) {
             $valid = $teams->validName($name);
             if(empty($valid) || $valid = $id ) {
-                $info['rows'] = $teams->editTeam($id, $name, $notes);
+                $info['rows'] = $teams->editTeam($id, $name, $leader, $notes);
             }             
             
             if($info['rows']) {
