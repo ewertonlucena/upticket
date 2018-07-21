@@ -69,4 +69,12 @@ class Views extends model {
         
         return $return;
     }
+    
+    public function getCategoriesDepartment($id_cat) {
+        $sql = $this->db->prepare("SELECT department FROM view_categories_departments WHERE id_cat = :id_cat");
+        $sql->bindValue(':id_cat', $id_cat);
+        $sql->execute();
+        
+        return $sql->fetchColumn();
+    }
 }

@@ -7,18 +7,24 @@ class manageController extends controller {
             header("Location: ".BASE_URL."login");
             exit;
         }
+        
+        $staff->setLoggedStaff();
+        if(!$staff->isAdmin()){
+            header("Location: ".BASE_URL);
+            exit;
+        }
     }
     
     public function index(){
-            $data = array();
-            $staff = new Staff();
-            $staff->setLoggedStaff();
-            $data['staff_name'] = $staff->getName();
-            $data['page_level_1'] = 'manage';
-            
-            $this->loadAdminTemplate('manage', $data);        
-    }
+        $data = array();
+        $staff = new Staff();
+        $staff->setLoggedStaff();
+        $data['staff_name'] = $staff->getName();
+        $data['page_level_1'] = 'manage';
 
-        
+        $categories = new categoriesController();
+        $categories->index($info = array());
+        exit;                   
+    }
 }
 
