@@ -44,8 +44,9 @@ class teamsController extends controller {
 
         $staff = new Staff();
         $teams = new Teams();
+        
         $staff->setLoggedStaff();
-
+        
         $data['staff_name'] = $staff->getName();
         $data['page_level_1'] = 'agents';
         $data['page_level_2'] = 'Novo Time';

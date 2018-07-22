@@ -143,13 +143,17 @@ CREATE TABLE IF NOT EXISTS `help_topics` (
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela helpdesk.help_topics: ~1 rows (aproximadamente)
 DELETE FROM `help_topics`;
 /*!40000 ALTER TABLE `help_topics` DISABLE KEYS */;
 INSERT INTO `help_topics` (`id`, `active`, `name`, `description`, `category`, `id_parent`, `priority`, `id_department`, `auto_id_staff`, `admin_notes`, `create_date`, `update_date`) VALUES
-	(1, 1, 'Link', 'Tickets envolvendo Link', '', NULL, 0, 1, 0, NULL, '2018-07-21 13:26:02', NULL);
+	(1, 1, 'Link', 'Tickets envolvendo Link', '', NULL, 3, 1, 0, NULL, '2018-07-21 13:26:02', NULL),
+	(2, NULL, 'teste', '&lt;br&gt;', NULL, NULL, 0, 0, NULL, NULL, '0000-00-00 00:00:00', NULL),
+	(3, 1, 'teste2', '&lt;br&gt;', NULL, NULL, 0, 0, NULL, NULL, '0000-00-00 00:00:00', NULL),
+	(4, 1, 'teste3', '&lt;br&gt;', NULL, NULL, 0, 0, NULL, NULL, '0000-00-00 00:00:00', NULL),
+	(5, 1, 'teste4', '&lt;br&gt;', NULL, NULL, 0, 0, NULL, NULL, '0000-00-00 00:00:00', NULL);
 /*!40000 ALTER TABLE `help_topics` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.permissions_groups
@@ -242,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
 INSERT INTO `staff` (`id`, `full_name`, `name`, `login`, `pass`, `email`, `phone`, `mobile`, `admin_notes`, `department`, `id_teams`, `p_group`, `active`, `dir_list_show`, `admin`, `vacation`, `only_assigned`, `signature`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 'Lucena', 'Ewerton', 'ewertonlucena', 'e10adc3949ba59abbe56e057f20f883e', 'ewertonlucena@gmail.com', '83987294051', '83987294051', '&lt;br&gt;', 1, '1', 1, 1, NULL, 1, NULL, NULL, NULL, '2018-06-14 14:36:24', '2018-07-20 16:05:56', '2018-07-21 08:30:59'),
+	(1, 'Lucena', 'Ewerton', 'ewertonlucena', 'e10adc3949ba59abbe56e057f20f883e', 'ewertonlucena@gmail.com', '83987294051', '83987294051', '&lt;br&gt;', 1, '1', 1, 1, NULL, 1, NULL, NULL, NULL, '2018-06-14 14:36:24', '2018-07-20 16:05:56', '2018-07-22 13:37:51'),
 	(3, 'teste', 'Ewerton Lucena', 'admin', '1ba60891a92bb8b9c071663653016956', 'teste@gmail.com', '', '156156156', '&lt;br&gt;', 1, '1', 1, 1, 1, 1, NULL, NULL, NULL, '2018-07-20 00:29:32', '2018-07-20 16:05:56', '2018-07-20 14:37:26'),
 	(4, 'JosÃ© Marculino', 'Marculino', 'marculino', 'e10adc3949ba59abbe56e057f20f883e', 'marculino@gmail.com', '844854848', '4848484', '&lt;br&gt;', 18, '7', 18, 1, 1, NULL, NULL, NULL, NULL, '2018-07-20 17:21:20', '2018-07-20 17:21:40', NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;

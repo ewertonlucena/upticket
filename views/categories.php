@@ -97,8 +97,22 @@
                                             <a class="link-card" href="<?php echo BASE_URL . 'admin/categories/edit/'.$c['id'] ?>"><?php echo $c['name']?></a>
                                         </td>
                                         <td><span class="badge badge-<?php echo ($c['active']) ? 'success' : 'danger' ?>"><?php echo ($c['active']) ? 'Ativo' : 'Inativo' ?></span></td>                                                                               
-                                        <td class="d-none d-sm-table-cell"><?php echo $c['priority']?></td>
-                                        <td class="d-sm-none d-table-cell"><?php echo $c['priority']?></td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <span class="badge badge-<?php echo ($c['priority'] == 0) ? 'green' : ''?><?php echo ($c['priority'] == 1) ? 'blue' : ''?><?php echo ($c['priority'] == 2) ? 'orange' : ''?><?php echo ($c['priority'] == 3) ? 'red' : ''?>">
+                                                <?php echo ($c['priority'] == 0) ? 'Baixa' : ''?>
+                                                <?php echo ($c['priority'] == 1) ? 'Normal' : ''?>
+                                                <?php echo ($c['priority'] == 2) ? 'Alta' : ''?>
+                                                <?php echo ($c['priority'] == 3) ? 'Urgente' : ''?>
+                                            </span>
+                                        </td>
+                                        <td class="d-sm-none d-table-cell">
+                                            <span class="badge badge-<?php echo ($c['priority'] == 0) ? 'green' : ''?><?php echo ($c['priority'] == 1) ? 'blue' : ''?><?php echo ($c['priority'] == 2) ? 'orange' : ''?><?php echo ($c['priority'] == 3) ? 'red' : ''?>">
+                                                <?php echo ($c['priority'] == 0) ? 'Baixa' : ''?>
+                                                <?php echo ($c['priority'] == 1) ? 'Normal' : ''?>
+                                                <?php echo ($c['priority'] == 2) ? 'Alta' : ''?>
+                                                <?php echo ($c['priority'] == 3) ? 'Urgente' : ''?>
+                                            </span>
+                                        </td>
                                         <td><?php echo $department[$c['id']]?></td> 
                                         <td class="d-none d-sm-table-cell">
                                             <?php echo (empty($c['create_date'])) ? '' : date_format(date_create($c['update_date']), 'd/m/Y H:i') ?>
