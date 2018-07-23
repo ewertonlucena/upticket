@@ -152,8 +152,8 @@
                                                     Gestão
                                                 </div>
                                                 <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Categorias</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Garantia de Serviço(SLA)</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL?>admin/categories">Categorias</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL?>admin/sla">Garantia de Serviço(SLA)</a></li>
                                                     <li class="list-group-item list-group-item-action p-0 disabled"><a class="menu-link disabled" href="#">Relatórios</a></li>
                                                 </ul>
                                             </div>
@@ -200,8 +200,8 @@
                                         Gestão
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Categorias</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="#">Garantia de Serviço(SLA)</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL?>admin/categories">Categorias</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL?>admin/sla">Garantia de Serviço(SLA)</a></li>
                                         <li class="list-group-item list-group-item-action p-0 disabled"><a class="menu-link disabled" href="#">Relatórios</a></li>
                                     </ul>
                                 </div>

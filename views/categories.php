@@ -15,7 +15,17 @@
                     
                     <form class="<?php echo (!empty($info['ids'])) ? '' : 'd-none' ?>" method="POST" id="<?php echo $info['action']; ?>-form">
                         <div class="text-center m-3">                        
-                            <input type="hidden" name="ids" value="<?php echo $info['ids'] ?>">  
+                            <input type="hidden" name="ids" value="<?php echo $info['ids'] ?>">
+                            <?php if ($info['action'] == 'changeDepartment'): ?>
+                            <div class="form-group">
+                                <select class="custom-select custom-select-sm col-sm-6" name="department">
+                                    <option value="">Selecione o setor</option>
+                                    <?php foreach ($departments as $d):?>
+                                    <option value="<?php echo $d['id'] ?>"><?php echo $d['name'] ?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                            <?php endif; ?>
                         </div>
                         <div class="text-right m-3">
                             <button
@@ -41,16 +51,17 @@
                 <span class="fas fa-cog fa-sm pr-1"></span>Mais<span class="fa-lg dropdown-toggle pl-1"></span>
             </button>
             <div class="dropdown-menu dropdown-menu-right fa-sm">
-                <button class="dropdown-item" form="<?php echo $info['action']; ?>-form" formaction="<?php echo BASE_URL; ?>admin/categories/enableConfirmation"><i class="fas fa-check-circle fa-xs mr-1"></i>Ativar</button>
-                <button class="dropdown-item" form="<?php echo $info['action']; ?>-form" formaction="<?php echo BASE_URL; ?>admin/categories/disableConfirmation"><i class="fas fa-ban fa-xs mr-1"></i>Desativar</button>                
-                <button class="dropdown-item" form="<?php echo $info['action']; ?>-form" formaction="<?php echo BASE_URL; ?>admin/categories/deleteConfirmation"><i class="fas fa-trash-alt fa-xs mr-1"></i>Apagar</button>
+                <button class="dropdown-item" form="category-form" formaction="<?php echo BASE_URL; ?>admin/categories/enableConfirmation"><i class="fas fa-check-circle fa-xs mr-1"></i>Ativar</button>
+                <button class="dropdown-item" form="category-form" formaction="<?php echo BASE_URL; ?>admin/categories/disableConfirmation"><i class="fas fa-ban fa-xs mr-1"></i>Desativar</button>                
+                <button class="dropdown-item" form="category-form" formaction="<?php echo BASE_URL; ?>admin/categories/changeDepartmentConfirmation"><i class="fas fa-sitemap fa-xs mr-1"></i>Mudar Setor</button>
+                <button class="dropdown-item" form="category-form" formaction="<?php echo BASE_URL; ?>admin/categories/deleteConfirmation"><i class="fas fa-trash-alt fa-xs mr-1"></i>Apagar</button>                
             </div>
         </div>
     </div>
     <section name="agents-table" class="">
         <div class="row mt-3">
             <div class="col">
-                <form method="POST" id="agent-form">
+                <form method="POST" id="category-form">
                     <table class="table table-sm table-bordered table-hover">
                         <thead class="thead-light">
                             <tr>

@@ -15,7 +15,9 @@
                         maxlength="20" 
                         data-type="validation"
                         data-action="validName" 
-                        data-model="Categories"                         
+                        data-model="Categories" 
+                        data-id="<?php echo $category['id'] ?>"
+                        value="<?php echo $category['name'] ?>"
                         required
                     />
                     <div class="invalid-tooltip">
@@ -30,9 +32,9 @@
                     </label>
                     <div class="col-sm-6 p-0">
                         <select class="custom-select custom-select-sm" name="department" id="cat-department">
-                            <option value="" selected>Selecione uma setor padrão</option>
+                            <option value="" <?php echo (empty($category['id_department'])) ? 'selected' :''?>>Selecione uma setor padrão</option>
                             <?php foreach ($departments as $d): ?>
-                            <option value="<?php echo $d['id'] ?>"><?php echo $d['name'] ?></option>         
+                            <option value="<?php echo $d['id'] ?>" <?php echo ($category['id_department'] == $d['id']) ? 'selected' : '' ?>><?php echo $d['name'] ?></option>         
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -42,19 +44,18 @@
                         Prioridade
                     </label>
                     <div class="col-sm-6 p-0">
-                        <select class="custom-select custom-select-sm" name="priority" id="cat-priority">
-                            <option value="" selected>Selecione uma prioridade padrão</option>
-                            <option value="0">Baixa</option>
-                            <option value="1">Normal</option>
-                            <option value="2">Alta</option>
-                            <option value="3">Urgente</option>
+                        <select class="custom-select custom-select-sm" name="priority" id="cat-priority">                            
+                            <option value="0" <?php echo ($category['priority'] == 0) ? 'selected' : '' ?>>Baixa</option>
+                            <option value="1" <?php echo ($category['priority'] == 1) ? 'selected' : '' ?>>Normal</option>
+                            <option value="2" <?php echo ($category['priority'] == 2) ? 'selected' : '' ?>>Alta</option>
+                            <option value="3" <?php echo ($category['priority'] == 3) ? 'selected' : '' ?>>Urgente</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-form-label-sm" for="cat-description">Descrição</label>
-                    <div class="card">
-                        <textarea id="cat-description" name="description"></textarea>
+                    <div class="card fa-xs">
+                        <textarea id="cat-description" name="description"><?php echo $category['description']?></textarea>
                     </div>
                 </div>
                 <div class="form-group text-right">
