@@ -143,16 +143,17 @@ CREATE TABLE IF NOT EXISTS `help_topics` (
   `create_date` datetime NOT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela helpdesk.help_topics: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.help_topics: ~5 rows (aproximadamente)
 DELETE FROM `help_topics`;
 /*!40000 ALTER TABLE `help_topics` DISABLE KEYS */;
 INSERT INTO `help_topics` (`id`, `active`, `name`, `description`, `category`, `id_parent`, `priority`, `id_department`, `auto_id_staff`, `admin_notes`, `create_date`, `update_date`) VALUES
 	(1, 1, 'Link', 'Tickets envolvendo Link', '', NULL, 1, 3, 0, NULL, '2018-07-21 13:26:02', '2018-07-23 14:44:22'),
 	(2, 1, 'teste', '&lt;br&gt;', NULL, NULL, 0, 1, NULL, NULL, '0000-00-00 00:00:00', '2018-07-23 15:11:28'),
 	(3, 1, 'teste2', '&lt;br&gt;', NULL, NULL, 2, 18, NULL, NULL, '0000-00-00 00:00:00', '2018-07-23 14:44:22'),
-	(4, 1, 'teste3', 'dasdsad', NULL, NULL, 3, 20, NULL, NULL, '0000-00-00 00:00:00', '2018-07-23 14:44:22');
+	(4, 1, 'teste3', 'dasdsad', NULL, NULL, 3, 20, NULL, NULL, '0000-00-00 00:00:00', '2018-07-23 14:44:22'),
+	(5, 1, 'Rede Cabeada', 'Tickets envolvendo rede cabeada', NULL, NULL, 3, 1, NULL, NULL, '2018-07-23 17:09:40', NULL);
 /*!40000 ALTER TABLE `help_topics` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.permissions_groups
@@ -214,6 +215,27 @@ INSERT INTO `permissions_params` (`id`, `p_group`, `name`, `description`) VALUES
 	(25, 'empresas', 'apagar', 'PermissÃ£o para apagar empresas');
 /*!40000 ALTER TABLE `permissions_params` ENABLE KEYS */;
 
+-- Copiando estrutura para tabela helpdesk.sla
+DROP TABLE IF EXISTS `sla`;
+CREATE TABLE IF NOT EXISTS `sla` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `active` int(11) DEFAULT '0',
+  `name` varchar(50) NOT NULL,
+  `period` int(11) NOT NULL,
+  `transient` int(11) DEFAULT NULL,
+  `notes` text,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Copiando dados para a tabela helpdesk.sla: ~0 rows (aproximadamente)
+DELETE FROM `sla`;
+/*!40000 ALTER TABLE `sla` DISABLE KEYS */;
+INSERT INTO `sla` (`id`, `active`, `name`, `period`, `transient`, `notes`, `created`, `updated`) VALUES
+	(1, 1, 'Default', 48, NULL, NULL, '2018-07-24 16:44:23', NULL);
+/*!40000 ALTER TABLE `sla` ENABLE KEYS */;
+
 -- Copiando estrutura para tabela helpdesk.staff
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
@@ -245,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
 INSERT INTO `staff` (`id`, `full_name`, `name`, `login`, `pass`, `email`, `phone`, `mobile`, `admin_notes`, `department`, `id_teams`, `p_group`, `active`, `dir_list_show`, `admin`, `vacation`, `only_assigned`, `signature`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 'Lucena', 'Ewerton', 'ewertonlucena', 'e10adc3949ba59abbe56e057f20f883e', 'ewertonlucena@gmail.com', '83987294051', '83987294051', '&lt;br&gt;', 1, '1', 1, 1, NULL, 1, NULL, NULL, NULL, '2018-06-14 14:36:24', '2018-07-20 16:05:56', '2018-07-23 09:35:13'),
+	(1, 'Lucena', 'Ewerton', 'ewertonlucena', 'e10adc3949ba59abbe56e057f20f883e', 'ewertonlucena@gmail.com', '83987294051', '83987294051', '&lt;br&gt;', 1, '1', 1, 1, NULL, 1, NULL, NULL, NULL, '2018-06-14 14:36:24', '2018-07-20 16:05:56', '2018-07-24 08:16:08'),
 	(3, 'teste', 'Ewerton Lucena', 'admin', '1ba60891a92bb8b9c071663653016956', 'teste@gmail.com', '', '156156156', '&lt;br&gt;', 1, '1', 1, 1, 1, 1, NULL, NULL, NULL, '2018-07-20 00:29:32', '2018-07-20 16:05:56', '2018-07-20 14:37:26'),
 	(4, 'JosÃ© Marculino', 'Marculino', 'marculino', 'e10adc3949ba59abbe56e057f20f883e', 'marculino@gmail.com', '844854848', '4848484', '&lt;br&gt;', 18, '7', 18, 1, 1, NULL, NULL, NULL, NULL, '2018-07-20 17:21:20', '2018-07-20 17:21:40', NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
