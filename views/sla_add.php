@@ -1,10 +1,10 @@
 <div class="container-fluid p-0">
     <div class="row mt-3">
         <div class="col">
-            <form method="POST" id="cat-add" class="valid-form">
+            <form method="POST" id="sla-add" class="valid-form">
                 <div class="form-group">                    
-                    <label class="col-form-label-sm" for="cat-name">
-                        Nome da Categoria
+                    <label class="col-form-label-sm" for="sla-name">
+                        Nome do SLA
                     </label>
                     <div class="col-sm-6 p-0">
                         <input 
@@ -15,51 +15,57 @@
                         maxlength="20" 
                         data-type="validation"
                         data-action="validName" 
-                        data-model="Categories"                         
+                        data-model="SLA" 
+                        value="<?php echo $post['name']?>"
                         required
-                    />
-                    <div class="invalid-tooltip">
-                        Insira o nome da categoria.
-                    </div>
-                    <span id="valid-name" class="fal fa-sm fa-spinner fa-spin d-none"></span>
+                        />
+                        <div class="invalid-tooltip">
+                            Insira o nome para o SLA.
+                        </div>
+                        <span id="valid-name" class="fal fa-sm fa-spinner fa-spin d-none"></span>
                     </div>                    
-                </div>    
+                </div>
+                
                 <div class="form-group">
-                    <label class="col-form-label-sm" for="cat-department">
-                        Setor
+                    <label class="col-form-label-sm" for="sla-period">
+                        Prazo de Carência (em Horas)
                     </label>
                     <div class="col-sm-6 p-0">
-                        <select class="custom-select custom-select-sm" name="department" id="cat-department">
-                            <option value="" selected>Selecione uma setor padrão</option>
-                            <?php foreach ($departments as $d): ?>
-                            <option value="<?php echo $d['id'] ?>"><?php echo $d['name'] ?></option>         
-                            <?php endforeach; ?>
-                        </select>
+                        <input 
+                            type="number" 
+                            class="form-control form-control-sm fa-sm <?php echo (in_array('period', $error)) ? 'is-invalid' : '' ?>" 
+                            name="period" 
+                            id="sla-period" 
+                            value="<?php echo $post['period']?>" 
+                            required 
+                            />
+                        <div class="invalid-tooltip">
+                            Insira o periodo de carència.
+                        </div>
                     </div>
+                    
+                </div>
+                <div class="form-check mb-3 pt-3">
+                    <input 
+                        type="checkbox" 
+                        class="form-check-input d-flex align-self-center" 
+                        value="1" 
+                        name="transient"                         
+                        id="sla-transient" 
+                        <?php echo (!empty($post['transient'])) ? 'checked' : ''?>/>
+                    <label class="form-check-label fa-sm" for="sla-transient">
+                        SLA Temporário (Pode ser sobrescrito em transferências de Setor)
+                    </label> 
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label-sm" for="cat-priority">
-                        Prioridade
-                    </label>
-                    <div class="col-sm-6 p-0">
-                        <select class="custom-select custom-select-sm" name="priority" id="cat-priority">
-                            <option value="" selected>Selecione uma prioridade padrão</option>
-                            <option value="0">Baixa</option>
-                            <option value="1">Normal</option>
-                            <option value="2">Alta</option>
-                            <option value="3">Urgente</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-form-label-sm" for="cat-description">Descrição</label>
-                    <div class="card">
-                        <textarea id="cat-description" name="description"></textarea>
+                    <label class="col-form-label-sm" for="sla-notes">Anotações</label>
+                    <div class="card fa-sm">
+                        <textarea id="sla-notes" name="notes"><?php echo $post['notes']?></textarea>
                     </div>
                 </div>
                 <div class="form-group text-right">
-                    <button class="btn btn-sm btn-staff border-dark" type="submit">Salvar</button>
-                    <a class="btn btn-sm btn-staff border-dark" href="<?php echo BASE_URL; ?>admin/categories">Cancelar</a>
+                    <button class="btn btn-sm btn-staff border-dark" type="submit" disabled>Salvar</button>
+                    <a class="btn btn-sm btn-staff border-dark" href="<?php echo BASE_URL; ?>admin/sla">Cancelar</a>
                 </div>
             </form>
         </div>

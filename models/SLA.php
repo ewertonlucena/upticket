@@ -59,4 +59,18 @@ class SLA extends model {
         
         return $sql->rowCount();
     }
+    
+    public function validName($name) {  
+        $return = 0;
+        
+        $sql = $this->db->prepare("SELECT id FROM sla WHERE name = :name");
+        $sql->bindValue(':name', $name);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $return = $sql->fetchColumn();        
+        }
+        
+        return $return;
+    }
 }

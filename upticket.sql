@@ -229,11 +229,12 @@ CREATE TABLE IF NOT EXISTS `sla` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela helpdesk.sla: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela helpdesk.sla: ~1 rows (aproximadamente)
 DELETE FROM `sla`;
 /*!40000 ALTER TABLE `sla` DISABLE KEYS */;
 INSERT INTO `sla` (`id`, `active`, `name`, `period`, `transient`, `notes`, `created`, `updated`) VALUES
-	(1, 1, 'Default', 48, NULL, NULL, '2018-07-24 16:44:23', NULL);
+	(1, 1, 'Default', 48, NULL, NULL, '2018-07-24 16:44:23', NULL),
+	(2, 1, 'sdadas', 48, NULL, '&lt;br&gt;', '2018-07-25 09:20:43', NULL);
 /*!40000 ALTER TABLE `sla` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela helpdesk.staff
@@ -267,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
 DELETE FROM `staff`;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
 INSERT INTO `staff` (`id`, `full_name`, `name`, `login`, `pass`, `email`, `phone`, `mobile`, `admin_notes`, `department`, `id_teams`, `p_group`, `active`, `dir_list_show`, `admin`, `vacation`, `only_assigned`, `signature`, `create_date`, `update_date`, `last_login`) VALUES
-	(1, 'Lucena', 'Ewerton', 'ewertonlucena', 'e10adc3949ba59abbe56e057f20f883e', 'ewertonlucena@gmail.com', '83987294051', '83987294051', '&lt;br&gt;', 1, '1', 1, 1, NULL, 1, NULL, NULL, NULL, '2018-06-14 14:36:24', '2018-07-20 16:05:56', '2018-07-24 08:16:08'),
+	(1, 'Lucena', 'Ewerton', 'ewertonlucena', 'e10adc3949ba59abbe56e057f20f883e', 'ewertonlucena@gmail.com', '83987294051', '83987294051', '&lt;br&gt;', 1, '1', 1, 1, NULL, 1, NULL, NULL, NULL, '2018-06-14 14:36:24', '2018-07-20 16:05:56', '2018-07-25 08:15:33'),
 	(3, 'teste', 'Ewerton Lucena', 'admin', '1ba60891a92bb8b9c071663653016956', 'teste@gmail.com', '', '156156156', '&lt;br&gt;', 1, '1', 1, 1, 1, 1, NULL, NULL, NULL, '2018-07-20 00:29:32', '2018-07-20 16:05:56', '2018-07-20 14:37:26'),
 	(4, 'JosÃ© Marculino', 'Marculino', 'marculino', 'e10adc3949ba59abbe56e057f20f883e', 'marculino@gmail.com', '844854848', '4848484', '&lt;br&gt;', 18, '7', 18, 1, 1, NULL, NULL, NULL, NULL, '2018-07-20 17:21:20', '2018-07-20 17:21:40', NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
