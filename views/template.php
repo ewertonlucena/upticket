@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/imgs/favicon.ico" type="image/x-icon">
         <link rel="icon" href="<?php echo BASE_URL; ?>assets/imgs/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.css"/>        
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/fontawesome-all.min.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css"/>
         <title>UP Ticket</title>
@@ -37,7 +37,7 @@
                                     <a class="nav-link <?php echo ($viewName == 'tasks') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>tasks" href="#">Tarefas</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-nowrap" href="#">UP Wiki</a>
+                                    <a class="nav-link <?php echo ($viewName == 'clients') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>clients">Clientes</a>
                                 </li>
                             </ul>
                         </div>
@@ -97,7 +97,7 @@
                             <a class="nav-link <?php echo ($viewName == 'tasks') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>tasks" href="#">Tarefas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">UP-Wiki</a>
+                            <a class="nav-link <?php echo ($viewName == 'clients') ? 'active' : '' ?>" href="<?php echo BASE_URL; ?>clients">Clientes</a>
                         </li>
                     </ul>
                 </div>
@@ -125,49 +125,62 @@
                                     <button class="btn btn-link dropdown-toggle" type="button" id="FastMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Tickets Pendentes
                                     </button>
-                                    <div class="dropdown-menu fastmenu bg-light pt-3" aria-labelledby="FastMenu">
+                                    <div class="dropdown-menu fastmenu bg-light p-0" aria-labelledby="FastMenu">
+                                        <section class="<?php echo ($viewData['page_level_1'] != 'clients') ? 'd-none' : '' ?>" name="agents-menu">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Gestão de Clientes
+                                                </div>
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>users"><span class="fa fa-user fa-xs"> </span> Clientes</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corporations"><span class="fa fa-users fa-xs"> </span> Empresas</a></li>
+                                                </ul>
+                                            </div>
+                                        </section>
+                                        <section class="<?php echo ($viewData['page_level_1'] == 'clients') ? 'd-none' : '' ?>">
+                                            <span class="dropdown-header fa-lg pt-4">
+                                                TICKETS
+                                            </span>
+                                            <hr class="blurred">
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                                <span class="drop-item">Seus Tickets</span>
+                                                <span class="badge badge-blue badge-pill">1</span>
+                                            </a>
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center active" href="#">
+                                                <span class="drop-item">Seus Tickets</span>
+                                                <span class="badge badge-blue badge-pill">1</span>
+                                            </a>
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                                <span class="drop-item">Seus Tickets</span>
+                                                <span class="badge badge-blue badge-pill">1</span>
+                                            </a>
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                                <span class="drop-item">Seus Tickets</span>
+                                                <span class="badge badge-blue badge-pill">1</span>
+                                            </a>
+                                            <hr class="blurred">
+                                            <span class="dropdown-header fa-lg">
+                                                TAREFAS
+                                            </span>
+                                            <hr class="blurred">
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                                <span class="drop-item">Seus Tickets</span>
+                                                <span class="badge badge-blue badge-pill">1</span>
+                                            </a>
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                                <span class="drop-item">Seus Tickets</span>
+                                                <span class="badge badge-blue badge-pill">1</span>
+                                            </a>
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                                <span class="drop-item">Seus Tickets</span>
+                                                <span class="badge badge-blue badge-pill">1</span>
+                                            </a>
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                                <span class="drop-item">Seus Tickets</span>
+                                                <span class="badge badge-blue badge-pill">1</span>
+                                            </a>
+                                        </section>
 
-                                        <span class="dropdown-header fa-lg">
-                                            TICKETS
-                                        </span>
-                                        <hr class="blurred">
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                            <span class="drop-item">Seus Tickets</span>
-                                            <span class="badge badge-blue badge-pill">1</span>
-                                        </a>
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center active" href="#">
-                                            <span class="drop-item">Seus Tickets</span>
-                                            <span class="badge badge-blue badge-pill">1</span>
-                                        </a>
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                            <span class="drop-item">Seus Tickets</span>
-                                            <span class="badge badge-blue badge-pill">1</span>
-                                        </a>
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                            <span class="drop-item">Seus Tickets</span>
-                                            <span class="badge badge-blue badge-pill">1</span>
-                                        </a>
-                                        <hr class="blurred">
-                                        <span class="dropdown-header fa-lg">
-                                            TAREFAS
-                                        </span>
-                                        <hr class="blurred">
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                            <span class="drop-item">Seus Tickets</span>
-                                            <span class="badge badge-blue badge-pill">1</span>
-                                        </a>
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                            <span class="drop-item">Seus Tickets</span>
-                                            <span class="badge badge-blue badge-pill">1</span>
-                                        </a>
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                            <span class="drop-item">Seus Tickets</span>
-                                            <span class="badge badge-blue badge-pill">1</span>
-                                        </a>
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                            <span class="drop-item">Seus Tickets</span>
-                                            <span class="badge badge-blue badge-pill">1</span>
-                                        </a>
                                     </div>
                                 </div>
                             </nav>
@@ -386,7 +399,18 @@
                     </section>
                     <div class="row" >
                         <div class="col-lg-3 col-md-4 d-md-block d-none">
-                            <div class="fastmenu bg-light">
+                            <section class="<?php echo ($viewData['page_level_1'] != 'clients') ? 'd-none' : '' ?>" name="agents-menu">
+                                <div class="card mt-3">
+                                    <div class="card-header">
+                                        Gestão de Clientes
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>users"><span class="fa fa-user fa-xs"> </span> Clientes</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corporations"><span class="fa fa-users fa-xs"> </span> Empresas</a></li>
+                                    </ul>
+                                </div>
+                            </section>
+                            <div class="fastmenu bg-light <?php echo ($viewData['page_level_1'] == 'clients') ? 'd-none' : '' ?>">
                                 <hr class="blurred">
                                 <span class="dropdown-header fa-lg">
                                     Seus Tickets

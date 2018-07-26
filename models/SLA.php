@@ -38,15 +38,14 @@ class SLA extends model {
     
     public function editSLA($id, $name, $period, $transient, $notes) {
         $sql = $this->db->prepare(""
-                . "INSERT INTO "
+                . "UPDATE "
                 . "sla "
-                . "SET "
-                . "active = 1, "
+                . "SET "                
                 . "name = :name, "
                 . "period = :period, "
                 . "transient = :transient, "
                 . "notes = :notes, "
-                . "created = :created "
+                . "updated = :updated "
                 . "WHERE "
                 . "id = :id");
         $sql->bindValue(':name', $name);
@@ -55,6 +54,29 @@ class SLA extends model {
         $sql->bindValue(':notes', $notes);
         $sql->bindValue(':id', $id);
         $sql->bindValue(':updated', date('Y-m-d H:i:s'));
+        $sql->execute();
+        
+        return $sql->rowCount();
+    }
+    
+    public function enableSLA($ids) {        
+        $sql = $this->db->prepare("UPDATE sla SET active = 1, updated = :updated WHERE id IN ($ids)");        
+        $sql->bindValue(':updated', date('Y-m-d H:i:s'));
+        $sql->execute();
+        
+        return $sql->rowCount();        
+    }
+    
+    public function disableSLA($ids) {        
+        $sql = $this->db->prepare("UPDATE sla SET active = 0, updated = :updated WHERE id IN ($ids)");        
+        $sql->bindValue(':updated', date('Y-m-d H:i:s'));
+        $sql->execute();
+        
+        return $sql->rowCount();
+    }
+    
+    public function deleteSLA($ids) {        
+        $sql = $this->db->prepare("DELETE FROM sla WHERE id IN ($ids)");        
         $sql->execute();
         
         return $sql->rowCount();

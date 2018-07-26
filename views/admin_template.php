@@ -212,7 +212,7 @@
                                         Gestão de Agentes
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/agents"<?php echo BASE_URL; ?>s"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/agents"><span class="fa fa-user fa-xs"> </span> Agentes</a></li>
                                         <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/teams"><span class="fa fa-users fa-xs"> </span> Times</a></li>
                                         <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/groups"><span class="fa fa-key fa-xs"> </span> Grupos de Permissões</a></li>
                                         <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>admin/departments"><span class="fa fa-sitemap fa-xs"> </span> Setor</a></li>

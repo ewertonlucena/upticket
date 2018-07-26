@@ -21,7 +21,7 @@
                             <button
                                 type="submit"
                                 form="<?php echo $info['action']; ?>-form"
-                                formaction="<?php echo BASE_URL; ?>admin/agents/<?php echo $info['action']; ?>"
+                                formaction="<?php echo BASE_URL; ?>admin/sla/<?php echo $info['action']; ?>"
                                 class="btn btn-<?php echo $info['alert'] ?> border-dark btn-sm">
                                 Confirmar
                             </button>                        
@@ -50,7 +50,7 @@
     <section name="sla-table" class="">
         <div class="row mt-3">
             <div class="col">
-                <form method="POST" id="agent-form">
+                <form method="POST" id="sla-form">
                     <table class="table table-sm table-bordered table-hover">
                         <thead class="thead-light">
                             <tr>
@@ -74,7 +74,7 @@
                             <?php if (empty($sla)): ?>
                                 <tr>
                                     <td colspan="6" class="text-center">
-                                        Não há agentes cadastrados no sistema
+                                        Não há SLA cadastrados no sistema
                                     </td>
                                 </tr>
                             <?php endif; ?>
