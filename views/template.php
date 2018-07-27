@@ -132,8 +132,8 @@
                                                     Gestão de Clientes
                                                 </div>
                                                 <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>users"><span class="fa fa-user fa-xs"> </span> Clientes</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corporations"><span class="fa fa-users fa-xs"> </span> Empresas</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>users"><span class="fas fa-users fa-xs"> </span> Clientes</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corporations"><span class="fa fa-building fa-xs"> </span> Empresas</a></li>
                                                 </ul>
                                             </div>
                                         </section>
@@ -405,8 +405,8 @@
                                         Gestão de Clientes
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>users"><span class="fa fa-user fa-xs"> </span> Clientes</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corporations"><span class="fa fa-users fa-xs"> </span> Empresas</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>users"><span class="fas fa-users fa-xs"> </span> Clientes</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corporations"><span class="fa fa-building fa-xs"> </span> Empresas</a></li>
                                     </ul>
                                 </div>
                             </section>
