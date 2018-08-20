@@ -1,5 +1,5 @@
 <?php if (isset($info) && !empty($info)): ?>
-    <div class="modal fade" id="modal1" onClick="window.history.replaceState('', 'UP Desk', '/upticket/admin/sla')">
+    <div class="modal fade" id="modal1" onClick="window.history.replaceState('', 'UP Desk', '/upticket/clients')">
         <div class="modal-dialog">
             <div class="modal-content alert-<?php echo $info['alert'] ?>">
                 <div class="modal-body">
@@ -21,7 +21,7 @@
                             <button
                                 type="submit"
                                 form="<?php echo $info['action']; ?>-form"
-                                formaction="<?php echo BASE_URL; ?>admin/sla/<?php echo $info['action']; ?>"
+                                formaction="<?php echo BASE_URL; ?>clients/<?php echo $info['action']; ?>"
                                 class="btn btn-<?php echo $info['alert'] ?> border-dark btn-sm">
                                 Confirmar
                             </button>                        
@@ -36,21 +36,21 @@
     <div class="row mt-3">
         <div class="col d-flex justify-content-between">
 
-            <a class="btn btn-staff border-dark fa-xs px-2" href="<?php echo BASE_URL; ?>admin/sla/add"><i class="fas fa-user-plus fa-sm pr-1"></i>Novo SLA</a>
+            <a class="btn btn-staff border-dark fa-xs px-2" href="<?php echo BASE_URL; ?>clients/add"><i class="fas fa-user-plus fa-sm pr-1"></i>Novo Cliente</a>
             <button class="btn btn-staff border-dark fa-xs px-2 ml-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="fas fa-cog fa-sm pr-1"></span>Mais<span class="fa-lg dropdown-toggle pl-1"></span>
             </button>
             <div class="dropdown-menu dropdown-menu-right fa-sm">
-                <button class="dropdown-item" form="sla-form" formaction="<?php echo BASE_URL; ?>admin/sla/enableConfirmation"><i class="fas fa-check-circle fa-xs mr-1"></i>Ativar</button>
-                <button class="dropdown-item" form="sla-form" formaction="<?php echo BASE_URL; ?>admin/sla/disableConfirmation"><i class="fas fa-ban fa-xs mr-1"></i>Desativar</button>
-                <button class="dropdown-item" form="sla-form" formaction="<?php echo BASE_URL; ?>admin/sla/deleteConfirmation"><i class="fas fa-trash-alt fa-xs mr-1"></i>Apagar</button>
+                <button class="dropdown-item" form="clients-form" formaction="<?php echo BASE_URL; ?>clients/enableConfirmation"><i class="fas fa-check-circle fa-xs mr-1"></i>Ativar</button>
+                <button class="dropdown-item" form="clients-form" formaction="<?php echo BASE_URL; ?>clients/disableConfirmation"><i class="fas fa-ban fa-xs mr-1"></i>Desativar</button>
+                <button class="dropdown-item" form="clients-form" formaction="<?php echo BASE_URL; ?>clients/deleteConfirmation"><i class="fas fa-trash-alt fa-xs mr-1"></i>Apagar</button>
             </div>
         </div>
     </div>
-    <section name="sla-table" class="">
+    <section name="clients-table" class="">
         <div class="row mt-3">
             <div class="col">
-                <form method="POST" id="sla-form">
+                <form method="POST" id="clients-form">
                     <table class="table table-sm table-bordered table-hover">
                         <thead class="thead-light">
                             <tr>
@@ -64,22 +64,21 @@
                                     </div>
                                 </th>
                                 <th scope="col">Nome</th>                                
-                                <th scope="col">Status</th>
-                                <th scope="col">Periodo</th>
+                                <th scope="col">Status</th>                                
                                 <th class="d-none d-sm-table-cell" scope="col">Criação</th>
                                 <th class="d-none d-sm-table-cell" scope="col">Atualização</th>
                             </tr>
                         </thead>
                         <tbody class="fa-sm">
-                            <?php if (empty($sla)): ?>
+                            <?php if (empty($clients)): ?>
                                 <tr>
                                     <td colspan="6" class="text-center">
-                                        Não há SLA cadastrados no sistema
+                                        Não há clientes cadastrados no sistema
                                     </td>
                                 </tr>
                             <?php endif; ?>
-                            <?php if (!empty($sla)): ?>
-                                <?php foreach ($sla as $s): ?>
+                            <?php if (!empty($clients)): ?>
+                                <?php foreach ($clients as $c): ?>
                                     <tr>
                                         <td class="text-center" scope="row">
                                             <div class="form-check-inline m-0">
@@ -87,21 +86,21 @@
                                                     type="checkbox" 
                                                     name="ids[]" 
                                                     class="form-check-input m-0"
-                                                    value="<?php echo $s['id']?>"
-                                                    id="check-<?php echo $s['id']?>" 
+                                                    value="<?php echo $c['id']?>"
+                                                    id="check-<?php echo $c['id']?>" 
                                                 />
                                             </div>
                                         </td>
                                         <td>
-                                            <a class="link-card" href="<?php echo BASE_URL . 'admin/sla/edit/'.$s['id'] ?>"><?php echo $s['name']?></a>
+                                            <a class="link-card" href="<?php echo BASE_URL . 'clients/edit/'.$c['id'] ?>"><?php echo $c['name']?></a>
                                         </td>                                        
-                                        <td><span class="badge badge-<?php echo ($s['active']) ? 'success' : 'danger' ?>"><?php echo ($s['active']) ? 'Ativo' : 'Inativo' ?></span></td>
-                                        <td><?php echo $s['period'].' Horas' ?></td>
+                                        <td><span class="badge badge-<?php echo ($c['active']) ? 'success' : 'danger' ?>"><?php echo ($c['active']) ? 'Ativo' : 'Inativo' ?></span></td>
+                                        
                                         <td class="d-none d-sm-table-cell">
-                                            <?php echo (empty($s['created'])) ? '' : date_format(date_create($s['created']), 'd/m/Y') ?>
+                                            <?php echo (empty($c['created'])) ? '' : date_format(date_create($c['created']), 'd/m/Y') ?>
                                         </td>
                                         <td class="d-none d-sm-table-cell">
-                                            <?php echo (empty($s['updated'])) ? '' : date_format(date_create($s['updated']), 'd/m/Y H:i') ?>
+                                            <?php echo (empty($c['updated'])) ? '' : date_format(date_create($c['updated']), 'd/m/Y H:i') ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

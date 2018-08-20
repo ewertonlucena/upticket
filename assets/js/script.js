@@ -203,4 +203,58 @@ $(function() {
     
 });
 
+$(document).ready(function() {
+
+    function clear_addr_form() {
+        // Limpa valores do formulário de cep.
+        $("[name|=addr]").val("");                
+    }
+
+    //Quando o campo cep perde o foco.
+    $("[name=zipcode]").blur(function() {
+
+        //Nova variável "cep" somente com dígitos.
+        var zip = $(this).val().replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (zip != "") {
+
+            //Expressão regular para validar o CEP.
+            var validzip = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validzip.test(zip)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                $("[name|=addr]").val("...");
+
+                //Consulta o webservice viacep.com.br/
+                $.getJSON("https://viacep.com.br/ws/"+ zip +"/json/?callback=?", function(data) {
+
+                    if (!("erro" in data)) {
+                        //Atualiza os campos com os valores da consulta.
+                        $("[name=addr]").val(data.logradouro);
+                        $("[name=addr_neighb]").val(data.bairro);
+                        $("[name=addr_city]").val(data.localidade);
+                        $("[name=addr_state]").val(data.uf);                                
+                    } //end if.
+                    else {
+                        //CEP pesquisado não foi encontrado.
+                        clear_addr_form();
+                        alert("CEP não encontrado.");
+                    }
+                });
+            } //end if.
+            else {
+                //cep é inválido.
+                clear_addr_form();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            clear_addr_form();
+        }
+    });
+});
 

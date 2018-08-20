@@ -7,6 +7,13 @@
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/fontawesome-all.min.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css"/>
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/nicEdit.js"></script>
+        <script type="text/javascript">
+            bkLib.onDomLoaded(function() {                                 
+                nicEditors.allTextAreas({buttonList : ['save','bold','italic','underline','left','center','right','justify','ol','ul','upload','link','unlink','forecolor','bgcolor','xhtml']});
+                nicEditors.allTextAreas({iconsPath : 'http://localhost/upticket/assets/imgs/nicEditorIcons.gif'});                
+            });
+        </script>
         <title>UP Ticket</title>
     </head>
     <body class="bg-light">
@@ -132,8 +139,8 @@
                                                     Gestão de Clientes
                                                 </div>
                                                 <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>users"><span class="fas fa-users fa-xs"> </span> Clientes</a></li>
-                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corporations"><span class="fa fa-building fa-xs"> </span> Empresas</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>clients"><span class="fas fa-users fa-xs"> </span> Clientes</a></li>
+                                                    <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corps"><span class="fa fa-building fa-xs"> </span> Empresas</a></li>
                                                 </ul>
                                             </div>
                                         </section>
@@ -405,8 +412,8 @@
                                         Gestão de Clientes
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>users"><span class="fas fa-users fa-xs"> </span> Clientes</a></li>
-                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corporations"><span class="fa fa-building fa-xs"> </span> Empresas</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>clients"><span class="fas fa-users fa-xs"> </span> Clientes</a></li>
+                                        <li class="list-group-item list-group-item-action p-0"><a class="menu-link" href="<?php echo BASE_URL; ?>corps"><span class="fa fa-building fa-xs"> </span> Empresas</a></li>
                                     </ul>
                                 </div>
                             </section>
@@ -468,6 +475,7 @@
 
         </div>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">var BASE_URL = '<?php echo BASE_URL?>';</script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
 
